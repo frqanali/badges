@@ -1,58 +1,61 @@
 <template>
-  <div class="container mt-5">
-    <h2 class="text-center mb-4">اخر الاخبار</h2>
+  <div class="container mt-5" id="sec-3">
+    <h2 class="text-center mb-4">{{ $t('news') }}</h2>
 
     <div class="row">
       <!-- News Item 1 -->
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card card:hover">
           <img
-            src="/public/GzLogoFi.png"
+            src="/src/assets/GzLogoFi.png"
             class="card-img-top img-fluid newsImg mt-2"
             alt="News Image 1"
+            loading="lazy"
           />
           <div class="card-body">
-            <h5 class="card-title">عنوان الخبر 1</h5>
+            <h5 class="card-title">{{ $t('newstitle') }}</h5>
             <p class="card-text">
-              هذا وصف موجز للمقال الإخباري. يمنح القراء معاينة ل تَمْثِيلِيَّة.
+              {{ $t('newsinfo') }}
             </p>
-            <a href="news-article1.html" class="btn btn-primary">المزيد</a>
+            <a href="news-article1.html" class="btn btn-color">{{ $t('more') }}</a>
           </div>
         </div>
       </div>
 
       <!-- News Item 2 -->
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card card:hover">
           <img
-            src="/public/GzLogoFi.png"
+            src="/src/assets/GzLogoFi.png"
             class="card-img-top img-fluid newsImg mt-2"
             alt="News Image 1"
+            loading="lazy"
           />
           <div class="card-body">
-            <h5 class="card-title">عنوان الخبر 2</h5>
+            <h5 class="card-title">{{ $t('newstitle') }}</h5>
             <p class="card-text">
-              هذا وصف موجز للمقال الإخباري. يمنح القراء معاينة ل تَمْثِيلِيَّة.
+              {{ $t('newsinfo') }}
             </p>
-            <a href="news-article2.html" class="btn btn-primary">المزيد</a>
+            <a href="news-article2.html" class="btn btn-color">{{ $t('more') }}</a>
           </div>
         </div>
       </div>
 
       <!-- News Item 3 -->
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card card:hover">
           <img
-            src="/public/GzLogoFi.png"
+            src="/src/assets/GzLogoFi.png"
             class="card-img-top img-fluid newsImg mt-2"
             alt="News Image 1"
+            loading="lazy"
           />
           <div class="card-body">
-            <h5 class="card-title">عنوان الخبر 3</h5>
+            <h5 class="card-title">{{ $t('newstitle') }}</h5>
             <p class="card-text">
-              هذا وصف موجز للمقال الإخباري. يمنح القراء معاينة ل تَمْثِيلِيَّة.
+              {{ $t('newsinfo') }}
             </p>
-            <a href="news-article3.html" class="btn btn-primary">المزيد</a>
+            <a href="news-article3.html" class="btn btn-color">{{ $t('more') }}</a>
           </div>
         </div>
       </div>
@@ -68,5 +71,23 @@
 }
 .card-body {
   text-align: right;
+}
+.btn-color {
+  color: aliceblue;
+  background-color: #23486a;
+}
+.card {
+  border: 2px solid #4c7b8b;
+  border-radius: 10px;
+  box-shadow: #23486a;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  border-color: aliceblue;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 </style>

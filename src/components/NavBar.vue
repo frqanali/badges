@@ -1,9 +1,7 @@
-<script setup></script>
-
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold fontType ;" href="#">مكتب اصدار هويات المنطقة الخضراء</a>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid background">
+      <a class="navbar-brand fw-bold fontType ps-4" href="#">{{ $t('gzoffice') }}</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -15,28 +13,34 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto ps-5">
           <li class="nav-item">
-            <a class="nav-link active fs-5" aria-current="page" href="#">من نحن</a>
+            <a class="nav-link active fs-5" href="#sec-2" v-smooth-scroll>{{ $t('whoWeAre') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" aria-current="page" href="#">الاخبار</a>
+            <a class="nav-link active fs-5" href="#sec-3" v-smooth-scroll>{{ $t('news') }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active fs-5" href="#sec-4" v-smooth-scroll>{{ $t('services') }}</a>
           </li>
         </ul>
-
-        <a class="navbar-brand" href="#">
-          <img src="/public/image2.png" alt="Logo" width="150" height="35" class="me-3 mb-1" />
-          <img src="/public/GzLogoFi.png" alt="Logo" width="70" height="70" class="" />
-        </a>
-
         <div>
-          <button class="btn btn-sm" @click="changeLan('en')">English</button>
-          <button class="btn btn-sm" @click="changeLan('ar')">Arabic</button>
+          <button class="navbar-brand btn" @click="changeLan('en')">English</button>
+          <button class="navbar-brand btn pe-5" @click="changeLan('ar')">عربي</button>
         </div>
+        <a class="navbar-brand" href="#">
+          <img
+            src="/src/assets/white_text_transparent.png"
+            alt="Logo"
+            width="150"
+            height="35"
+            class="me-3 mb-1"
+            loading="lazy"
+          />
+          <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
+        </a>
       </div>
     </div>
   </nav>
@@ -50,3 +54,33 @@ const changeLan = (lan) => {
   locale.value = lan
 }
 </script>
+
+<style>
+.navbar,
+.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  background: #23486a;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+.nav-link {
+  color: white !important; /* Force the text color to be white */
+}
+.navbar-brand.btn {
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+</style>

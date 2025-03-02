@@ -4,24 +4,23 @@
       <div class="container p-6">
         <div class="row">
           <div class="text-end">
-            <h5 class="mt-1">الروابط</h5>
-            <ul class="list-unstyled mb-0">
+            <h5 class="navbar-brand mt-1">{{ $t('links') }}</h5>
+            <ul class="navbar-brand list-unstyled mb-0">
               <li>
-                <a href="#!">موقع الالكتروني</a>
+                <a href="#">{{ $t('site') }} </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="text-center p-1">© NDC</div>
-      <!-- Copyright -->
+      <div class="navbar-brand text-center p-1">© NDC</div>
     </footer>
   </div>
-  <!-- End of .container -->
 </template>
 <style>
-.background {
-  background: rgb(238, 240, 245);
+a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
