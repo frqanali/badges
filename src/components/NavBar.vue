@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" dir="ltr">
     <div class="container-fluid background">
-      <a class="navbar-brand fw-bold fontType ps-4" href="#">{{ $t('gzoffice') }}</a>
+      <a class="navbar-brand fw-bold fontType ps-4 pe-5" href="#">{{ $t('gzoffice') }}</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -13,9 +13,13 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div>
+        <button class="navbar-brand btn" @click="switchLanguage('en')">English</button>
+        <button class="navbar-brand btn" @click="switchLanguage('ar')">عربي</button>
+      </div>
 
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mx-auto ps-5">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item">
             <a class="nav-link active fs-5" href="#sec-2" v-smooth-scroll>{{ $t('whoWeAre') }}</a>
           </li>
@@ -25,11 +29,20 @@
           <li class="nav-item">
             <a class="nav-link active fs-5" href="#sec-4" v-smooth-scroll>{{ $t('services') }}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5" href="#sec-5" v-smooth-scroll>{{  $t('instructions') }}</a>
+          </li>
         </ul>
-        <div>
-          <button class="navbar-brand btn" @click="changeLan('en')">English</button>
-          <button class="navbar-brand btn pe-5" @click="changeLan('ar')">عربي</button>
-        </div>
+
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-5 search-input"
+            type="search"
+            :placeholder="$t('search')"
+            aria-label="Search"
+          />
+        </form>
+
         <a class="navbar-brand" href="#">
           <img
             src="/src/assets/white_text_transparent.png"
@@ -47,19 +60,32 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
-const changeLan = (lan) => {
-  locale.value = lan
+
+const switchLanguage = (lang) => {
+  locale.value = lang
+  updateTextDirection(lang)
 }
+
+const updateTextDirection = (lang) => {
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr')
+}
+
+onMounted(() => {
+  document.documentElement.setAttribute('dir', 'rtl')
+})
 </script>
 
 <style>
-.navbar,
-.container-fluid {
+.navbar .container-fluid {
   margin: 0;
   padding: 0;
+}
+.search-input {
+  width: 200px;
 }
 
 .navbar-nav {
@@ -73,6 +99,7 @@ const changeLan = (lan) => {
 
 .navbar-brand {
   color: white;
+  text-align: right !important;
 }
 
 .nav-link {

@@ -13,14 +13,11 @@
       <p class="lead text-center">
         {{ $t('par2') }}
       </p>
-      <p class="lead text-center">
-        {{ $t('par3') }}
-      </p>
     </div>
   </div>
 </template>
 <style>
 .GzImg {
-  max-width: 700px;
+  max-width: 750px;
 }
 </style>
