@@ -5,7 +5,7 @@
         <div class="col-6 text-end">
           <p class="mb-0">
             <a href="#" class="text-white">
-              <strong> هلا ومرحبا كوكو <i class="bi bi-balloon-heart"></i> </strong>
+              <strong> هلا ومرحبا فرقان <i class="bi bi-balloon-heart"></i> </strong>
             </a>
           </p>
         </div>
