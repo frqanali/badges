@@ -11,54 +11,19 @@
               ><i class="bi bi-house pe-2"></i> الرئيسية
             </router-link>
           </li>
+
           <li class="sidebar-item">
-            <router-link to="/DiplomaticRepresentation" class="sidebar-link"
-              ><i class="bi bi-list-task pe-2"></i> ادخال بيانات الموفودين
-            </router-link>
+            <router-link to="/staticNews" class="sidebar-link"> الاخبار المثبتة </router-link>
           </li>
+
           <li class="sidebar-item">
-            <router-link to="/visitorsData" class="sidebar-link"
-              ><i class="bi bi-person-lines-fill pe-2"></i> معلومات الزائرين
-            </router-link>
-          </li>
-          <li class="sidebar-item">
-            <router-link to="/notifications" class="sidebar-link"
-              ><i class="bi bi-bell pe-2"></i> الاشعارات
-            </router-link>
-          </li>
-          <li class="sidebar-item">
-            <router-link to="/airplanes" class="sidebar-link"
-              ><i class="bi bi-airplane pe-2"></i> الطائرات
-            </router-link>
-          </li>
-          <li class="sidebar-item">
-            <router-link to="/coordinatorInfo" class="sidebar-link">
-              <i class="bi bi-person-bounding-box pe-2"></i> معلومات المنسق
-            </router-link>
-          </li>
-          <li class="sidebar-item">
-            <router-link to="/bookHotel" class="sidebar-link">
-              <i class="bi bi-building pe-2"></i> حجز الفندق
-            </router-link>
-          </li>
-          <li class="sidebar-item">
-            <router-link to="/badge" class="sidebar-link">
-              <i class="bi bi-credit-card-2-front pe-2"></i> اضافة باج
-            </router-link>
-          </li>
-          <li class="sidebar-item">
-            <router-link to="/notificationForm" class="sidebar-link">
-              <i class="bi bi-sticky pe-2"></i> ارسال اشعار
-            </router-link>
-          </li>
-          <!-- <li class="sidebar-item">
             <a
               href=""
               class="sidebar-link collapsed"
               data-bs-target="#pages"
               data-bs-toggle="collapse"
               aria-expanded="false"
-              ><i class="bi bi-file-earmark pe-2"></i> الصفحات
+              ><i class="bi bi-file-earmark pe-2"></i> الاخبار
             </a>
             <ul
               id="pages"
@@ -66,13 +31,41 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <a href="#" class="sidebar-link">page1</a>
+                <a href="#" class="sidebar-link">اضافة خبر</a>
               </li>
               <li class="sidebar-item">
-                <a href="#" class="sidebar-link">page2</a>
+                <a href="#" class="sidebar-link">تعديل خبر</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">حذف خبر </a>
               </li>
             </ul>
-          </li> -->
+          </li>
+          <li class="sidebar-item">
+            <a
+              href=""
+              class="sidebar-link collapsed"
+              data-bs-target="#services"
+              data-bs-toggle="collapse"
+              aria-expanded="false"
+              ><i class="bi bi-file-earmark pe-2"></i> الخدمات
+            </a>
+            <ul
+              id="services"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">اضافة خدمة</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">تعديل خدمة</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">حذف خدمة</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </aside>
