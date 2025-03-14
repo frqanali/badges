@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <!-- side bar -->
     <aside id="sidebar" :class="[{ collapsed: isExpanded }]">
       <div class="h-100">
         <div class="sidebar-logo">
@@ -13,7 +14,9 @@
           </li>
 
           <li class="sidebar-item">
-            <router-link to="/staticNews" class="sidebar-link"> الاخبار المثبتة </router-link>
+            <router-link to="/staticNews" class="sidebar-link"
+              ><i class="bi bi-pin-angle pe-2"></i> الاخبار المثبتة
+            </router-link>
           </li>
 
           <li class="sidebar-item">
