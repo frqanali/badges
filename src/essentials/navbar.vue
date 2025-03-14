@@ -7,7 +7,7 @@
     </div>
 
     <div class="navbar-right">
-      <div class="icons-container">
+      <div class="icons-container ms-5">
         <div class="dropdown">
           <a href="#" class="avatar-container" @click="toggleDropdown">
             <img src="/src/assets/img/userlogo.png" class="avatar" alt="User Avatar" />
@@ -22,10 +22,10 @@
         </div>
       </div>
 
-      <!-- <div class="lang-buttons">
-        <button class="btn-lang" @click="switchLanguage('en')">EN</button>
-        <button class="btn-lang" @click="switchLanguage('ar')">AR</button>
-      </div> -->
+      <div class="lang-buttons">
+        <!-- <button class="btn-lang" @click="switchLanguage('en')">EN</button>
+        <button class="btn-lang" @click="switchLanguage('ar')">AR</button> -->
+      </div>
     </div>
   </nav>
 </template>
