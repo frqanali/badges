@@ -31,6 +31,11 @@ const messages = {
     contactUs: ' Contact Us  ',
     write: ' Write Here ',
     send: ' Send ',
+    username: ' User Name ',
+    password: ' Password ',
+    enter: ' Enter ',
+    about: 'about',
+    content: 'news content',
   },
   ar: {
     services: 'الخدمات',
@@ -58,6 +63,11 @@ const messages = {
     contactUs: ' تواصل معنا  ',
     write: ' اكتب هنا  ',
     send: ' ارسال ',
+    username: ' اسم المستخدم ',
+    password: ' كلمة المرور ',
+    enter: ' دخول  ',
+    about: ' نبذة عن الخبر',
+    content: ' محتوى الخبر',
   },
 }
 

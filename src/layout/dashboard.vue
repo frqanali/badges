@@ -34,7 +34,7 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <a href="#" class="sidebar-link">اضافة خبر</a>
+                <router-link to="/addNews" class="sidebar-link"> اضافة خبر </router-link>
               </li>
               <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خبر</a>
