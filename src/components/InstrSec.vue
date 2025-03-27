@@ -34,6 +34,11 @@ const handleSubmit = (id) => {
 }
 </script>
 <style scoped>
+.card {
+  border: 2px solid #4c7b8b;
+  border-radius: 10px;
+  box-shadow: #23486a;
+}
 .btn-color {
   color: aliceblue;
   background-color: #23486a;
