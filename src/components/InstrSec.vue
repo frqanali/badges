@@ -9,11 +9,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ instruction.title }}</h5>
             </div>
-            <button
-              type="button"
-              class="btn btn-primary mb-3"
-              @click="handleSubmit(instruction.id)"
-            >
+            <button type="button " class="btn btn-color mb-3" @click="handleSubmit(instruction.id)">
               {{ $t('more') }}
             </button>
             <div class="card-footer">
@@ -37,3 +33,9 @@ const handleSubmit = (id) => {
   router.push({ path: '/instruction', query: { id } })
 }
 </script>
+<style scoped>
+.btn-color {
+  color: aliceblue;
+  background-color: #23486a;
+}
+</style>
