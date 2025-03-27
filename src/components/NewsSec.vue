@@ -11,9 +11,13 @@
               <div class="row">
                 <div class="col my-5 px-5 mx-5">
                   <div class="card-body">
-                    <h5 class="card-title fs-3">{{ $t('newstitle') }} 1</h5>
+                    <h5 class="card-title fs-3">
+                      مكتب هويات المنطقة الخضراء يباشر أعماله في مقراته الجديدة
+                    </h5>
                     <p class="card-text fs-5">
-                      {{ $t('newsinfo') }}
+                      في إطار تنفيذ توجيهات السيد مدير المكتب، وضمن خطة تطوير البنى التحتية لمكتب
+                      هويات المنطقة الخضراء، تم إغلاق المقر السابق والانتقال إلى موقعين جديدين بصورة
+                      مؤقتة، وذلك لغرض إعادة بناء المقر السابق وفق أعلى معايير التطور والحداثة
                     </p>
                     <a href="news-article1.html" class="btn btn-color btn-lg">{{ $t('more') }}</a>
                   </div>
@@ -35,9 +39,15 @@
               <div class="row">
                 <div class="col my-5 px-5 mx-5">
                   <div class="card-body">
-                    <h5 class="card-title fs-3">{{ $t('newstitle') }} 2</h5>
+                    <h5 class="card-title fs-3">
+                      مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
+                      البيانات الوطني
+                    </h5>
                     <p class="card-text fs-5">
-                      {{ $t('newsinfo') }}
+                      في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة
+                      الخضراء عن إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات
+                      الدخول إلى المنطقة الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع
+                      للأمانة العامة لمجلس الوزراء، عبر منصة أور للخدمات الإلكترونية.
                     </p>
                     <a href="news-article1.html" class="btn btn-color btn-lg">{{ $t('more') }}</a>
                   </div>
@@ -59,9 +69,14 @@
               <div class="row">
                 <div class="col my-5 px-5 mx-5">
                   <div class="card-body">
-                    <h5 class="card-title fs-3">{{ $t('newstitle') }}3</h5>
+                    <h5 class="card-title fs-3">
+                      مكتب هويات المنطقة الخضراء يعلن عن إطلاق الاستمارة الأمنية الإلكترونية الجديدة
+                      بالتعاون مع مركز البيانات الوطني
+                    </h5>
                     <p class="card-text fs-5">
-                      {{ $t('newsinfo') }}
+                      ضمن مساعي مكتب هويات المنطقة الخضراء لتطوير آليات العمل وتعزيز الإجراءات
+                      الأمنية، تم إطلاق الاستمارة الأمنية الإلكترونية الجديدة، والتي يتوجب على جميع
+                      المراجعين تعبئتها قبل الحضور إلى المكتب لاستكمال إجراءات المقابلة الأمنية
                     </p>
                     <a href="news-article1.html" class="btn btn-color btn-lg">{{ $t('more') }}</a>
                   </div>
@@ -130,9 +145,11 @@
               loading="lazy"
             />
             <div class="card-body">
-              <h5 class="card-title">{{ $t('newstitle') }}</h5>
+              <h5 class="card-title">مكتب هويات المنطقة الخضراء يباشر أعماله في مقراته الجديدة</h5>
               <p class="card-text">
-                {{ $t('newsinfo') }}
+                في إطار تنفيذ توجيهات السيد مدير المكتب، وضمن خطة تطوير البنى التحتية لمكتب هويات
+                المنطقة الخضراء، تم إغلاق المقر السابق والانتقال إلى موقعين جديدين بصورة مؤقتة، وذلك
+                لغرض إعادة بناء المقر السابق وفق أعلى معايير التطور والحداثة.
               </p>
               <a href="news-article1.html" class="btn btn-color">{{ $t('more') }}</a>
             </div>
@@ -149,9 +166,15 @@
               loading="lazy"
             />
             <div class="card-body">
-              <h5 class="card-title">{{ $t('newstitle') }}</h5>
+              <h5 class="card-title">
+                مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
+                البيانات الوطني
+              </h5>
               <p class="card-text">
-                {{ $t('newsinfo') }}
+                في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة الخضراء عن
+                إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات الدخول إلى المنطقة
+                الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع للأمانة العامة لمجلس الوزراء،
+                عبر منصة أور للخدمات الإلكترونية.
               </p>
               <a href="news-article2.html" class="btn btn-color">{{ $t('more') }}</a>
             </div>
@@ -168,9 +191,14 @@
               loading="lazy"
             />
             <div class="card-body">
-              <h5 class="card-title">{{ $t('newstitle') }}</h5>
+              <h5 class="card-title">
+                مكتب هويات المنطقة الخضراء يعلن عن إطلاق الاستمارة الأمنية الإلكترونية الجديدة
+                بالتعاون مع مركز البيانات الوطني
+              </h5>
               <p class="card-text">
-                {{ $t('newsinfo') }}
+                ضمن مساعي مكتب هويات المنطقة الخضراء لتطوير آليات العمل وتعزيز الإجراءات الأمنية، تم
+                إطلاق الاستمارة الأمنية الإلكترونية الجديدة، والتي يتوجب على جميع المراجعين تعبئتها
+                قبل الحضور إلى المكتب لاستكمال إجراءات المقابلة الأمنية.
               </p>
               <a href="news-article3.html" class="btn btn-color">{{ $t('more') }}</a>
             </div>
@@ -182,18 +210,12 @@
 </template>
 
 <style scoped>
-.newsImg {
-  max-width: 200px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.btn-color {
-  color: aliceblue;
-  background-color: #23486a;
-}
 .card {
+  height: 100%; /* Ensures uniform height */
+  min-height: 450px; /* Adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 2px solid #4c7b8b;
   border-radius: 10px;
   box-shadow: #23486a;
@@ -201,8 +223,27 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
+
+.card-body {
+  flex-grow: 1; /* Allows the text content to fill the available space */
+}
+
+.newsImg {
+  max-width: 200px;
+  height: 200px; /* Ensures images are the same height */
+  object-fit: cover; /* Prevents image distortion */
+  margin: auto;
+}
+
+.btn-color {
+  color: aliceblue;
+  background-color: #23486a;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
   width: 80px;
+  display: flex;
+  justify-content: center;
 }
 </style>

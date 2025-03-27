@@ -1,5 +1,5 @@
 <template>
   <div class="d-felx justify-content-center text-center">
-    <h1>هلا هنا راح نكتب رسالة ترحيبية لليوزر</h1>
+    <h1>اهلا بعودتك</h1>
   </div>
 </template>

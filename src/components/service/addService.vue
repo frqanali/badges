@@ -1,12 +1,12 @@
 <template>
-  <h1>اضافة خبر جديد</h1>
+  <h1>اضافة خدمة جديدة</h1>
   <div class="col-5">
     <div class="input-group mb-3">
       <input
-        v-model="newsStore.singlenews.newstitle"
+        v-model="serviceStore.singleservice.servicetitle"
         type="text"
         class="form-control"
-        :placeholder="$t('newsTitle')"
+        :placeholder="$t('servicename')"
         aria-label="Recipient's username"
         aria-describedby="basic-addon2"
       />
@@ -14,7 +14,7 @@
 
     <div class="input-group mb-3">
       <input
-        v-model="newsStore.singlenews.pio"
+        v-model="serviceStore.singleservice.pio"
         type="text"
         class="form-control"
         :placeholder="$t('about')"
@@ -24,7 +24,7 @@
 
     <div class="input-group">
       <textarea
-        v-model="newsStore.singlenews.newsdescription"
+        v-model="serviceStore.singleservice.servicedescription"
         class="form-control"
         aria-label="With textarea"
         :placeholder="$t('content')"
@@ -46,7 +46,7 @@
     </div>
 
     <div class="container d-flex my-5">
-      <button type="button" class="btn btn-color btn-lg" @click="newsStore.createNews">
+      <button type="button" class="btn btn-color btn-lg" @click="serviceStore.createService">
         {{ $t('send') }}
       </button>
     </div>
@@ -55,9 +55,11 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useNewsStore } from '@/stores/useNews'
+import { useServiceStore } from '@/stores/useService'
+
 const imagePreview = ref(null) // Holds the image preview URL
-const newsStore = useNewsStore()
+const serviceStore = useServiceStore()
+
 const handleImageChange = (event) => {
   const file = event.target.files[0]
   if (file) {

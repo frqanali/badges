@@ -34,6 +34,9 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
+                <router-link to="/allNews" class="sidebar-link">جميع الاخبار </router-link>
+              </li>
+              <li class="sidebar-item">
                 <router-link to="/addNews" class="sidebar-link"> اضافة خبر </router-link>
               </li>
               <li class="sidebar-item">
@@ -59,7 +62,7 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <a href="#" class="sidebar-link">اضافة خدمة</a>
+                <router-link to="/addService" class="sidebar-link"> اضافة خدمة </router-link>
               </li>
               <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خدمة</a>

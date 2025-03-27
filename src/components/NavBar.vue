@@ -1,5 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg" dir="ltr">
+  <nav class="navbar navbar-expand-lg body" dir="ltr">
+    
     <div class="container-fluid background">
       <a class="navbar-brand fw-bold fontType ps-4 pe-5" href="#">{{ $t('gzoffice') }}</a>
       <button
@@ -30,7 +31,9 @@
             <a class="nav-link active fs-5" href="#sec-4" v-smooth-scroll>{{ $t('services') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" href="#sec-5" v-smooth-scroll>{{  $t('instructions') }}</a>
+            <a class="nav-link active fs-5" href="#sec-5" v-smooth-scroll>{{
+              $t('instructions')
+            }}</a>
           </li>
         </ul>
 
@@ -109,5 +112,10 @@ onMounted(() => {
   font-size: 0.85rem;
   padding: 5px 10px;
   border-radius: 3px;
+}
+.body,
+html {
+  margin: 0;
+  padding: 0;
 }
 </style>

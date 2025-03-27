@@ -11,7 +11,7 @@ const messages = {
     info: 'This is a longer card with supporting text below as a natural introduction to adding content. This content is a little longer',
     go: 'go to service ',
     servicename: 'service name ',
-    newstitle: 'news title',
+    newsTitle: 'news title',
     more: 'more',
     newsinfo:
       ' This is a brief description of the news article. Gives readers a preview of the drama.',
@@ -35,7 +35,7 @@ const messages = {
     password: ' Password ',
     enter: ' Enter ',
     about: 'about',
-    content: 'news content',
+    content: ' content',
   },
   ar: {
     services: 'الخدمات',
@@ -46,7 +46,7 @@ const messages = {
     info: 'هذه بطاقة أطول مع نص داعم أدناه كمقدمة طبيعية للإضافة محتوى. هذا المحتوى أطول قليلا',
     go: 'انتقل الى الخدمة',
     servicename: 'اسم الخدمة',
-    newstitle: ' عنوان الخبر',
+    newsTitle: ' عنوان الخبر',
     more: 'المزيد',
     newsinfo: ' هذا وصف موجز للمقال الإخباري. يمنح القراء معاينة ل تَمْثِيلِيَّة.',
     links: 'الروابط',
@@ -66,8 +66,8 @@ const messages = {
     username: ' اسم المستخدم ',
     password: ' كلمة المرور ',
     enter: ' دخول  ',
-    about: ' نبذة عن الخبر',
-    content: ' محتوى الخبر',
+    about: ' نبذة ',
+    content: ' المحتوى',
   },
 }
 

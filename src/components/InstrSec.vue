@@ -1,67 +1,72 @@
 <template>
-  <div class="container mt-5" id="sec-5">
-    <h2 class="text-center mb-4">{{ $t('instructions') }}</h2>
+  <div class="d-flex align-items-center p-4">
+    <div class="container p-4">
+      <h2 class="text-center mb-4">{{ $t('instructions') }}</h2>
 
-    <div class="row">
-      <!-- News Item 1 -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img
-            src="/src/assets/GzLogoFi.png"
-            class="card-img-top img-fluid newsImg mt-2"
-            alt="News Image 1"
-            loading="lazy"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('newstitle') }}</h5>
-            <p class="card-text">
-              {{ $t('newsinfo') }}
-            </p>
-            <a href="news-article1.html" class="btn btn-color">{{ $t('more') }}</a>
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+          <div class="card h-100 p-3">
+            <div class="card-body">
+              <h5 class="card-title">ضوابط وتعليمات منح هويات للقطاع الخاص</h5>
+            </div>
+            <button type="button" class="btn btn-color mb-3" @click="handleSubmit">
+              {{ $t('more') }}
+            </button>
+
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="col">
+          <div class="card h-100 p-3">
+            <div class="card-body">
+              <h5 class="card-title">استيفاء رسوم القطاع العام والخاص وساكني المنطقة الخضراء</h5>
+            </div>
+            <button type="button" class="btn btn-color mb-3">{{ $t('more') }}</button>
 
-      <!-- News Item 2 -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img
-            src="/src/assets/GzLogoFi.png"
-            class="card-img-top img-fluid newsImg mt-2"
-            alt="News Image 1"
-            loading="lazy"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('newstitle') }}</h5>
-            <p class="card-text">
-              {{ $t('newsinfo') }}
-            </p>
-            <a href="news-article2.html" class="btn btn-color">{{ $t('more') }}</a>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="col">
+          <div class="card h-100 p-3">
+            <div class="card-body">
+              <h5 class="card-title">الحقوق والامتيازات والصلاحيات</h5>
+            </div>
+            <button type="button" class="btn btn-color mb-3">{{ $t('more') }}</button>
 
-      <!-- News Item 3 -->
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img
-            src="/src/assets/GzLogoFi.png"
-            class="card-img-top img-fluid newsImg mt-2"
-            alt="News Image 1"
-            loading="lazy"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('newstitle') }}</h5>
-            <p class="card-text">
-              {{ $t('newsinfo') }}
-            </p>
-            <a href="news-article3.html" class="btn btn-color">{{ $t('more') }}</a>
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100 p-3">
+            <div class="card-body">
+              <h5 class="card-title">ضوابط وتعليمات القطاع العام وموظفي الدولة</h5>
+            </div>
+            <button type="button" class="btn btn-color mb-3">{{ $t('more') }}</button>
+
+            <div class="card-footer">
+              <small class="text-body-secondary">Last updated 3 mins ago</small>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const handleSubmit = () => {
+  router.push('/instruction')
+}
+</script>
 
 <style scoped>
 .newsImg {
