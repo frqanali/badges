@@ -56,8 +56,12 @@
 <script setup>
 import { ref } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
-const imagePreview = ref(null) // Holds the image preview URL
+
+// Importing the useNewsStore from Pinia
 const newsStore = useNewsStore()
+// Holds the image preview URL
+const imagePreview = ref(null)
+
 const handleImageChange = (event) => {
   const file = event.target.files[0]
   if (file) {
@@ -66,6 +70,7 @@ const handleImageChange = (event) => {
       imagePreview.value = reader.result // Set image preview
     }
     reader.readAsDataURL(file)
+    newsStore.setUploadedImage(file) // Set the uploaded file in the store
   }
 }
 </script>
