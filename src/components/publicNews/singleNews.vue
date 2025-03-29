@@ -1,38 +1,103 @@
 <template>
-  <div class="container mt-5 d-flex flex-row align-items-center gap-5">
-    <div class="border w-100 p-3 d-flex flex-column gap-3">
-      <div>
-        <img src="/src/assets/GzLogoFi.png" class="img-fluid" alt="News Image 1" loading="lazy" />
+  <div class="container mt-5">
+    <div class="row g-4">
+      <!-- single news section -->
+      <div class="col-lg-8 col-md-7 col-12">
+        <div class="border w-100 p-3 d-flex flex-column gap-3">
+          <div>
+            <img
+              src="/src/assets/GzLogoFi.png"
+              class="img-fluid"
+              alt="News Image 1"
+              loading="lazy"
+            />
+          </div>
+          <div class="d-flex flex-column gap-2">
+            <h3 class="card-title">
+              مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
+              البيانات الوطني
+            </h3>
+            <p class="card-text">
+              في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة الخضراء عن
+              إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات الدخول إلى المنطقة
+              الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع للأمانة العامة لمجلس الوزراء،
+              عبر منصة أور للخدمات الإلكترونية.
+            </p>
+          </div>
+          <div class="d-flex justify-content-end">
+            <router-link to="/">
+              <button class="btn">رجوع</button>
+            </router-link>
+          </div>
+        </div>
       </div>
-      <div class="d-flex flex-column gap-2">
-        <h5 class="card-title">
-          مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز البيانات
-          الوطني
-        </h5>
-        <p class="card-text">
-          في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة الخضراء عن إطلاق
-          الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات الدخول إلى المنطقة الخضراء، وذلك
-          بالتعاون مع مركز البيانات الوطني التابع للأمانة العامة لمجلس الوزراء، عبر منصة أور للخدمات
-          الإلكترونية.
-        </p>
-      </div>
-      <div class="d-flex justify-content-end">
-        <router-link to="/">
-          <button class="btn">رجوع</button>
-        </router-link>
+      <!-- pagination section -->
+      <div class="col-lg-4 col-md-5 col-12">
+        <div class="card">
+          <div class="card-header">اخر الاخبار</div>
+          <ul class="list-group list-group-flush p-0">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+          </ul>
+          <div class="card-footer">
+            <vue-awesome-paginate
+              :total-items="50"
+              :items-per-page="5"
+              :max-pages-shown="5"
+              :show-breakpoint-buttons="false"
+              v-model="currentPage"
+              @click="onClickHandler"
+            />
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="test1">pagination</div>
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import { ref } from 'vue'
 
-<style scoped>
-.test1 {
-  width: 75%;
-  height: 100px;
-  background-color: blue;
+const onClickHandler = (page) => {
+  console.log(page)
+}
+
+const currentPage = ref(1)
+</script>
+
+<style>
+.pagination-container {
+  display: flex;
+  column-gap: 5px;
+}
+
+.paginate-buttons {
+  height: 35px;
+  width: 30px;
+
+  cursor: pointer;
+
+  background-color: rgb(242, 242, 242);
+
+  border: 1px solid rgb(217, 217, 217);
+
+  color: black;
+}
+
+.paginate-buttons:hover {
+  background-color: #d8d8d8;
+}
+
+.active-page {
+  background-color: #3498db;
+
+  border: 1px solid #3498db;
+
+  color: white;
+}
+
+.active-page:hover {
+  background-color: #2988c8;
 }
 </style>
