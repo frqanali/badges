@@ -5,6 +5,7 @@ import DashBoard from '@/views/DashBoard.vue'
 import staticNews from '@/components/news/staticNews.vue'
 import addNews from '@/components/news/addNews.vue'
 import allNews from '@/components/news/allNews.vue'
+import allServices from '@/components/service/allServices.vue'
 import addService from '@/components/service/addService.vue'
 import Login from '../views/Login.vue'
 import InstructionView from '../views/InstructionView.vue'
@@ -57,6 +58,11 @@ const router = createRouter({
     {
       path: '/addService',
       component: addService,
+      meta: { layout: dashboard },
+    },
+    {
+      path: '/allServices',
+      component: allServices,
       meta: { layout: dashboard },
     },
     {

@@ -57,8 +57,13 @@
 import { ref } from 'vue'
 import { useServiceStore } from '@/stores/useService'
 
-const imagePreview = ref(null) // Holds the image preview URL
+// define store
 const serviceStore = useServiceStore()
+
+// define variables
+const imagePreview = ref(null) // Holds the image preview URL
+
+// define functions
 
 const handleImageChange = (event) => {
   const file = event.target.files[0]
@@ -68,6 +73,7 @@ const handleImageChange = (event) => {
       imagePreview.value = reader.result // Set image preview
     }
     reader.readAsDataURL(file)
+    serviceStore.setUploadedImage(file)
   }
 }
 </script>

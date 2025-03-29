@@ -41,10 +41,10 @@ export const useNewsStore = defineStore('newsStore', () => {
         payload.append(key, value)
       }
     })
-    console.log(payload)
+
     try {
       const response = await axios.post(apiURL + 'greenzone/create_news', payload)
-      console.log(response)
+      
 
       if (response.status === 201) {
         Swal.fire({

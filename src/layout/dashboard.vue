@@ -64,6 +64,9 @@
               <li class="sidebar-item">
                 <router-link to="/addService" class="sidebar-link"> اضافة خدمة </router-link>
               </li>
+              <li class="sidebar-item">
+                <router-link to="/allServices" class="sidebar-link"> جميع الاخبار</router-link>
+              </li>
               <!-- <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خدمة</a>
               </li>
