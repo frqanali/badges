@@ -1,8 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg body" dir="ltr">
-    
     <div class="container-fluid background">
-      <a class="navbar-brand fw-bold fontType ps-4 pe-5" href="#">{{ $t('gzoffice') }}</a>
+      <p class="fw-bold fontType ps-4 pe-5 pt-3 contact-info">{{ $t('gzoffice') }}</p>
       <button
         class="navbar-toggler"
         type="button"
@@ -117,5 +116,9 @@ onMounted(() => {
 html {
   margin: 0;
   padding: 0;
+}
+.contact-info {
+  font-size: 1.2rem;
+  color: white; /* Makes the text white */
 }
 </style>

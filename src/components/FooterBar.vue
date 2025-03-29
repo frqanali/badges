@@ -1,24 +1,43 @@
 <template>
-  <div class="background">
-    <footer>
+  <div class="page-container">
+    <div class="content-wrap">
+      <!-- Your main content goes here -->
+    </div>
+    <footer class="footer">
       <div class="container mt-3 pt-3">
-        <div class="navbar-brand p-1">{{ $t('phoneNumber') }} : 07715667876</div>
-        <div class="navbar-brand p-1">{{ $t('email') }} : www.gzb@gmail.com</div>
-        <div class="navbar-brand p-1">{{ $t('address') }}</div>
-        <div class="navbar-brand p-1">
-          {{ $t('location')
-          }}<a href="https://maps.app.goo.gl/pt9D13DsBiDi7yJV9?g_st=com.google.maps.preview.copy">{{
-            $t('clickhere')
-          }}</a>
-        </div>
+        <p class="contact-item contact-info">{{ $t('phoneNumber') }}: 07715667876</p>
+        <p class="contact-item contact-info">{{ $t('email') }}: gzb@gmail.com</p>
+        <p class="contact-item contact-info">{{ $t('address') }}</p>
+
+        <p class="contact-item contact-info">
+          {{ $t('location') }}
+          <a href="https://maps.app.goo.gl/pt9D13DsBiDi7yJV9?g_st=com.google.maps.preview.copy">
+            {{ $t('clickhere') }}
+          </a>
+        </p>
       </div>
-      <div class="navbar-brand p-1 center">{{ $t('ndc') }}</div>
+      <p class="contact-item contact-info center">{{ $t('ndc') }}</p>
     </footer>
   </div>
 </template>
-<style>
-.center {
+
+<style scoped>
+/* Ensures the page takes the full height */
+.page-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Pushes the footer to the bottom */
+.content-wrap {
+  flex: 1;
+}
+
+/* Styles the footer */
+.footer {
+  background-color: #23486a;
+  color: white;
+  padding: 15px 0;
 }
 </style>
