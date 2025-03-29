@@ -10,15 +10,15 @@ export const useNewsStore = defineStore('newsStore', () => {
   const singlenews = ref({
     newstitle: '',
     newsdescription: '',
-    image: 'https://exampl.com/image.jpg',
+    image: '',
     pio: '',
   })
 
   // Functions
   const getAllNews = async () => {
     try {
-      const response = await axios.get(apiURL + 'greenzone/get_news')
-      // Await the axios call
+      const response = await axios.get(apiURL + 'greenzone/get_all_news')
+
       console.log(response)
     } catch (error) {
       console.log(error)
@@ -32,8 +32,18 @@ export const useNewsStore = defineStore('newsStore', () => {
   }
 
   const createNews = async () => {
+    const payload = new FormData()
+    // convert form fields to formData
+    Object.entries(singlenews.value).forEach(([key, value]) => {
+      if (value instanceof File) {
+        payload.append(key, value)
+      } else {
+        payload.append(key, value)
+      }
+    })
+    console.log(payload)
     try {
-      const response = await axios.post(apiURL + 'greenzone/create_news', singlenews.value) // Await the axios call
+      const response = await axios.post(apiURL + 'greenzone/create_news', payload)
       console.log(response)
 
       if (response.status === 201) {
@@ -53,9 +63,15 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
   }
 
+  // set the image to the state
+  const setUploadedImage = (file) => {
+    singlenews.value.image = file
+  }
+
   return {
     getAllNews,
     createNews,
     singlenews,
+    setUploadedImage,
   }
 })
