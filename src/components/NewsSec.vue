@@ -205,6 +205,9 @@
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary">المزيد من الاخبار</button>
+      </div>
     </div>
   </div>
 </template>
