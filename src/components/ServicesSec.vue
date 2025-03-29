@@ -70,6 +70,11 @@
         </div>
       </div>
     </div>
+    <div class="d-flex justify-content-center">
+      <router-link to="/singleService"
+        ><button class="btn btn-color btn-lg">المزيد من الخدمات</button>
+      </router-link>
+    </div>
   </div>
 </template>
 <style scoped>

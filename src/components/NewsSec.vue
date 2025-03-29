@@ -207,7 +207,7 @@
       </div>
       <div class="d-flex justify-content-center">
         <router-link to="/singleNews"
-          ><button class="btn btn-primary">المزيد من الاخبار</button>
+          ><button class="btn btn-color btn-lg">المزيد من الاخبار</button>
         </router-link>
       </div>
     </div>

@@ -1,17 +1,9 @@
 <template>
   <div class="container mt-5">
     <div class="row g-4">
-      <!-- single news section -->
+      <!-- service news section -->
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
-          <div>
-            <img
-              src="/src/assets/GzLogoFi.png"
-              class="img-fluid"
-              alt="News Image 1"
-              loading="lazy"
-            />
-          </div>
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
               مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
@@ -34,11 +26,11 @@
       <!-- pagination section -->
       <div class="col-lg-4 col-md-5 col-12">
         <div class="card">
-          <div class="card-header">اخر الاخبار</div>
+          <div class="card-header">اخر الخدمات</div>
           <ul class="list-group list-group-flush p-0">
-            <li class="list-group-item">الخبر الاول</li>
-            <li class="list-group-item">الخبر الثاني</li>
-            <li class="list-group-item">الخبر الثالث</li>
+            <li class="list-group-item">الخدمة الاولى</li>
+            <li class="list-group-item">الخدمة الثانية</li>
+            <li class="list-group-item">الخدمة الثالثة</li>
           </ul>
           <div class="card-footer">
             <vue-awesome-paginate
