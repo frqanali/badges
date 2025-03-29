@@ -39,12 +39,12 @@
               <li class="sidebar-item">
                 <router-link to="/addNews" class="sidebar-link"> اضافة خبر </router-link>
               </li>
-              <li class="sidebar-item">
+              <!-- <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خبر</a>
               </li>
               <li class="sidebar-item">
                 <a href="#" class="sidebar-link">حذف خبر </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="sidebar-item">
@@ -64,12 +64,12 @@
               <li class="sidebar-item">
                 <router-link to="/addService" class="sidebar-link"> اضافة خدمة </router-link>
               </li>
-              <li class="sidebar-item">
+              <!-- <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خدمة</a>
               </li>
               <li class="sidebar-item">
                 <a href="#" class="sidebar-link">حذف خدمة</a>
-              </li>
+              </li> -->
             </ul>
           </li>
         </ul>
