@@ -5,18 +5,18 @@
     </div>
     <footer class="footer">
       <div class="container mt-3 pt-3">
-        <p class="contact-item contact-info">{{ $t('phoneNumber') }}: 07715667876</p>
-        <p class="contact-item contact-info">{{ $t('email') }}: gzb@gmail.com</p>
-        <p class="contact-item contact-info">{{ $t('address') }}</p>
+        <p>{{ $t('phoneNumber') }}: 07715667876</p>
+        <p>{{ $t('email') }}: gzb@gmail.com</p>
+        <p>{{ $t('address') }}</p>
 
-        <p class="contact-item contact-info">
+        <p>
           {{ $t('location') }}
           <a href="https://maps.app.goo.gl/pt9D13DsBiDi7yJV9?g_st=com.google.maps.preview.copy">
             {{ $t('clickhere') }}
           </a>
         </p>
       </div>
-      <p class="contact-item contact-info center">{{ $t('ndc') }}</p>
+      <p class="center">{{ $t('ndc') }}</p>
     </footer>
   </div>
 </template>
@@ -26,7 +26,7 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 40vh;
 }
 
 /* Pushes the footer to the bottom */
@@ -39,5 +39,8 @@
   background-color: #23486a;
   color: white;
   padding: 15px 0;
+}
+.center {
+  text-align: center;
 }
 </style>

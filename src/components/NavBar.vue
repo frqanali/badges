@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg body" dir="ltr">
     <div class="container-fluid background">
-      <p class="fw-bold fontType ps-4 pe-5 pt-3 contact-info">{{ $t('gzoffice') }}</p>
+      <router-link to="/" class="fw-bold fontType ps-4 pe-5 contact-info no-underline">
+        {{ $t('gzoffice') }}
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -120,5 +122,8 @@ html {
 .contact-info {
   font-size: 1.2rem;
   color: white; /* Makes the text white */
+}
+.no-underline {
+  text-decoration: none;
 }
 </style>
