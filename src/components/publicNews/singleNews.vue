@@ -67,6 +67,12 @@ const currentPage = ref(1)
 </script>
 
 <style>
+.list-group-item:hover {
+  background-color: #f0f0f0; /* light gray */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .pagination-container {
   display: flex;
   column-gap: 5px;
