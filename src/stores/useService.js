@@ -13,6 +13,17 @@ export const useServiceStore = defineStore('serviceStore', () => {
     image: '',
     pio: '',
   })
+
+  const serviceList = ref([
+    {
+      id: '',
+      servicetitle: '',
+      servicedescription: '',
+
+      pio: '',
+    },
+  ])
+
   // functions
 
   const createService = async () => {
@@ -47,17 +58,55 @@ export const useServiceStore = defineStore('serviceStore', () => {
     try {
       const response = await axios.get(apiURL + 'greenzone/get_all_service')
 
-      console.log(response)
+      if (response.status === 200) {
+        serviceList.value = response.data.services
+      }
     } catch (error) {
-      console.log(error)
-
       Swal.fire({
         title: 'حدث خطأ',
-        text: 'فشل في جلب الأخبار',
+        text: 'فشل في جلب الخدمات',
         icon: 'error',
       })
     }
   }
+
+  const editService = async (id) => {
+    console.log(id)
+  }
+
+  const deleteService = async (id) => {
+    const payload = { serviceid: id }
+    try {
+      const response = await axios.delete(
+        apiURL + 'greenzone/delete_service',
+        { data: payload },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'تم حذف الخدمة بنجاح',
+          icon: 'success',
+        })
+
+        // delete the service from the list
+        const index = serviceList.value.findIndex((service) => service.id === id)
+        if (index !== -1) {
+          serviceList.value.splice(index, 1)
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في حذف الخدمة',
+        icon: 'error',
+      })
+    }
+  }
+
   const setUploadedImage = (file) => {
     singleservice.value.image = file
   }
@@ -66,5 +115,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
     singleservice,
     setUploadedImage,
     getAllServices,
+    serviceList,
+    editService,
+    deleteService,
   }
 })
