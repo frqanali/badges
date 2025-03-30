@@ -78,9 +78,11 @@ export const useServiceStore = defineStore('serviceStore', () => {
     try {
       const response = await axios.get(
         apiURL + 'greenzone/get_service_by_id',
-        { params: payload },
+        payload,
 
-        { headers: { 'Content-Type': 'application/json' } },
+        {
+          headers: { 'Content-Type': 'application/json' },
+        },
       )
       if (response.status === 200) {
         singleservice.value = response.data.service

@@ -14,18 +14,64 @@ export const useNewsStore = defineStore('newsStore', () => {
     pio: '',
   })
 
+  const newsList = ref([
+    {
+      id: '',
+      newstitle: '',
+      newsdescription: '',
+      pio: '',
+    },
+  ])
+
+  const newsId = ref(null)
+
   // Functions
   const getAllNews = async () => {
     try {
       const response = await axios.get(apiURL + 'greenzone/get_all_news')
 
-      console.log(response)
+      if (response.status === 200) {
+        newsList.value = response.data.news
+      }
     } catch (error) {
       console.log(error)
 
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في جلب الأخبار',
+        icon: 'error',
+      })
+    }
+  }
+
+  const deleteNews = async (id) => {
+    const payload = { newsid: id }
+    try {
+      const response = await axios.delete(
+        apiURL + 'greenzone/delete_news',
+        { data: payload },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'تم حذف الخبر بنجاح',
+          icon: 'success',
+        })
+
+        // delete the news from the list
+        const index = newsList.value.findIndex((news) => news.id === id)
+        if (index !== -1) {
+          newsList.value.splice(index, 1)
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في حذف الخبر',
         icon: 'error',
       })
     }
@@ -44,7 +90,6 @@ export const useNewsStore = defineStore('newsStore', () => {
 
     try {
       const response = await axios.post(apiURL + 'greenzone/create_news', payload)
-      
 
       if (response.status === 201) {
         Swal.fire({
@@ -73,5 +118,8 @@ export const useNewsStore = defineStore('newsStore', () => {
     createNews,
     singlenews,
     setUploadedImage,
+    newsList,
+    newsId,
+    deleteNews,
   }
 })
