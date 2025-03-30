@@ -57,6 +57,7 @@ const router = createRouter({
     },
     {
       path: '/addService',
+      name: 'addService',
       component: addService,
       meta: { layout: dashboard },
     },

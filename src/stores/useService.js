@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useServiceStore = defineStore('serviceStore', () => {
+  const router = useRouter()
   //reactive variables
   const singleservice = ref({
     servicetitle: '',
@@ -19,10 +21,11 @@ export const useServiceStore = defineStore('serviceStore', () => {
       id: '',
       servicetitle: '',
       servicedescription: '',
-
       pio: '',
     },
   ])
+
+  const serviceId = ref(null)
 
   // functions
 
@@ -70,8 +73,32 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
   }
 
+  const getSingleService = async (id) => {
+    const payload = { serviceid: id }
+    try {
+      const response = await axios.get(
+        apiURL + 'greenzone/get_service_by_id',
+        { params: payload },
+
+        { headers: { 'Content-Type': 'application/json' } },
+      )
+      if (response.status === 200) {
+        singleservice.value = response.data.service
+        console.log(singleservice.value)
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في جلب الخدمة',
+        icon: 'error',
+      })
+    }
+  }
+
   const editService = async (id) => {
-    console.log(id)
+    serviceId.value = id
+    router.push({ name: 'addService', query: { id: id } })
+    getSingleService(id)
   }
 
   const deleteService = async (id) => {
