@@ -45,7 +45,7 @@ export const useNewsStore = defineStore('newsStore', () => {
   }
 
   const deleteNews = async (id) => {
-    const payload = { newsid: id }
+    const payload = { news_id: id }
     try {
       const response = await axios.delete(
         apiURL + 'greenzone/delete_news',

@@ -4,14 +4,16 @@
       <!-- single news section -->
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
-          <div>
+          <div style="display: flex; justify-content: center">
             <img
               src="/src/assets/GzLogoFi.png"
               class="img-fluid"
               alt="News Image 1"
               loading="lazy"
+              style="width: 300px; height: auto"
             />
           </div>
+
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
               مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
@@ -26,7 +28,7 @@
           </div>
           <div class="d-flex justify-content-end">
             <router-link to="/">
-              <button class="btn">رجوع</button>
+              <button class="btn btn-color">{{ $t('back') }}</button>
             </router-link>
           </div>
         </div>
@@ -34,7 +36,7 @@
       <!-- pagination section -->
       <div class="col-lg-4 col-md-5 col-12">
         <div class="card">
-          <div class="card-header">اخر الاخبار</div>
+          <div class="card-header">{{ $t('latestnews') }}</div>
           <ul class="list-group list-group-flush p-0">
             <li class="list-group-item">الخبر الاول</li>
             <li class="list-group-item">الخبر الثاني</li>
@@ -66,7 +68,7 @@ const onClickHandler = (page) => {
 const currentPage = ref(1)
 </script>
 
-<style>
+<style scoped>
 .list-group-item:hover {
   background-color: #f0f0f0; /* light gray */
   cursor: pointer;
@@ -105,5 +107,9 @@ const currentPage = ref(1)
 
 .active-page:hover {
   background-color: #2988c8;
+}
+.btn-color {
+  color: aliceblue;
+  background-color: #3b6790;
 }
 </style>

@@ -4,7 +4,7 @@
       <!-- Your main content goes here -->
     </div>
     <footer class="footer">
-      <div class="container mt-3 pt-3">
+      <div class="container mt-3">
         <p>{{ $t('phoneNumber') }}: 07715667876</p>
         <p>{{ $t('email') }}: gzb@gmail.com</p>
         <p>{{ $t('address') }}</p>
@@ -38,7 +38,6 @@
 .footer {
   background-color: #23486a;
   color: white;
-  padding: 15px 0;
 }
 .center {
   text-align: center;

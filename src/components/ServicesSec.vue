@@ -72,7 +72,7 @@
     </div>
     <div class="d-flex justify-content-center">
       <router-link to="/singleService"
-        ><button class="btn btn-color btn-lg">المزيد من الخدمات</button>
+        ><button class="btn btn-colorr">{{ $t('readmore') }}</button>
       </router-link>
     </div>
   </div>
@@ -82,6 +82,12 @@
   color: aliceblue;
   background-color: #3b6790;
 }
+.btn-colorr {
+  background-color: transparent;
+  border: 2px solid #3b6790;
+  border-radius: 5px;
+}
+
 .backgrounds {
   background: #f5f7f8;
   border: 2px solid #e8eaeb;

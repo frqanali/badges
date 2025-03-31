@@ -18,7 +18,7 @@
           </div>
           <div class="d-flex justify-content-end">
             <router-link to="/">
-              <button class="btn">رجوع</button>
+              <button class="btn btn-color">{{ $t('back') }}</button>
             </router-link>
           </div>
         </div>
@@ -26,7 +26,7 @@
       <!-- pagination section -->
       <div class="col-lg-4 col-md-5 col-12">
         <div class="card">
-          <div class="card-header">اخر الخدمات</div>
+          <div class="card-header">{{ $t('latestservices') }}</div>
           <ul class="list-group list-group-flush p-0">
             <li class="list-group-item">الخدمة الاولى</li>
             <li class="list-group-item">الخدمة الثانية</li>
@@ -91,5 +91,9 @@ const currentPage = ref(1)
 
 .active-page:hover {
   background-color: #2988c8;
+}
+.btn-color {
+  color: aliceblue;
+  background-color: #23486a;
 }
 </style>
