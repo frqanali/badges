@@ -6,7 +6,7 @@
       <!-- This renders the child pages -->
 
       <!-- Back to Top Button -->
-
+      <!-- we should move this to a component -->
       <i class="bi bi-arrow-up-circle back-to-top" @click="scrollToTop" v-show="showButton"></i>
     </div>
   </component>
