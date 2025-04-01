@@ -38,6 +38,8 @@
 .footer {
   background-color: #23486a;
   color: white;
+  bottom: 0;
+  width: 100%;
 }
 .center {
   text-align: center;
