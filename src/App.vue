@@ -22,7 +22,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const route = useRoute()
 const layout = computed(() => route.meta.layout || blank)
 const showButton = ref(false)
-const isHovered = ref(false)
 
 const handleScroll = () => {
   showButton.value = window.scrollY > 200
