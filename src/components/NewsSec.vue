@@ -9,21 +9,19 @@
           <div class="carousel-item active mb-4">
             <div class="card">
               <div class="row">
-                <div class="col my-5 px-5 mx-5">
+                <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
                     <h5 class="card-title fs-3">
                       مكتب هويات المنطقة الخضراء يباشر أعماله في مقراته الجديدة
                     </h5>
-                    <p class="card-text fs-5">
-                      في إطار تنفيذ توجيهات السيد مدير المكتب، وضمن خطة تطوير البنى التحتية لمكتب
-                      هويات المنطقة الخضراء، تم إغلاق المقر السابق والانتقال إلى موقعين جديدين بصورة
-                      مؤقتة، وذلك لغرض إعادة بناء المقر السابق وفق أعلى معايير التطور والحداثة
-                    </p>
-                    <a href="news-article1.html" class="btn btn-color btn-lg">{{ $t('more') }}</a>
+
+                    <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
+                      $t('more')
+                    }}</a>
                   </div>
                 </div>
 
-                <div class="col-md-6 d-flex my-5">
+                <div class="col-md-6 d-flex my-5 order-1 order-md-2">
                   <img
                     src="/src/assets/GzLogoFi.png"
                     class="card-img-top img-fluid newsImg mt-2"
@@ -37,23 +35,20 @@
           <div class="carousel-item mb-4">
             <div class="card">
               <div class="row">
-                <div class="col my-5 px-5 mx-5">
+                <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
                     <h5 class="card-title fs-3">
                       مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
                       البيانات الوطني
                     </h5>
-                    <p class="card-text fs-5">
-                      في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة
-                      الخضراء عن إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات
-                      الدخول إلى المنطقة الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع
-                      للأمانة العامة لمجلس الوزراء، عبر منصة أور للخدمات الإلكترونية.
-                    </p>
-                    <a href="news-article1.html" class="btn btn-color btn-lg">{{ $t('more') }}</a>
+
+                    <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
+                      $t('more')
+                    }}</a>
                   </div>
                 </div>
 
-                <div class="col-md-6 d-flex my-5">
+                <div class="col-md-6 d-flex my-5 order-1 order-md-2">
                   <img
                     src="/src/assets/GzLogoFi.png"
                     class="card-img-top img-fluid newsImg mt-2"
@@ -67,22 +62,20 @@
           <div class="carousel-item mb-4">
             <div class="card">
               <div class="row">
-                <div class="col my-5 px-5 mx-5">
+                <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
                     <h5 class="card-title fs-3">
                       مكتب هويات المنطقة الخضراء يعلن عن إطلاق الاستمارة الأمنية الإلكترونية الجديدة
                       بالتعاون مع مركز البيانات الوطني
                     </h5>
-                    <p class="card-text fs-5">
-                      ضمن مساعي مكتب هويات المنطقة الخضراء لتطوير آليات العمل وتعزيز الإجراءات
-                      الأمنية، تم إطلاق الاستمارة الأمنية الإلكترونية الجديدة، والتي يتوجب على جميع
-                      المراجعين تعبئتها قبل الحضور إلى المكتب لاستكمال إجراءات المقابلة الأمنية
-                    </p>
-                    <a href="news-article1.html" class="btn btn-color btn-lg">{{ $t('more') }}</a>
+
+                    <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
+                      $t('more')
+                    }}</a>
                   </div>
                 </div>
 
-                <div class="col-md-6 d-flex my-5">
+                <div class="col-md-6 d-flex my-5 order-1 order-md-2">
                   <img
                     src="/src/assets/GzLogoFi.png"
                     class="card-img-top img-fluid newsImg mt-2"
@@ -217,7 +210,6 @@
 <style scoped>
 .card {
   height: 100%; /* Ensures uniform height */
-  min-height: 450px; /* Adjust as needed */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
