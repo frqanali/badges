@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center p-4">
+  <div class="d-flex align-items-center p-4" id="sec-5">
     <div class="container p-4">
       <h2 class="text-center mb-4">{{ $t('instructions') }}</h2>
 

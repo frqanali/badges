@@ -47,18 +47,24 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mx-auto pe-5 ps-2">
           <li class="nav-item">
-            <a class="nav-link active fs-5" href="#sec-2" v-smooth-scroll>{{ $t('whoWeAre') }}</a>
+            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-2')">
+              {{ $t('whoWeAre') }}
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" href="#sec-3" v-smooth-scroll>{{ $t('news') }}</a>
+            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-3')">
+              {{ $t('news') }}
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" href="#sec-4" v-smooth-scroll>{{ $t('services') }}</a>
+            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-4')">
+              {{ $t('services') }}
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" href="#sec-5" v-smooth-scroll>{{
-              $t('instructions')
-            }}</a>
+            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-5')">
+              {{ $t('instructions') }}
+            </a>
           </li>
         </ul>
 
@@ -81,8 +87,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter, useRoute } from 'vue-router'
 
 const { locale } = useI18n()
+const router = useRouter()
+const route = useRoute()
 
 const switchLanguage = (lang) => {
   locale.value = lang
@@ -96,6 +105,21 @@ const updateTextDirection = (lang) => {
 onMounted(() => {
   document.documentElement.setAttribute('dir', 'rtl')
 })
+
+const navigateTo = (sectionId) => {
+  if (route.path !== '/') {
+    // Navigate to home first
+    router.push('/').then(() => {
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      }, 500) // Adjust delay if needed
+    })
+  } else {
+    // If already on home, just scroll
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <style>

@@ -9,8 +9,8 @@
       <button class="btn back-to-top" v-show="showButton" @click="scrollToTop">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
+          width="35"
+          height="35"
           fill="#3b6790"
           class="bi bi-arrow-up-circle"
           viewBox="0 0 16 16"
@@ -30,10 +30,10 @@ import { computed } from 'vue'
 import blank from './layout/blank.vue'
 import { useRoute } from 'vue-router'
 import { RouterView } from 'vue-router'
-const route = useRoute()
-const layout = computed(() => route.meta.layout || blank)
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const route = useRoute()
+const layout = computed(() => route.meta.layout || blank)
 const showButton = ref(false)
 
 const handleScroll = () => {
@@ -65,6 +65,8 @@ onUnmounted(() => {
   padding: 4px 4px;
   border-radius: 50%;
   cursor: pointer;
+  padding: 10px 15px;
+
   transition: opacity 0.2s ease-in-out;
 }
 .back-to-top:hover {
