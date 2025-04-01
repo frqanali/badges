@@ -12,7 +12,7 @@
             aria-describedby="basic-addon2"
           />
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3" :class="{ 'rtl-fix': $i18n.locale === 'ar' }">
           <input
             v-model="password"
             :type="passwordVisible ? 'text' : 'password'"
@@ -54,5 +54,14 @@ const handleSubmit = () => {
 .btn-color {
   color: aliceblue;
   background-color: #23486a;
+}
+
+/* RTL Fix */
+.rtl-fix .form-control {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.rtl-fix .input-group-text {
+  border-radius: 5px 0 0 5px !important;
 }
 </style>
