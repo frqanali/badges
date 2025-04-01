@@ -31,20 +31,6 @@
       ></textarea>
     </div>
 
-    <!-- Image Upload Input -->
-    <div class="input-group my-3">
-      <input
-        type="file"
-        class="form-control"
-        accept="image/*"
-        @change="handleImageChange"
-        aria-label="Upload image"
-      />
-    </div>
-    <div v-if="imagePreview" class="my-3">
-      <img :src="imagePreview" alt="Image Preview" class="img-fluid" />
-    </div>
-
     <div class="container d-flex my-5">
       <button type="button" class="btn btn-color btn-lg" @click="serviceStore.createService">
         {{ $t('send') }}
@@ -54,28 +40,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useServiceStore } from '@/stores/useService'
 
-// define store
 const serviceStore = useServiceStore()
-
-// define variables
-const imagePreview = ref(null) // Holds the image preview URL
-
-// define functions
-
-const handleImageChange = (event) => {
-  const file = event.target.files[0]
-  if (file) {
-    const reader = new FileReader()
-    reader.onload = () => {
-      imagePreview.value = reader.result // Set image preview
-    }
-    reader.readAsDataURL(file)
-    serviceStore.setUploadedImage(file)
-  }
-}
 </script>
 
 <style scoped>
