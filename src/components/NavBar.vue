@@ -47,22 +47,22 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mx-auto pe-5 ps-2">
           <li class="nav-item">
-            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-2')">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
               {{ $t('whoWeAre') }}
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-3')">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
               {{ $t('news') }}
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-4')">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-4')">
               {{ $t('services') }}
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5" @click.prevent="navigateTo('sec-5')">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
               {{ $t('instructions') }}
             </a>
           </li>
@@ -126,6 +126,10 @@ const navigateTo = (sectionId) => {
 .navbar .container-fluid {
   margin: 0;
   padding: 0;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .navbar-nav {
