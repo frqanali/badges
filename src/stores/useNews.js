@@ -26,16 +26,18 @@ export const useNewsStore = defineStore('newsStore', () => {
   const newsId = ref(null)
 
   // Functions
-  const getAllNews = async () => {
+  const getAllNews = async (page = 1) => {
+    const payload = {
+      Per_Page: 5,
+      Page: page,
+    }
     try {
-      const response = await axios.get(apiURL + 'greenzone/get_all_news')
+      const response = await axios.post(apiURL + 'greenzone/get_all_news', payload)
 
       if (response.status === 200) {
         newsList.value = response.data.news
       }
     } catch (error) {
-      console.log(error)
-
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في جلب الأخبار',

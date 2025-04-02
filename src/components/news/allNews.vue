@@ -46,7 +46,7 @@ import { ref } from 'vue'
 const newsStore = useNewsStore()
 
 const onClickHandler = (page) => {
-  console.log(page)
+  newsStore.getAllNews(page)
 }
 
 const currentPage = ref(1)
