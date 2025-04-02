@@ -1,8 +1,15 @@
 import { defineStore } from 'pinia'
+import axios from 'axios'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
+
+const apiURL = import.meta.env.VITE_API_URL
 
 export const useInstructionStore = defineStore('instructionStore', () => {
   // Reactive variables
+  const router = useRouter()
+
   const instructions = ref([
     {
       id: 1,
@@ -153,8 +160,130 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       - يتم استبدال الهوية **بنفس الرسوم المفروضة على الشخص الأول**، وفقاً لمدة النفاذ المقررة للهوية المستبدلة.`,
     },
   ])
+  const singleinstruction = ref({
+    instructiontitle: '',
+    instructiondescription: '',
+  })
+
+  const instructionList = ref([
+    {
+      id: '',
+      instructiontitle: '',
+      instructiondescription: '',
+    },
+  ])
+
+  const instructionId = ref(null)
+
+  // functions
+
+  const createinstruction = async () => {
+    const payload = new FormData()
+    // convert form fields to formData
+    Object.entries(singleinstruction.value).forEach(([key, value]) => {
+      if (value instanceof File) {
+        payload.append(key, value)
+      } else {
+        payload.append(key, value)
+      }
+    })
+
+    try {
+      const response = await axios.post(apiURL + 'greenzone/create_service', payload)
+      if (response.status === 201) {
+        Swal.fire({
+          title: 'تم اضافة الضوابط والتعليمات  بنجاح',
+          icon: 'success',
+        })
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في إضافة الضوابط والتعليمات',
+        icon: 'error',
+      })
+    }
+  }
+
+  const getAllinstructions = async () => {
+    try {
+      const response = await axios.get(apiURL + 'greenzone/get_all_service')
+
+      if (response.status === 200) {
+        instructionList.value = response.data.instructions
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في جلب الضوابط والتعليمات',
+        icon: 'error',
+      })
+    }
+  }
+
+  const getSingleinstruction = async (id) => {
+    const payload = { instructionid: id }
+    try {
+      const response = await axios.get(
+        apiURL + 'greenzone/get_service_by_id',
+        payload,
+
+        {
+          headers: { 'Content-Type': 'application/json' },
+        },
+      )
+      if (response.status === 200) {
+        singleinstruction.value = response.data.instruction
+        console.log(singleinstruction.value)
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في جلب الضوابط والتعليمات',
+        icon: 'error',
+      })
+    }
+  }
+
+  const deleteinstruction = async (id) => {
+    const payload = { instructionid: id }
+    try {
+      const response = await axios.delete(
+        apiURL + 'greenzone/delete_service',
+        { data: payload },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'تم حذف الضوابط والتعليمات بنجاح',
+          icon: 'success',
+        })
+
+        // delete the service from the list
+        const index = instructionList.value.findIndex((instruction) => instruction.id === id)
+        if (index !== -1) {
+          instructionList.value.splice(index, 1)
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في حذف الضوابط والتعليمات',
+        icon: 'error',
+      })
+    }
+  }
 
   return {
     instructions,
+    createinstruction,
+    singleinstruction,
+    getAllinstructions,
+    instructionList,
+    deleteinstruction,
   }
 })

@@ -18,6 +18,11 @@
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center mt-3">
+        <router-link to="/singleNews"
+          ><button class="btn btn-colorr">{{ $t('readmore') }}</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -42,5 +47,10 @@ const handleSubmit = (id) => {
 .btn-color {
   color: aliceblue;
   background-color: #23486a;
+}
+.btn-colorr {
+  background-color: transparent;
+  border: 2px solid #3b6790;
+  border-radius: 5px;
 }
 </style>

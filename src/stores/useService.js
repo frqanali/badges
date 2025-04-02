@@ -136,13 +136,10 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
   }
 
-  const setUploadedImage = (file) => {
-    singleservice.value.image = file
-  }
+
   return {
     createService,
     singleservice,
-    setUploadedImage,
     getAllServices,
     serviceList,
     editService,
