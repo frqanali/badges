@@ -17,7 +17,10 @@
             <td>{{ news.title }}</td>
             <td>{{ news.pio }}</td>
             <td>
-              <button class="btn btn-sm btn-warning ms-2" @click="newsStore.editNews(news.id)">
+              <button
+                class="btn btn-sm btn-warning ms-2"
+                @click="newsStore.routerEditNews(news.id)"
+              >
                 تعديل
               </button>
               <button class="btn btn-sm btn-danger" @click="newsStore.deleteNews(news.id)">

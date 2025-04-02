@@ -121,10 +121,46 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
   }
 
-  const editNews = async (id) => {
+  const routerEditNews = (id) => {
     getSingleNews(id)
     newsId.value = id
     router.push('/addNews')
+  }
+
+  const editNews = async () => {
+    const payload = new FormData()
+    Object.entries(singlenews.value).forEach(([key, value]) => {
+      if (value instanceof File) {
+        payload.append(key, value)
+      } else {
+        payload.append(key, value)
+      }
+    })
+
+    try {
+      const response = await axios.put(apiURL + 'greenzone/news_update/' + newsId.value, payload)
+      if (response.status == 200) {
+        Swal.fire({
+          title: 'تم تعديل الخبر بنجاح',
+          icon: 'success',
+        })
+        clearItems()
+        router.push('/allNews')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const clearItems = () => {
+    singlenews.value = {
+      newstitle: '',
+      newsdescription: '',
+      image: '',
+      pio: '',
+    }
+
+    newsId.value = null
   }
 
   // set the image to the state
@@ -141,6 +177,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsId,
     deleteNews,
     totalNews,
+    routerEditNews,
     editNews,
   }
 })

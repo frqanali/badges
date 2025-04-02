@@ -76,7 +76,7 @@ const handleImageChange = (event) => {
 
 const handleSubmit = () => {
   if (newsStore.newsId) {
-    newsStore.editNews(newsStore.newsId)
+    newsStore.editNews()
   } else {
     newsStore.createNews()
   }
