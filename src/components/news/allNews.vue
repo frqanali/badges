@@ -28,6 +28,7 @@
     </div>
     <!-- 🔄 Pagination -->
     <vue-awesome-paginate
+      v-if="newsStore.totalNews > 0"
       :total-items="newsStore.totalNews"
       :items-per-page="5"
       :max-pages-shown="5"

@@ -33,7 +33,8 @@
     </div>
     <!-- 🔄 Pagination -->
     <vue-awesome-paginate
-      :total-items="50"
+      v-if="serviceStore.totalServices > 0"
+      :total-items="serviceStore.totalServices"
       :items-per-page="5"
       :max-pages-shown="5"
       :show-breakpoint-buttons="false"
@@ -52,7 +53,7 @@ import { ref } from 'vue'
 const serviceStore = useServiceStore()
 
 const onClickHandler = (page) => {
-  console.log(page)
+  serviceStore.getAllServices(page)
 }
 
 const currentPage = ref(1)

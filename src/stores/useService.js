@@ -27,6 +27,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
 
   const serviceId = ref(null)
 
+  const totalServices = ref(0)
+
   // functions
 
   const createService = async () => {
@@ -57,12 +59,17 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
   }
 
-  const getAllServices = async () => {
+  const getAllServices = async (page = 1) => {
+    const payload = {
+      Per_page: 5,
+      page: page,
+    }
     try {
-      const response = await axios.get(apiURL + 'greenzone/get_all_service')
+      const response = await axios.post(apiURL + 'greenzone/get_all_service', payload)
 
       if (response.status === 200) {
         serviceList.value = response.data.services
+        totalServices.value = response.data.pagination.total_items
       }
     } catch (error) {
       Swal.fire({
@@ -104,17 +111,12 @@ export const useServiceStore = defineStore('serviceStore', () => {
   }
 
   const deleteService = async (id) => {
-    const payload = { serviceid: id }
     try {
-      const response = await axios.delete(
-        apiURL + 'greenzone/delete_service',
-        { data: payload },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const response = await axios.delete(apiURL + 'greenzone/delete_service/' + id, {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      )
+      })
       if (response.status === 200) {
         Swal.fire({
           title: 'تم حذف الخدمة بنجاح',
@@ -136,7 +138,6 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
   }
 
-
   return {
     createService,
     singleservice,
@@ -144,5 +145,6 @@ export const useServiceStore = defineStore('serviceStore', () => {
     serviceList,
     editService,
     deleteService,
+    totalServices,
   }
 })
