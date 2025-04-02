@@ -5,6 +5,7 @@
         <h5 class="card-title mb-3">تسجيل الدخول</h5>
         <div class="input-group mb-3">
           <input
+            v-model="username"
             type="text"
             class="form-control"
             :placeholder="$t('username')"
@@ -37,16 +38,27 @@
 </template>
 
 <script setup>
+// imports
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/useAuth'
 
+// stores
+const authStore = useAuthStore()
+
+// reactive variables
 const password = ref('')
+const username = ref('')
 const passwordVisible = ref(false)
 
+// router
 const router = useRouter()
 
 const handleSubmit = () => {
-  router.push('/dashboard')
+  authStore.login({
+    UsUsername: username.value,
+    UsPassword: password.value,
+  })
 }
 </script>
 

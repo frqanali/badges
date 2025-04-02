@@ -13,11 +13,8 @@
             <img src="/src/assets/img/userlogo.png" class="avatar" alt="User Avatar" />
           </a>
           <div class="dropdown-menu" v-if="isDropdownOpen">
-            <!-- Login link when no token -->
-            <router-link to="/login" class="dropdown-item"> تسجيل دخول </router-link>
-
             <!-- Logout link when token is present -->
-            <a href="#" class="dropdown-item"> تسجيل خروج </a>
+            <a href="#" class="dropdown-item" @click="authStore.logout"> تسجيل خروج </a>
           </div>
         </div>
       </div>
@@ -31,10 +28,21 @@
 </template>
 
 <script setup>
+// imports
 import { ref } from 'vue'
+import { useAuthStore } from '@/stores/useAuth'
+
+// stores
+
+const authStore = useAuthStore()
+
+// define emits
 const emit = defineEmits(['toggle-sidebar'])
+
+// reactive variables
 const isDropdownOpen = ref(false) // Using ref to track dropdown state
 
+// methods
 const toggleSidebar = () => {
   emit('toggle-sidebar')
 }
