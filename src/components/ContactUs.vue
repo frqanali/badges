@@ -6,18 +6,7 @@
         <div class="row">
           <div class="col-md-6">
             <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                fill="#23486a"
-                class="bi bi-geo-alt-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
-                />
-              </svg>
+              <i class="bi bi-geo-alt-fill"></i>
               <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('location') }}</span>
             </div>
             <small class="text-muted"> كرادة مريم</small>
@@ -25,19 +14,7 @@
 
           <div class="col-md-6">
             <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                fill="#23486a"
-                class="bi bi-telephone-fill"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
-                />
-              </svg>
+              <i class="bi bi-telephone-fill"></i>
               <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('phoneNumber') }}</span>
             </div>
             <small class="text-muted"> 07765657874</small>
@@ -89,7 +66,9 @@
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-color btn-lg">{{ $t('send') }}</button>
+          <button type="button" class="btn btn-color btn-lg">
+            {{ $t('send') }} <i class="bi bi-send-fill"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -144,5 +123,13 @@ textarea.form-control {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+.bi-geo-alt-fill {
+  font-size: 40px; /* Controls the icon size */
+  color: #23486a; /* Sets the fill color */
+}
+.bi-telephone-fill {
+  font-size: 40px; /* Controls the icon size */
+  color: #23486a; /* Sets the fill color */
 }
 </style>
