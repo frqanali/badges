@@ -46,7 +46,7 @@
     </div>
 
     <div class="container d-flex my-5">
-      <button type="button" class="btn btn-color btn-lg" @click="newsStore.createNews">
+      <button type="button" class="btn btn-color btn-lg" @click="handleSubmit">
         {{ $t('send') }}
       </button>
     </div>
@@ -71,6 +71,14 @@ const handleImageChange = (event) => {
     }
     reader.readAsDataURL(file)
     newsStore.setUploadedImage(file) // Set the uploaded file in the store
+  }
+}
+
+const handleSubmit = () => {
+  if (newsStore.newsId) {
+    newsStore.editNews(newsStore.newsId)
+  } else {
+    newsStore.createNews()
   }
 }
 </script>

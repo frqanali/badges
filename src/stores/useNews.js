@@ -2,10 +2,12 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import { ref } from 'vue'
 import Swal from 'sweetalert2'
+import { useRouter } from 'vue-router'
 
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useNewsStore = defineStore('newsStore', () => {
+  const router = useRouter()
   // Reactive variables
   const singlenews = ref({
     newstitle: '',
@@ -105,6 +107,26 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
   }
 
+  const getSingleNews = async (id) => {
+    try {
+      const response = await axios.get(apiURL + 'greenzone/getnews_by_id/' + id)
+      if (response.status == 200) {
+        singlenews.value.newstitle = response.data.title
+        singlenews.value.newsdescription = response.data.description
+        singlenews.value.pio = response.data.pio
+        singlenews.value.image = response.data.image
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const editNews = async (id) => {
+    getSingleNews(id)
+    newsId.value = id
+    router.push('/addNews')
+  }
+
   // set the image to the state
   const setUploadedImage = (file) => {
     singlenews.value.image = file
@@ -119,5 +141,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsId,
     deleteNews,
     totalNews,
+    editNews,
   }
 })
