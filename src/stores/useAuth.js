@@ -7,9 +7,16 @@ import Swal from 'sweetalert2'
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useAuthStore = defineStore('auth', () => {
+  // Define the router instance
   const router = useRouter()
+  // Define reactive variables
   const userInfo = ref(null)
   const token = ref(null)
+
+  // check if the user is already signed in (localStorage)
+  if (localStorage.getItem('token')) {
+    token.value = localStorage.getItem('token')
+  }
 
   // user login
   const login = async (user) => {
@@ -24,22 +31,16 @@ export const useAuthStore = defineStore('auth', () => {
         Swal.fire({
           icon: 'success',
           title: 'Success',
-          text: 'سجلت دخول يا حلو :)',
+          text: 'تم تسجيل الدخول بنجاح ',
         })
 
         router.push('/dashboard')
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: response.data.message,
-        })
       }
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: error.data.message,
+        text: error.response.data.error,
       })
     }
   }
@@ -52,12 +53,13 @@ export const useAuthStore = defineStore('auth', () => {
     Swal.fire({
       icon: 'success',
       title: 'Success',
-      text: 'سجلت خروج يا حلو :)',
+      text: 'تم تسجيل الخروج بنجاح ',
     })
   }
 
   return {
     login,
     logout,
+    token,
   }
 })

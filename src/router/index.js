@@ -13,6 +13,7 @@ import Login from '../views/Login.vue'
 import InstructionView from '../views/InstructionView.vue'
 import singleNews from '@/components/publicNews/singleNews.vue'
 import singleService from '@/components/publicServices/singleService.vue'
+import { useAuthStore } from '@/stores/useAuth.js'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,7 +42,7 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: DashBoard,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/staticNews',
@@ -51,34 +52,34 @@ const router = createRouter({
     {
       path: '/allNews',
       component: allNews,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/addNews',
       component: addNews,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/addService',
       name: 'addService',
       component: addService,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/allServices',
       component: allServices,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/addInstruction',
       name: 'addInstruction',
       component: addInstruction,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/allInstructions',
       component: allInstructions,
-      meta: { layout: dashboard },
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/instruction',
@@ -86,6 +87,17 @@ const router = createRouter({
       component: InstructionView,
     },
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore()
+
+  // if the route requires auth and user is not logged in re direct to login
+  if (to.meta.requireAuth && !authStore.token) {
+    next({ name: 'login' })
+  } else {
+    next()
+  }
 })
 
 export default router

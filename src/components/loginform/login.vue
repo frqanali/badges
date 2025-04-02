@@ -40,7 +40,6 @@
 <script setup>
 // imports
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuth'
 
 // stores
@@ -50,9 +49,6 @@ const authStore = useAuthStore()
 const password = ref('')
 const username = ref('')
 const passwordVisible = ref(false)
-
-// router
-const router = useRouter()
 
 const handleSubmit = () => {
   authStore.login({
