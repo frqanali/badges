@@ -75,6 +75,38 @@
               </li> -->
             </ul>
           </li>
+          <li class="sidebar-item">
+            <a
+              href=""
+              class="sidebar-link collapsed"
+              data-bs-target="#instructions"
+              data-bs-toggle="collapse"
+              aria-expanded="false"
+              ><i class="bi bi-file-earmark pe-2"></i> الضوابط والتعليمات
+            </a>
+            <ul
+              id="instructions"
+              class="sidebar-dropdown list-unstyled collapse"
+              data-bs-parent="#sidebar"
+            >
+              <li class="sidebar-item">
+                <router-link to="/addInstruction" class="sidebar-link">
+                  اضافة الضوابط والتعليمات
+                </router-link>
+              </li>
+              <li class="sidebar-item">
+                <router-link to="/allInstructions" class="sidebar-link">
+                  جميع الضوابط والتعليمات</router-link
+                >
+              </li>
+              <!-- <li class="sidebar-item">
+                <a href="#" class="sidebar-link">تعديل خدمة</a>
+              </li>
+              <li class="sidebar-item">
+                <a href="#" class="sidebar-link">حذف خدمة</a>
+              </li> -->
+            </ul>
+          </li>
         </ul>
       </div>
     </aside>

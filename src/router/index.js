@@ -7,6 +7,8 @@ import addNews from '@/components/news/addNews.vue'
 import allNews from '@/components/news/allNews.vue'
 import allServices from '@/components/service/allServices.vue'
 import addService from '@/components/service/addService.vue'
+import allInstructions from '@/components/instruction/allInstructions.vue'
+import addInstruction from '@/components/instruction/addInstruction.vue'
 import Login from '../views/Login.vue'
 import InstructionView from '../views/InstructionView.vue'
 import singleNews from '@/components/publicNews/singleNews.vue'
@@ -64,6 +66,17 @@ const router = createRouter({
     {
       path: '/allServices',
       component: allServices,
+      meta: { layout: dashboard },
+    },
+    {
+      path: '/addInstruction',
+      name: 'addInstruction',
+      component: addInstruction,
+      meta: { layout: dashboard },
+    },
+    {
+      path: '/allInstructions',
+      component: allInstructions,
       meta: { layout: dashboard },
     },
     {
