@@ -13,7 +13,7 @@
         </thead>
         <tbody>
           <tr v-for="(news, index) in newsStore.newsList" :key="news.id">
-            <td>{{ index + 1 }}</td>
+            <td>{{ index + 1 + (currentPage - 1) * 5 }}</td>
             <td>{{ news.title }}</td>
             <td>{{ news.pio }}</td>
             <td>
