@@ -26,10 +26,10 @@ export const useNewsStore = defineStore('newsStore', () => {
   const newsId = ref(null)
 
   // Functions
-  const getAllNews = async (page = 1) => {
+  const getAllNews = async (page) => {
     const payload = {
       Per_Page: 5,
-      Page: page,
+      page: page || 1,
     }
     try {
       const response = await axios.post(apiURL + 'greenzone/get_all_news', payload)
