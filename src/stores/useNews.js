@@ -14,28 +14,24 @@ export const useNewsStore = defineStore('newsStore', () => {
     pio: '',
   })
 
-  const newsList = ref([
-    {
-      id: '',
-      newstitle: '',
-      newsdescription: '',
-      pio: '',
-    },
-  ])
+  const newsList = ref([])
 
   const newsId = ref(null)
 
+  const totalNews = ref(0)
+
   // Functions
-  const getAllNews = async (page) => {
+  const getAllNews = async (page = 1) => {
     const payload = {
       Per_Page: 5,
-      page: page || 1,
+      page: page,
     }
     try {
       const response = await axios.post(apiURL + 'greenzone/get_all_news', payload)
 
       if (response.status === 200) {
         newsList.value = response.data.news
+        totalNews.value = response.data.pagination.total_items
       }
     } catch (error) {
       Swal.fire({
@@ -47,11 +43,10 @@ export const useNewsStore = defineStore('newsStore', () => {
   }
 
   const deleteNews = async (id) => {
-    const payload = { news_id: id }
     try {
       const response = await axios.delete(
-        apiURL + 'greenzone/delete_news',
-        { data: payload },
+        apiURL + 'greenzone/delete_news/' + id,
+
         {
           headers: {
             'Content-Type': 'application/json',
@@ -123,5 +118,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsList,
     newsId,
     deleteNews,
+    totalNews,
   }
 })
