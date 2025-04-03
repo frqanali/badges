@@ -79,11 +79,9 @@ export const useInstructionStore = defineStore('instructionStore', () => {
   }
 
   const getSingleinstruction = async (id) => {
-    const payload = { instructionid: id }
     try {
       const response = await axios.get(
-        apiURL + 'greenzone/get_service_by_id',
-        payload,
+        apiURL + 'greenzone/get_rule_by_id/' + id,
 
         {
           headers: { 'Content-Type': 'application/json' },
@@ -97,6 +95,36 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في جلب الضوابط والتعليمات',
+        icon: 'error',
+      })
+    }
+  }
+
+  const routeEditInstruction = (id) => {
+    router.push('/addInstruction')
+    instructionId.value = id
+    getSingleinstruction(id)
+  }
+
+  const editInstruction = async () => {
+    try {
+      const response = await axios.put(
+        apiURL + 'greenzone/update_rule/' + instructionId.value,
+        singleinstruction.value,
+      )
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'تم تعديل الضوابط والتعليمات بنجاح',
+          icon: 'success',
+        })
+
+        resetForm()
+        router.push('/allInstructions')
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في تعديل الضوابط والتعليمات',
         icon: 'error',
       })
     }
@@ -151,5 +179,8 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     instructionList,
     deleteinstruction,
     totalInstructions,
+    routeEditInstruction,
+    editInstruction,
+    instructionId,
   }
 })

@@ -21,7 +21,12 @@
             <td>{{ truncateWords(instruction.description, 5) }}</td>
 
             <td>
-              <button class="btn btn-sm btn-warning ms-2">تعديل</button>
+              <button
+                class="btn btn-sm btn-warning ms-2"
+                @click="instructionStore.routeEditInstruction(instruction.id)"
+              >
+                تعديل
+              </button>
               <button
                 class="btn btn-sm btn-danger"
                 @click="instructionStore.deleteinstruction(instruction.id)"

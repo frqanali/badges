@@ -1,5 +1,5 @@
 <template>
-  <h1>اضافة ضوابط وتعليمات جديدة</h1>
+  <h1>{{ Title }}</h1>
   <div class="col-5">
     <div class="input-group mb-3">
       <input
@@ -22,12 +22,8 @@
     </div>
 
     <div class="container d-flex my-5">
-      <button
-        type="button"
-        class="btn btn-color btn-lg"
-        @click="instructionStore.createinstruction"
-      >
-        {{ $t('send') }}
+      <button type="button" class="btn btn-color btn-lg" @click="handleSubmit">
+        {{ buttonLabel }}
       </button>
     </div>
   </div>
@@ -35,8 +31,27 @@
 
 <script setup>
 import { useInstructionStore } from '@/stores/useInstructions'
+import { computed } from 'vue'
 // stores
 const instructionStore = useInstructionStore()
+
+// functions
+const handleSubmit = () => {
+  if (instructionStore.instructionId) {
+    instructionStore.editInstruction()
+  } else {
+    instructionStore.createinstruction()
+  }
+}
+
+// computed functions
+const Title = computed(() => {
+  return instructionStore.instructionId ? 'تعديل الضوابط' : 'اضافة ضوابط وتعليمات جديدة'
+})
+
+const buttonLabel = computed(() => {
+  return instructionStore.instructionId ? 'تعديل ' : 'اضافة   '
+})
 </script>
 
 <style scoped>
