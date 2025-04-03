@@ -168,5 +168,6 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     routeEditInstruction,
     editInstruction,
     instructionId,
+    getSingleinstruction,
   }
 })

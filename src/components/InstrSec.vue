@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center mt-3">
-        <router-link to="/singleNews"
+        <router-link to="/singleIntr"
           ><button class="btn btn-colorr">{{ $t('readmore') }}</button>
         </router-link>
       </div>

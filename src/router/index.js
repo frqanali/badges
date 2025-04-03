@@ -30,8 +30,8 @@ const router = createRouter({
       component: singleNews,
     },
     {
-      path: '/singleIntra',
-      name: 'singleIntra',
+      path: '/singleIntr',
+      name: 'singleIntr',
       component: singleInstr,
     },
     {

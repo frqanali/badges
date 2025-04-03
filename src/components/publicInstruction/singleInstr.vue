@@ -1,19 +1,15 @@
 <template>
   <div class="container mt-5">
     <div class="row g-4">
-      <!-- single news section -->
+      <!-- single instruction section -->
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
-          <div style="display: flex; justify-content: center">
-            <img :src="newsStore.singlenews.image" alt="News Image" class="img-fluid" />
-          </div>
-
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
-              {{ newsStore.singlenews.newstitle }}
+              {{ instructionStore.singleinstruction.ruletitle }}
             </h3>
             <p class="card-text">
-              {{ newsStore.singlenews.newsdescription }}
+              {{ instructionStore.singleinstruction.ruledescription }}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -26,20 +22,20 @@
       <!-- pagination section -->
       <div class="col-lg-4 col-md-5 col-12">
         <div class="card">
-          <div class="card-header">{{ $t('latestnews') }}</div>
+          <div class="card-header">اخر الضوابط والتعليمات</div>
           <ul class="list-group list-group-flush p-0">
             <li
-              v-for="news in newsStore.newsList"
-              :key="news.id"
+              v-for="instructions in instructionStore.instructionList"
+              :key="instructions.id"
               class="list-group-item"
-              @click="newsStore.getSingleNews(news.id)"
+              @click="instructionStore.getSingleinstruction(instructions.id)"
             >
-              {{ news.title }}
+              {{ instructions.title }}
             </li>
           </ul>
           <div class="card-footer">
             <vue-awesome-paginate
-              :total-items="newsStore.totalNews"
+              :total-items="instructionStore.totalInstructions"
               :items-per-page="5"
               :max-pages-shown="5"
               :show-breakpoint-buttons="false"
@@ -57,11 +53,11 @@
 import { ref } from 'vue'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useNewsStore } from '@/stores/useNews'
+import { useInstructionStore } from '@/stores/useInstructions'
 // route
 const route = useRoute()
 // stores
-const newsStore = useNewsStore()
+const instructionStore = useInstructionStore()
 
 // reactive variables
 const currentPage = ref(1)
@@ -69,18 +65,18 @@ const currentPage = ref(1)
 // functions
 
 const onClickHandler = (page) => {
-  newsStore.getAllNews(page)
+  instructionStore.getAllinstructions(page)
 }
 
 // on mounted
 onMounted(async () => {
-  await newsStore.getAllNews()
+  await instructionStore.getAllinstructions()
 
   if (route.query.id) {
-    newsStore.getSingleNews(route.query.id)
+    instructionStore.getSingleinstruction(route.query.id)
   } else {
-    if (newsStore.newsList.length > 0) {
-      newsStore.getSingleNews(newsStore.newsList[0].id)
+    if (instructionStore.instructionList.length > 0) {
+      instructionStore.getSingleinstruction(instructionStore.instructionList[0].id)
     }
   }
 })
