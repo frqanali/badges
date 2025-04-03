@@ -13,6 +13,7 @@ import Login from '../views/Login.vue'
 import InstructionView from '../views/InstructionView.vue'
 import singleNews from '@/components/publicNews/singleNews.vue'
 import singleService from '@/components/publicServices/singleService.vue'
+import singleInstr from '@/components/publicInstruction/singleInstr.vue'
 import { useAuthStore } from '@/stores/useAuth.js'
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/singleNews',
       name: 'singleNews',
       component: singleNews,
+    },
+    {
+      path: '/singleIntra',
+      name: 'singleIntra',
+      component: singleInstr,
     },
     {
       path: '/singleService',

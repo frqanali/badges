@@ -10,25 +10,12 @@ export const useInstructionStore = defineStore('instructionStore', () => {
   // Reactive variables
   const router = useRouter()
 
-  const instructions = ref([
-    {
-      ruletitle: '',
-      ruledescription: '',
-    },
-  ])
-
   const singleinstruction = ref({
     ruletitle: '',
     ruledescription: '',
   })
 
-  const instructionList = ref([
-    {
-      id: '',
-      ruletitle: '',
-      ruledescription: '',
-    },
-  ])
+  const instructionList = ref([])
 
   const instructionId = ref(null)
 
@@ -172,7 +159,6 @@ export const useInstructionStore = defineStore('instructionStore', () => {
   }
 
   return {
-    instructions,
     createinstruction,
     singleinstruction,
     getAllinstructions,

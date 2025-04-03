@@ -76,8 +76,9 @@ const truncateWords = (text, wordLimit = 5) => {
   return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : text
 }
 
-onMounted(() => {
-  instructionStore.getAllinstructions()
+onMounted(async () => {
+  await instructionStore.getAllinstructions()
+  console.log(instructionStore.instructionList)
 })
 </script>
 

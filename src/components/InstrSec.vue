@@ -4,7 +4,11 @@
       <h2 class="text-center mb-4">{{ $t('instructions') }}</h2>
 
       <div class="row row-cols-1 row-cols-md-4 g-4">
-        <div class="col" v-for="instruction in instructionStore.instructions" :key="instruction.id">
+        <div
+          class="col"
+          v-for="instruction in instructionStore.instructionList.splice(0, 4)"
+          :key="instruction.id"
+        >
           <div class="card h-100 p-3">
             <div class="card-body">
               <h5 class="card-title">{{ instruction.title }}</h5>
@@ -28,16 +32,27 @@
 </template>
 
 <script setup>
+// imports
 import { useRouter } from 'vue-router'
 import { useInstructionStore } from '../stores/useInstructions.js'
+import { onMounted } from 'vue'
 
-const instructionStore = useInstructionStore()
+// router
 const router = useRouter()
+// stores
+const instructionStore = useInstructionStore()
 
+// functions
 const handleSubmit = (id) => {
   router.push({ path: '/instruction', query: { id } })
 }
+
+// onmounted
+onMounted(() => {
+  instructionStore.getAllinstructions()
+})
 </script>
+
 <style scoped>
 .card {
   border: 2px solid #4c7b8b;

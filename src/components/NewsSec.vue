@@ -140,7 +140,9 @@
             <div class="card-body">
               <h5 class="card-title">{{ news.title }}</h5>
               <p class="card-text">{{ news.pio }}</p>
-              <a href="news-article1.html" class="btn btn-color">{{ $t('more') }}</a>
+              <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
+                <button class="btn btn-color">{{ $t('more') }}</button>
+              </router-link>
             </div>
           </div>
         </div>

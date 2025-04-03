@@ -207,6 +207,20 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
   }
 
+  const getPinnedNews = async () => {
+    const payload = {
+      flag: true,
+    }
+
+    try {
+      const response = await axios.get(apiURL + 'greenzone/get_news_by_flag', { params: payload })
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // clear the forms
   const clearItems = () => {
     singlenews.value = {
       newstitle: '',
@@ -239,5 +253,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     getSingleNews,
     threeNews,
     threeNewsList,
+    getPinnedNews,
   }
 })
