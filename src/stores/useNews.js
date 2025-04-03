@@ -114,7 +114,7 @@ export const useNewsStore = defineStore('newsStore', () => {
         singlenews.value.newstitle = response.data.title
         singlenews.value.newsdescription = response.data.description
         singlenews.value.pio = response.data.pio
-        singlenews.value.image = response.data.image
+        singlenews.value.image = `data:image/png;base64,${response.data.image}`
       }
     } catch (error) {
       console.log(error)
@@ -222,5 +222,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     editNews,
     clearItems,
     pinNews,
+    getSingleNews,
   }
 })

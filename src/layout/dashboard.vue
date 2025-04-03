@@ -14,12 +14,6 @@
           </li>
 
           <li class="sidebar-item">
-            <router-link to="/staticNews" class="sidebar-link" @click="newsStore.clearItems"
-              ><i class="bi bi-pin-angle pe-2"></i> الاخبار المثبتة
-            </router-link>
-          </li>
-
-          <li class="sidebar-item">
             <a
               href=""
               class="sidebar-link collapsed"
@@ -41,6 +35,11 @@
               <li class="sidebar-item">
                 <router-link to="/addNews" class="sidebar-link" @click="newsStore.clearItems">
                   اضافة خبر
+                </router-link>
+              </li>
+              <li class="sidebar-item">
+                <router-link to="/staticNews" class="sidebar-link" @click="newsStore.clearItems">
+                  الاخبار المثبتة
                 </router-link>
               </li>
               <!-- <li class="sidebar-item">

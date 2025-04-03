@@ -18,27 +18,27 @@
             <td>{{ news.pio }}</td>
             <td>
               <button
-                class="btn btn-sm btn-warning ms-2"
+                class="btn btn-sm btn-success ms-2"
                 @click="newsStore.routerEditNews(news.id)"
               >
-                تعديل
+                <i class="bi bi-pencil-square"></i>
               </button>
               <button
                 v-if="news.flag"
                 class="btn btn-sm btn-warning ms-2"
                 @click="newsStore.pinNews(news.id, false)"
               >
-                الغاء التثبيت
+                <i class="bi bi-pin-angle"></i>
               </button>
               <button
                 v-if="!news.flag"
                 class="btn btn-sm btn-warning ms-2"
                 @click="newsStore.pinNews(news.id, true)"
               >
-                تثبيت
+                <i class="bi bi-pin-fill"></i>
               </button>
               <button class="btn btn-sm btn-danger" @click="newsStore.deleteNews(news.id)">
-                حذف
+                <i class="bi bi-trash3-fill"></i>
               </button>
             </td>
           </tr>

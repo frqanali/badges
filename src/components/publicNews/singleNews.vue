@@ -5,25 +5,15 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div style="display: flex; justify-content: center">
-            <img
-              src="/src/assets/GzLogoFi.png"
-              class="img-fluid"
-              alt="News Image 1"
-              loading="lazy"
-              style="width: 300px; height: auto"
-            />
+            <img :src="newsStore.singlenews.image" alt="News Image" class="img-fluid" />
           </div>
 
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
-              مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
-              البيانات الوطني
+              {{ newsStore.singlenews.newstitle }}
             </h3>
             <p class="card-text">
-              في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة الخضراء عن
-              إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات الدخول إلى المنطقة
-              الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع للأمانة العامة لمجلس الوزراء،
-              عبر منصة أور للخدمات الإلكترونية.
+              {{ newsStore.singlenews.newsdescription }}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -38,13 +28,18 @@
         <div class="card">
           <div class="card-header">{{ $t('latestnews') }}</div>
           <ul class="list-group list-group-flush p-0">
-            <li class="list-group-item">الخبر الاول</li>
-            <li class="list-group-item">الخبر الثاني</li>
-            <li class="list-group-item">الخبر الثالث</li>
+            <li
+              v-for="news in newsStore.newsList"
+              :key="news.id"
+              class="list-group-item"
+              @click="newsStore.getSingleNews(news.id)"
+            >
+              {{ news.title }}
+            </li>
           </ul>
           <div class="card-footer">
             <vue-awesome-paginate
-              :total-items="50"
+              :total-items="newsStore.totalNews"
               :items-per-page="5"
               :max-pages-shown="5"
               :show-breakpoint-buttons="false"
@@ -60,12 +55,35 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useNewsStore } from '@/stores/useNews'
+// route
+const route = useRoute()
+// stores
+const newsStore = useNewsStore()
+
+// reactive variables
+const currentPage = ref(1)
+
+// functions
 
 const onClickHandler = (page) => {
-  console.log(page)
+  newsStore.getAllNews(page)
 }
 
-const currentPage = ref(1)
+// on mounted
+onMounted(async () => {
+  await newsStore.getAllNews()
+
+  if (newsStore.newsList.length > 0) {
+    newsStore.getSingleNews(newsStore.newsList[0].id)
+  }
+
+  if (route.params.id) {
+    newsStore.getSingleNews(route.params.id)
+  }
+})
 </script>
 
 <style scoped>
