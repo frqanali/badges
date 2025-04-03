@@ -30,9 +30,9 @@ export const useAuthStore = defineStore('auth', () => {
       if (response.status === 200) {
         // set token and user in local storage
         token.value = response.data.access_token
-        userInfo.value = response.data.userinfo
+        userInfo.value = response.data.userinfo.ususername
         localStorage.setItem('token', token.value)
-        localStorage.setItem('userinfo', JSON.stringify(userInfo.value.ususername))
+        localStorage.setItem('userinfo', JSON.stringify(userInfo.value))
 
         Swal.fire({
           icon: 'success',
