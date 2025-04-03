@@ -16,6 +16,11 @@ export const useAuthStore = defineStore('auth', () => {
   // check if the user is already signed in (localStorage)
   if (localStorage.getItem('token')) {
     token.value = localStorage.getItem('token')
+    try {
+      userInfo.value = JSON.parse(localStorage.getItem('userinfo'))
+    } catch {
+      userInfo.value = null
+    }
   }
 
   // user login
@@ -27,6 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
         token.value = response.data.access_token
         userInfo.value = response.data.userinfo
         localStorage.setItem('token', token.value)
+        localStorage.setItem('userinfo', JSON.stringify(userInfo.value.ususername))
 
         Swal.fire({
           icon: 'success',
@@ -49,6 +55,7 @@ export const useAuthStore = defineStore('auth', () => {
     token.value = null
     userInfo.value = null
     localStorage.removeItem('token')
+    localStorage.removeItem('userinfo')
     router.push({ name: 'login' })
     Swal.fire({
       icon: 'success',
@@ -61,5 +68,6 @@ export const useAuthStore = defineStore('auth', () => {
     login,
     logout,
     token,
+    userInfo,
   }
 })
