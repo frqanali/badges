@@ -8,13 +8,13 @@
         </div>
         <ul class="sidebar-nav">
           <li class="sidebar-item">
-            <router-link to="/dashboard" class="sidebar-link"
+            <router-link to="/dashboard" class="sidebar-link" @click="newsStore.clearItems"
               ><i class="bi bi-house pe-2"></i> الرئيسية
             </router-link>
           </li>
 
           <li class="sidebar-item">
-            <router-link to="/staticNews" class="sidebar-link"
+            <router-link to="/staticNews" class="sidebar-link" @click="newsStore.clearItems"
               ><i class="bi bi-pin-angle pe-2"></i> الاخبار المثبتة
             </router-link>
           </li>
@@ -34,10 +34,14 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <router-link to="/allNews" class="sidebar-link">جميع الاخبار </router-link>
+                <router-link to="/allNews" class="sidebar-link" @click="newsStore.clearItems"
+                  >جميع الاخبار
+                </router-link>
               </li>
               <li class="sidebar-item">
-                <router-link to="/addNews" class="sidebar-link"> اضافة خبر </router-link>
+                <router-link to="/addNews" class="sidebar-link" @click="newsStore.clearItems">
+                  اضافة خبر
+                </router-link>
               </li>
               <!-- <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خبر</a>
@@ -62,10 +66,14 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <router-link to="/addService" class="sidebar-link"> اضافة خدمة </router-link>
+                <router-link to="/addService" class="sidebar-link" @click="newsStore.clearItems">
+                  اضافة خدمة
+                </router-link>
               </li>
               <li class="sidebar-item">
-                <router-link to="/allServices" class="sidebar-link"> جميع الخدمات</router-link>
+                <router-link to="/allServices" class="sidebar-link" @click="newsStore.clearItems">
+                  جميع الخدمات</router-link
+                >
               </li>
               <!-- <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خدمة</a>
@@ -90,21 +98,23 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <router-link to="/addInstruction" class="sidebar-link">
+                <router-link
+                  to="/addInstruction"
+                  class="sidebar-link"
+                  @click="newsStore.clearItems"
+                >
                   اضافة الضوابط والتعليمات
                 </router-link>
               </li>
               <li class="sidebar-item">
-                <router-link to="/allInstructions" class="sidebar-link">
+                <router-link
+                  to="/allInstructions"
+                  class="sidebar-link"
+                  @click="newsStore.clearItems"
+                >
                   جميع الضوابط والتعليمات</router-link
                 >
               </li>
-              <!-- <li class="sidebar-item">
-                <a href="#" class="sidebar-link">تعديل خدمة</a>
-              </li>
-              <li class="sidebar-item">
-                <a href="#" class="sidebar-link">حذف خدمة</a>
-              </li> -->
             </ul>
           </li>
         </ul>
@@ -138,6 +148,10 @@
 import { ref } from 'vue'
 import navbar from '@/essentials/navbar.vue'
 import footerComp from '@/essentials/footerComp.vue'
+import { useNewsStore } from '@/stores/useNews'
+
+// stores
+const newsStore = useNewsStore()
 
 const isExpanded = ref(false)
 

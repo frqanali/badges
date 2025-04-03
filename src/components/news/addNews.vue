@@ -1,5 +1,5 @@
 <template>
-  <h1>اضافة خبر جديد</h1>
+  <h1>{{ headingLabel }}</h1>
   <div class="col-5">
     <div class="input-group mb-3">
       <input
@@ -47,14 +47,14 @@
 
     <div class="container d-flex my-5">
       <button type="button" class="btn btn-color btn-lg" @click="handleSubmit">
-        {{ $t('send') }}
+        {{ buttonLabel }}
       </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
 
 // Importing the useNewsStore from Pinia
@@ -81,6 +81,14 @@ const handleSubmit = () => {
     newsStore.createNews()
   }
 }
+
+const headingLabel = computed(() => {
+  return newsStore.newsId ? 'تعديل الخبر' : 'اضافة خبر جديد'
+})
+
+const buttonLabel = computed(() => {
+  return newsStore.newsId ? 'تعديل' : 'اضافة'
+})
 </script>
 
 <style scoped>

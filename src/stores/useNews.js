@@ -179,5 +179,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     totalNews,
     routerEditNews,
     editNews,
+    clearItems,
   }
 })
