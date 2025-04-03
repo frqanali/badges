@@ -16,6 +16,8 @@ export const useNewsStore = defineStore('newsStore', () => {
     pio: '',
   })
 
+  const threeNewsList = ref([])
+
   const newsList = ref([])
 
   const newsId = ref(null)
@@ -193,6 +195,18 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
   }
 
+  const threeNews = async () => {
+    try {
+      const response = await axios.get(apiURL + 'greenzone/get_latest_4_news')
+
+      if (response.status === 200) {
+        threeNewsList.value = response.data.news.slice(0, 3)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const clearItems = () => {
     singlenews.value = {
       newstitle: '',
@@ -223,5 +237,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     clearItems,
     pinNews,
     getSingleNews,
+    threeNews,
+    threeNewsList,
   }
 })

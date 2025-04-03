@@ -129,71 +129,18 @@
 
       <div class="row">
         <!-- News Item 1 -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" v-for="news in newsStore.threeNewsList" :key="news.id">
           <div class="card">
             <img
-              src="/src/assets/GzLogoFi.png"
+              :src="news.image ? `data:image/png;base64,${news.image}` : '/src/assets/GzLogoFi.png'"
               class="card-img-top img-fluid newsImg mt-2"
               alt="News Image 1"
               loading="lazy"
             />
             <div class="card-body">
-              <h5 class="card-title">مكتب هويات المنطقة الخضراء يباشر أعماله في مقراته الجديدة</h5>
-              <p class="card-text">
-                في إطار تنفيذ توجيهات السيد مدير المكتب، وضمن خطة تطوير البنى التحتية لمكتب هويات
-                المنطقة الخضراء، تم إغلاق المقر السابق والانتقال إلى موقعين جديدين بصورة مؤقتة، وذلك
-                لغرض إعادة بناء المقر السابق وفق أعلى معايير التطور والحداثة.
-              </p>
+              <h5 class="card-title">{{ news.title }}</h5>
+              <p class="card-text">{{ news.pio }}</p>
               <a href="news-article1.html" class="btn btn-color">{{ $t('more') }}</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- News Item 2 -->
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img
-              src="/src/assets/GzLogoFi.png"
-              class="card-img-top img-fluid newsImg mt-2"
-              alt="News Image 1"
-              loading="lazy"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
-                البيانات الوطني
-              </h5>
-              <p class="card-text">
-                في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة الخضراء عن
-                إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات الدخول إلى المنطقة
-                الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع للأمانة العامة لمجلس الوزراء،
-                عبر منصة أور للخدمات الإلكترونية.
-              </p>
-              <a href="news-article2.html" class="btn btn-color">{{ $t('more') }}</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- News Item 3 -->
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img
-              src="/src/assets/GzLogoFi.png"
-              class="card-img-top img-fluid newsImg mt-2"
-              alt="News Image 1"
-              loading="lazy"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                مكتب هويات المنطقة الخضراء يعلن عن إطلاق الاستمارة الأمنية الإلكترونية الجديدة
-                بالتعاون مع مركز البيانات الوطني
-              </h5>
-              <p class="card-text">
-                ضمن مساعي مكتب هويات المنطقة الخضراء لتطوير آليات العمل وتعزيز الإجراءات الأمنية، تم
-                إطلاق الاستمارة الأمنية الإلكترونية الجديدة، والتي يتوجب على جميع المراجعين تعبئتها
-                قبل الحضور إلى المكتب لاستكمال إجراءات المقابلة الأمنية.
-              </p>
-              <a href="news-article3.html" class="btn btn-color">{{ $t('more') }}</a>
             </div>
           </div>
         </div>
@@ -206,6 +153,20 @@
     </div>
   </div>
 </template>
+
+<script setup>
+// imports
+import { useNewsStore } from '@/stores/useNews'
+import { onMounted } from 'vue'
+
+// stores
+const newsStore = useNewsStore()
+
+// on mounted
+onMounted(async () => {
+  await newsStore.threeNews()
+})
+</script>
 
 <style scoped>
 .card {
