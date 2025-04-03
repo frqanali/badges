@@ -4,16 +4,23 @@
       <!-- service news section -->
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
+          <div style="display: flex; justify-content: center">
+            <img
+              :src="
+                serviceStore.singleservice.image
+                  ? `data:image/png;base64,${serviceStore.singleservice.image}`
+                  : '/src/assets/GzLogoFi.png'
+              "
+              alt="service Image"
+              class="img-fluid"
+            />
+          </div>
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
-              مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
-              البيانات الوطني
+              {{ serviceStore.singleservice.title }}
             </h3>
             <p class="card-text">
-              في إطار تبسيط الإجراءات وتطوير الخدمات المقدمة، يعلن مكتب هويات المنطقة الخضراء عن
-              إطلاق الاستمارة الإلكترونية الجديدة الخاصة بإصدار وتجديد هويات الدخول إلى المنطقة
-              الخضراء، وذلك بالتعاون مع مركز البيانات الوطني التابع للأمانة العامة لمجلس الوزراء،
-              عبر منصة أور للخدمات الإلكترونية.
+              {{ serviceStore.singleservice.description }}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -28,13 +35,18 @@
         <div class="card">
           <div class="card-header">{{ $t('latestservices') }}</div>
           <ul class="list-group list-group-flush p-0">
-            <li class="list-group-item">الخدمة الاولى</li>
-            <li class="list-group-item">الخدمة الثانية</li>
-            <li class="list-group-item">الخدمة الثالثة</li>
+            <li
+              v-for="services in serviceStore.serviceList"
+              :key="services.id"
+              class="list-group-item"
+              @click="serviceStore.getSingleService(services.id)"
+            >
+              {{ services.title }}
+            </li>
           </ul>
           <div class="card-footer">
             <vue-awesome-paginate
-              :total-items="50"
+              :total-items="serviceStore.totalServices"
               :items-per-page="5"
               :max-pages-shown="5"
               :show-breakpoint-buttons="false"
@@ -50,15 +62,37 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useServiceStore } from '@/stores/useService'
 
 const onClickHandler = (page) => {
-  console.log(page)
+  serviceStore.getAllServices(page)
 }
 
+onMounted(async () => {
+  await serviceStore.getAllServices()
+
+  if (route.query.id) {
+    serviceStore.getSingleService(route.query.id)
+  } else {
+    if (serviceStore.serviceList.length > 0) {
+      serviceStore.getSingleService(serviceStore.serviceList[0].id)
+    }
+  }
+})
+
+const serviceStore = useServiceStore()
 const currentPage = ref(1)
+const route = useRoute()
 </script>
 
 <style>
+.list-group-item:hover {
+  background-color: #f0f0f0; /* light gray */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 .pagination-container {
   display: flex;
   column-gap: 5px;

@@ -11,19 +11,12 @@ export const useServiceStore = defineStore('serviceStore', () => {
   //reactive variables
   const singleservice = ref({
     servicetitle: '',
+    pio: '',
     servicedescription: '',
     image: '',
-    pio: '',
   })
 
-  const serviceList = ref([
-    {
-      id: '',
-      servicetitle: '',
-      servicedescription: '',
-      pio: '',
-    },
-  ])
+  const serviceList = ref([])
 
   const serviceId = ref(null)
 
@@ -46,14 +39,14 @@ export const useServiceStore = defineStore('serviceStore', () => {
       const response = await axios.post(apiURL + 'greenzone/create_service', payload)
       if (response.status === 201) {
         Swal.fire({
-          title: 'تم اضافة خبر جديد بنجاح',
+          title: 'تم اضافة خدمة جديدة بنجاح',
           icon: 'success',
         })
       }
     } catch (error) {
       Swal.fire({
         title: 'حدث خطأ',
-        text: 'فشل في إضافة الخبر',
+        text: 'فشل في إضافة الخدمة',
         icon: 'error',
       })
     }
@@ -81,19 +74,16 @@ export const useServiceStore = defineStore('serviceStore', () => {
   }
 
   const getSingleService = async (id) => {
-    const payload = { serviceid: id }
     try {
       const response = await axios.get(
-        apiURL + 'greenzone/get_service_by_id',
-        payload,
+        apiURL + 'greenzone/get_service_by_id/' + id,
 
         {
           headers: { 'Content-Type': 'application/json' },
         },
       )
       if (response.status === 200) {
-        singleservice.value = response.data.service
-        console.log(singleservice.value)
+        singleservice.value = response.data
       }
     } catch (error) {
       Swal.fire({
@@ -138,6 +128,10 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
   }
 
+  const setUploadedImage = (file) => {
+    singleservice.value.image = file
+  }
+
   return {
     createService,
     singleservice,
@@ -146,5 +140,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
     editService,
     deleteService,
     totalServices,
+    getSingleService,
+    setUploadedImage,
   }
 })
