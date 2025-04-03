@@ -23,6 +23,20 @@
               >
                 تعديل
               </button>
+              <button
+                v-if="news.flag"
+                class="btn btn-sm btn-warning ms-2"
+                @click="newsStore.pinNews(news.id, false)"
+              >
+                الغاء التثبيت
+              </button>
+              <button
+                v-if="!news.flag"
+                class="btn btn-sm btn-warning ms-2"
+                @click="newsStore.pinNews(news.id, true)"
+              >
+                تثبيت
+              </button>
               <button class="btn btn-sm btn-danger" @click="newsStore.deleteNews(news.id)">
                 حذف
               </button>

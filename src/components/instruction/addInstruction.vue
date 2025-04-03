@@ -50,7 +50,7 @@ const Title = computed(() => {
 })
 
 const buttonLabel = computed(() => {
-  return instructionStore.instructionId ? 'تعديل ' : 'اضافة   '
+  return instructionStore.instructionId ? 'تعديل ' : 'اضافة'
 })
 </script>
 

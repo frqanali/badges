@@ -148,7 +148,48 @@ export const useNewsStore = defineStore('newsStore', () => {
         router.push('/allNews')
       }
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        title: 'لم يتم تعديل الخبر ',
+        icon: 'error',
+      })
+    }
+  }
+
+  const pinNews = async (id, flag) => {
+    const payload = {
+      newsid: id,
+      flag: flag,
+    }
+    try {
+      const response = await axios.put(apiURL + 'greenzone/flag_update', payload)
+      if (flag) {
+        if (response.status === 200) {
+          Swal.fire({
+            title: 'تم تثبيت الخبر بنجاح',
+            icon: 'success',
+          })
+          const index = newsList.value.findIndex((news) => news.id === id)
+          if (index != -1) {
+            newsList.value[index].flag = true
+          }
+        }
+      } else {
+        if (response.status === 200) {
+          Swal.fire({
+            title: 'تم  الغاء تثبيت الخبر بنجاح',
+            icon: 'success',
+          })
+          const index = newsList.value.findIndex((news) => news.id === id)
+          if (index != -1) {
+            newsList.value[index].flag = false
+          }
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'لم يتم تثبيت الخبر ',
+        icon: 'error',
+      })
     }
   }
 
@@ -180,5 +221,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     routerEditNews,
     editNews,
     clearItems,
+    pinNews,
   }
 })
