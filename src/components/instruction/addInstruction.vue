@@ -3,7 +3,7 @@
   <div class="col-5">
     <div class="input-group mb-3">
       <input
-        v-model="instructionStore.singleinstruction.instructiontitle"
+        v-model="instructionStore.singleinstruction.ruletitle"
         type="text"
         class="form-control"
         placeholder="العنوان"
@@ -14,7 +14,7 @@
 
     <div class="input-group">
       <textarea
-        v-model="instructionStore.singleinstruction.instructiondescription"
+        v-model="instructionStore.singleinstruction.ruledescription"
         class="form-control"
         aria-label="With textarea"
         :placeholder="$t('content')"
@@ -35,7 +35,7 @@
 
 <script setup>
 import { useInstructionStore } from '@/stores/useInstructions'
-
+// stores
 const instructionStore = useInstructionStore()
 </script>
 

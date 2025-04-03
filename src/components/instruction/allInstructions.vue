@@ -16,9 +16,9 @@
             v-for="(instruction, index) in instructionStore.instructionList"
             :key="instruction.id"
           >
-            <td>{{ index + 1 }}</td>
+            <td>{{ index + 1 + (currentPage - 1) * 5 }}</td>
             <td>{{ instruction.title }}</td>
-            <td>{{ instruction.pio }}</td>
+            <td>{{ truncateWords(instruction.description, 5) }}</td>
 
             <td>
               <button class="btn btn-sm btn-warning ms-2">تعديل</button>
@@ -35,7 +35,8 @@
     </div>
     <!-- 🔄 Pagination -->
     <vue-awesome-paginate
-      :total-items="50"
+      v-if="instructionStore.totalInstructions > 0"
+      :total-items="instructionStore.totalInstructions"
       :items-per-page="5"
       :max-pages-shown="5"
       :show-breakpoint-buttons="false"
@@ -53,11 +54,22 @@ import { ref } from 'vue'
 // stores
 const instructionStore = useInstructionStore()
 
+// reactive variables
+const currentPage = ref(1)
+
+// functions
+
+// pagination function
 const onClickHandler = (page) => {
-  console.log(page)
+  instructionStore.getAllinstructions(page)
 }
 
-const currentPage = ref(1)
+// truncate the description
+const truncateWords = (text, wordLimit = 5) => {
+  if (!text) return ''
+  const words = text.split(' ')
+  return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : text
+}
 
 onMounted(() => {
   instructionStore.getAllinstructions()
