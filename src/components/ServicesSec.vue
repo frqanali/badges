@@ -2,70 +2,16 @@
   <div class="container mt-5" id="sec-4">
     <h2 class="text-center mb-4">{{ $t('services') }}</h2>
     <div class="row g-3 justify-content-center">
-      <div class="col-md-6 me-6 ms-6">
+      <div class="col-md-6 me-6 ms-6" v-for="service in serviceStore.serviceList" :key="service.id">
         <div class="card backgrounds">
           <div class="card-body">
-            <h5 class="card-title">{{ $t('servicename') }}</h5>
+            <h5 class="card-title">{{ service.title }}</h5>
             <p class="card-text">
-              {{ $t('info') }}
+              {{ service.pio }}
             </p>
-            <a href="#" class="btn btn-color"> {{ $t('go') }} </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 mb-4 me-6 ms-6">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('servicename') }}</h5>
-            <p class="card-text">
-              {{ $t('info') }}
-            </p>
-            <a href="#" class="btn btn-color">{{ $t('go') }} </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 mb-4 me-6 ms-6">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('servicename') }}</h5>
-            <p class="card-text">
-              {{ $t('info') }}
-            </p>
-            <a href="#" class="btn btn-color"> {{ $t('go') }} </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 mb-4 me-6 ms-6">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('servicename') }}</h5>
-            <p class="card-text">
-              {{ $t('info') }}
-            </p>
-            <a href="#" class="btn btn-color">{{ $t('go') }}</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 mb-4 me-6 ms-6">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('servicename') }}</h5>
-            <p class="card-text">
-              {{ $t('info') }}
-            </p>
-            <a href="#" class="btn btn-color">{{ $t('go') }}</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 mb-4 me-6 ms-6">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('servicename') }}</h5>
-            <p class="card-text">
-              {{ $t('info') }}
-            </p>
-            <a href="#" class="btn btn-color">{{ $t('go') }} </a>
+            <router-link :to="{ name: 'singleService', query: { id: service.id } }">
+              <button class="btn btn-color">{{ $t('go') }}</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -77,6 +23,20 @@
     </div>
   </div>
 </template>
+
+<script setup>
+// imports
+import { useServiceStore } from '@/stores/useService'
+import { onMounted } from 'vue'
+
+// stores
+const serviceStore = useServiceStore()
+
+// on mounted
+onMounted(async () => {
+  await serviceStore.getAllServices()
+})
+</script>
 <style scoped>
 .btn-color {
   color: aliceblue;
