@@ -15,8 +15,10 @@
           <tr v-for="(service, index) in serviceStore.serviceList" :key="service.id">
             <td>{{ index + 1 }}</td>
             <td>{{ service.title }}</td>
-            <td>{{ service.pio }}</td>
             <td>
+              {{ service.pio }}
+            </td>
+            <td style="max-width: 100px" class="text-truncate">
               <button
                 class="btn btn-sm btn-success ms-2"
                 @click="serviceStore.routerEditService(service.id)"

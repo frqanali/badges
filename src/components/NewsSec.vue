@@ -92,7 +92,7 @@
             />
             <div class="card-body">
               <h5 class="card-title">{{ news.title }}</h5>
-              <p class="card-text">{{ news.pio }}</p>
+              <p class="card-text">{{ truncateWords(news.pio, 10) }}</p>
               <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
                 <button class="btn btn-color">{{ $t('more') }}</button>
               </router-link>
@@ -122,6 +122,11 @@ onMounted(async () => {
   await newsStore.threeNews()
   await newsStore.getPinnedNews()
 })
+const truncateWords = (text, wordLimit = 5) => {
+  if (!text) return ''
+  const words = text.split(' ')
+  return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : text
+}
 </script>
 
 <style scoped>

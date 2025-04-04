@@ -16,7 +16,7 @@
             <td>{{ index + 1 + (currentPage - 1) * 5 }}</td>
             <td>{{ news.title }}</td>
             <td>{{ news.pio }}</td>
-            <td>
+            <td style="max-width: 200px" class="text-truncate">
               <button
                 class="btn btn-sm btn-success ms-2"
                 @click="newsStore.routerEditNews(news.id)"
