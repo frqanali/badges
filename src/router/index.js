@@ -15,6 +15,7 @@ import singleNews from '@/components/publicNews/singleNews.vue'
 import singleService from '@/components/publicServices/singleService.vue'
 import singleInstr from '@/components/publicInstruction/singleInstr.vue'
 import { useAuthStore } from '@/stores/useAuth.js'
+import applicationForm from '@/components/staticForm/applicationForm.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/applicationForm',
+      name: 'applicationForm',
+      component: applicationForm,
     },
     {
       path: '/singleNews',
