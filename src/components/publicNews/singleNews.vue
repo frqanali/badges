@@ -4,8 +4,19 @@
       <!-- single news section -->
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
-          <div style="display: flex; justify-content: center">
-            <img :src="newsStore.singlenews.image" alt="News Image" class="img-fluid" />
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 400px; /* Set your preferred fixed width */
+              height: 400px; /* Set your preferred fixed height */
+              overflow: hidden;
+              border: 1px solid #ddd; /* Optional: Adds a border for visualization */
+              margin: 0 auto; /* Centers the div horizontally */
+            "
+          >
+            <img :src="newsStore.singlenews.image" alt="News Image" class="fixed-image" />
           </div>
 
           <div class="d-flex flex-column gap-2">
@@ -129,5 +140,10 @@ onMounted(async () => {
 .btn-color {
   color: aliceblue;
   background-color: #3b6790;
+}
+.fixed-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the div without stretching */
 }
 </style>

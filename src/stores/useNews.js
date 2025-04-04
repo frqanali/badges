@@ -20,10 +20,15 @@ export const useNewsStore = defineStore('newsStore', () => {
   const threeNewsList = ref([])
 
   const newsList = ref([])
+  const pinnedNewsList = ref([])
+
 
   const newsId = ref(null)
 
   const totalNews = ref(0)
+
+  const imagePreview = ref(null)
+  let reader = new FileReader()
 
   // Functions
   const getAllNews = async (page = 1) => {
@@ -217,7 +222,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     try {
       const response = await axios.get(apiURL + 'greenzone/get_news_by_flag', { params: payload })
       if (response.status === 200) {
-        newsList.value = response.data.news
+        pinnedNewsList.value = response.data.news
       }
     } catch (error) {
       console.log(error)
@@ -229,19 +234,14 @@ export const useNewsStore = defineStore('newsStore', () => {
     singlenews.value = {
       newstitle: '',
       newsdescription: '',
-      image: null, // Reset the image property
+      image: '', // Reset the image property
       pio: '',
     }
 
     newsId.value = null
-    resetImageInput() // Call function to reset the file input
-
+    imagePreview.value = null
+    reader = null
   }
-  const resetImageInput = () => {
-    if (singlenews.value) {
-      singlenews.value.image = "" // Reset file input
-    }
-}
 
   // set the image to the state
   const setUploadedImage = (file) => {
@@ -265,7 +265,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     threeNews,
     threeNewsList,
     getPinnedNews,
-    resetImageInput,
+    imagePreview,
+    reader,
+    pinnedNewsList,
     imageInput,
   }
 })

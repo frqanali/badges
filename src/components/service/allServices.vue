@@ -19,7 +19,7 @@
             <td>
               <button
                 class="btn btn-sm btn-success ms-2"
-                @click="serviceStore.editService(service.id)"
+                @click="serviceStore.routerEditService(service.id)"
               >
                 <i class="bi bi-pencil-square"></i>
               </button>

@@ -84,7 +84,10 @@ export const useServiceStore = defineStore('serviceStore', () => {
         },
       )
       if (response.status === 200) {
-        singleservice.value = response.data
+        singleservice.value.servicetitle = response.data.title
+        singleservice.value.servicedescription = response.data.description
+        singleservice.value.pio = response.data.pio
+        singleservice.value.image = `data:image/png;base64,${response.data.image}`
       }
     } catch (error) {
       Swal.fire({
@@ -95,10 +98,43 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
   }
 
-  const editService = async (id) => {
-    serviceId.value = id
-    router.push({ name: 'addService', query: { id: id } })
+  const routerEditService = (id) => {
     getSingleService(id)
+    serviceId.value = id
+    router.push('/addService')
+  }
+
+  const editService = async () => {
+    const payload = new FormData()
+    // convert form fields to formData
+    Object.entries(singleservice.value).forEach(([key, value]) => {
+      if (value instanceof File) {
+        payload.append(key, value)
+      } else {
+        payload.append(key, value)
+      }
+    })
+
+    try {
+      const response = await axios.put(
+        apiURL + 'greenzone/service_update/' + serviceId.value,
+        payload,
+      )
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'تم تعديل الخدمة  بنجاح',
+          icon: 'success',
+        })
+        clearItems()
+        router.push('/allServices')
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في تعديل الخدمة',
+        icon: 'error',
+      })
+    }
   }
 
   const deleteService = async (id) => {
@@ -154,5 +190,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
     getSingleService,
     setUploadedImage,
     clearItems,
+    routerEditService,
+    serviceId,
   }
 })

@@ -42,8 +42,8 @@
         aria-label="Upload image"
       />
     </div>
-    <div v-if="imagePreview" class="my-3">
-      <img :src="imagePreview" alt="Image Preview" class="img-fluid" />
+    <div v-if="newsStore.imagePreview" class="my-3">
+      <img :src="newsStore.imagePreview" alt="Image Preview" class="img-fluid" />
     </div>
 
     <div class="container d-flex my-5">
@@ -55,22 +55,20 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
 
 // Importing the useNewsStore from Pinia
 const newsStore = useNewsStore()
 // Holds the image preview URL
-const imagePreview = ref(null)
 
 const handleImageChange = (event) => {
   const file = event.target.files[0]
   if (file) {
-    const reader = new FileReader()
-    reader.onload = () => {
-      imagePreview.value = reader.result // Set image preview
+    newsStore.reader.onload = () => {
+      newsStore.imagePreview = newsStore.reader.result // Set image preview
     }
-    reader.readAsDataURL(file)
+    newsStore.reader.readAsDataURL(file)
     newsStore.setUploadedImage(file) // Set the uploaded file in the store
   }
 }

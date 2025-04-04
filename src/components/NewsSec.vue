@@ -6,7 +6,11 @@
       <!-- News pinned item -->
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active mb-4" v-for="news in newsStore.newsList" :key="news.id">
+          <div
+            class="carousel-item active mb-4"
+            v-for="news in newsStore.pinnedNewsList"
+            :key="news.id"
+          >
             <div class="card">
               <div class="row">
                 <div class="col my-5 mx-5 order-2 order-md-1">
