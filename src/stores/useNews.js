@@ -97,6 +97,7 @@ export const useNewsStore = defineStore('newsStore', () => {
           title: 'تم اضافة خبر جديد بنجاح',
           icon: 'success',
         })
+        clearItems()
       }
     } catch (error) {
       console.log(error)
@@ -214,7 +215,9 @@ export const useNewsStore = defineStore('newsStore', () => {
 
     try {
       const response = await axios.get(apiURL + 'greenzone/get_news_by_flag', { params: payload })
-      console.log(response)
+      if (response.status === 200) {
+        newsList.value = response.data.news
+      }
     } catch (error) {
       console.log(error)
     }

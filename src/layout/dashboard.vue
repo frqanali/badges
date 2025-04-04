@@ -28,13 +28,14 @@
               data-bs-parent="#sidebar"
             >
               <li class="sidebar-item">
-                <router-link to="/allNews" class="sidebar-link" @click="newsStore.clearItems"
-                  >جميع الاخبار
-                </router-link>
-              </li>
-              <li class="sidebar-item">
                 <router-link to="/addNews" class="sidebar-link" @click="newsStore.clearItems">
                   اضافة خبر
+                </router-link>
+              </li>
+
+              <li class="sidebar-item">
+                <router-link to="/allNews" class="sidebar-link" @click="newsStore.clearItems"
+                  >جميع الاخبار
                 </router-link>
               </li>
               <li class="sidebar-item">

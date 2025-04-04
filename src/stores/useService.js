@@ -42,6 +42,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
           title: 'تم اضافة خدمة جديدة بنجاح',
           icon: 'success',
         })
+        clearItems()
       }
     } catch (error) {
       Swal.fire({
@@ -127,6 +128,16 @@ export const useServiceStore = defineStore('serviceStore', () => {
       })
     }
   }
+  const clearItems = () => {
+    singleservice.value = {
+      servicetitle: '',
+      pio: '',
+      servicedescription: '',
+      image: '',
+    }
+
+    serviceId.value = null
+  }
 
   const setUploadedImage = (file) => {
     singleservice.value.image = file
@@ -142,5 +153,6 @@ export const useServiceStore = defineStore('serviceStore', () => {
     totalServices,
     getSingleService,
     setUploadedImage,
+    clearItems,
   }
 })

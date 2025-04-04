@@ -6,13 +6,13 @@
       <!-- News pinned item -->
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active mb-4">
+          <div class="carousel-item active mb-4" v-for="news in newsStore.newsList" :key="news.id">
             <div class="card">
               <div class="row">
                 <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
                     <h5 class="card-title fs-3">
-                      مكتب هويات المنطقة الخضراء يباشر أعماله في مقراته الجديدة
+                      {{ news.title }}
                     </h5>
 
                     <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
@@ -23,61 +23,11 @@
 
                 <div class="col-md-6 d-flex my-5 order-1 order-md-2">
                   <img
-                    src="/src/assets/GzLogoFi.png"
-                    class="card-img-top img-fluid newsImg mt-2"
-                    alt="News Image 1"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item mb-4">
-            <div class="card">
-              <div class="row">
-                <div class="col my-5 mx-5 order-2 order-md-1">
-                  <div class="card-body">
-                    <h5 class="card-title fs-3">
-                      مكتب هويات المنطقة الخضراء يطلق الاستمارة الإلكترونية الجديدة بالتعاون مع مركز
-                      البيانات الوطني
-                    </h5>
-
-                    <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
-                      $t('more')
-                    }}</a>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-flex my-5 order-1 order-md-2">
-                  <img
-                    src="/src/assets/GzLogoFi.png"
-                    class="card-img-top img-fluid newsImg mt-2"
-                    alt="News Image 1"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item mb-4">
-            <div class="card">
-              <div class="row">
-                <div class="col my-5 mx-5 order-2 order-md-1">
-                  <div class="card-body">
-                    <h5 class="card-title fs-3">
-                      مكتب هويات المنطقة الخضراء يعلن عن إطلاق الاستمارة الأمنية الإلكترونية الجديدة
-                      بالتعاون مع مركز البيانات الوطني
-                    </h5>
-
-                    <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
-                      $t('more')
-                    }}</a>
-                  </div>
-                </div>
-
-                <div class="col-md-6 d-flex my-5 order-1 order-md-2">
-                  <img
-                    src="/src/assets/GzLogoFi.png"
+                    :src="
+                      news.image
+                        ? `data:image/png;base64,${news.image}`
+                        : '/src/assets/GzLogoFi.png'
+                    "
                     class="card-img-top img-fluid newsImg mt-2"
                     alt="News Image 1"
                     loading="lazy"
@@ -167,6 +117,7 @@ const newsStore = useNewsStore()
 // on mounted
 onMounted(async () => {
   await newsStore.threeNews()
+  await newsStore.getPinnedNews()
 })
 </script>
 

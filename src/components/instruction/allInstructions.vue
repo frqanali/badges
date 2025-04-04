@@ -22,16 +22,16 @@
 
             <td>
               <button
-                class="btn btn-sm btn-warning ms-2"
+                class="btn btn-sm btn-success ms-2"
                 @click="instructionStore.routeEditInstruction(instruction.id)"
               >
-                تعديل
+                <i class="bi bi-pencil-square"></i>
               </button>
               <button
                 class="btn btn-sm btn-danger"
                 @click="instructionStore.deleteinstruction(instruction.id)"
               >
-                حذف
+                <i class="bi bi-trash3-fill"></i>
               </button>
             </td>
           </tr>

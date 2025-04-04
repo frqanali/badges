@@ -18,13 +18,13 @@
             <td>{{ service.pio }}</td>
             <td>
               <button
-                class="btn btn-sm btn-warning ms-2"
+                class="btn btn-sm btn-success ms-2"
                 @click="serviceStore.editService(service.id)"
               >
-                تعديل
+                <i class="bi bi-pencil-square"></i>
               </button>
               <button class="btn btn-sm btn-danger" @click="serviceStore.deleteService(service.id)">
-                حذف
+                <i class="bi bi-trash3-fill"></i>
               </button>
             </td>
           </tr>

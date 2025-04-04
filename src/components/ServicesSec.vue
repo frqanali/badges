@@ -2,7 +2,11 @@
   <div class="container mt-5" id="sec-4">
     <h2 class="text-center mb-4">{{ $t('services') }}</h2>
     <div class="row g-3 justify-content-center">
-      <div class="col-md-6 me-6 ms-6" v-for="service in serviceStore.serviceList" :key="service.id">
+      <div
+        class="col-md-6 me-6 ms-6"
+        v-for="service in serviceStore.serviceList.splice(0, 6)"
+        :key="service.id"
+      >
         <div class="card backgrounds">
           <div class="card-body">
             <h5 class="card-title">{{ service.title }}</h5>
@@ -16,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-3">
       <router-link to="/singleService"
         ><button class="btn btn-colorr">{{ $t('readmore') }}</button>
       </router-link>
