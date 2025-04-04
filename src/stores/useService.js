@@ -55,7 +55,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
 
   const getAllServices = async (page = 1) => {
     const payload = {
-      Per_page: 5,
+      Per_Page: 5,
       page: page,
     }
     try {

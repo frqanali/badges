@@ -22,7 +22,6 @@ export const useNewsStore = defineStore('newsStore', () => {
   const newsList = ref([])
   const pinnedNewsList = ref([])
 
-
   const newsId = ref(null)
 
   const totalNews = ref(0)
@@ -220,7 +219,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
 
     try {
-      const response = await axios.get(apiURL + 'greenzone/get_news_by_flag', { params: payload })
+      const response = await axios.post(apiURL + 'greenzone/get_news_by_flag', { params: payload })
       if (response.status === 200) {
         pinnedNewsList.value = response.data.news
       }

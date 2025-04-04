@@ -19,7 +19,7 @@
             <img
               :src="
                 serviceStore.singleservice.image
-                  ? `data:image/png;base64,${serviceStore.singleservice.image}`
+                  ? serviceStore.singleservice.image
                   : '/src/assets/GzLogoFi.png'
               "
               alt="service Image"
@@ -28,10 +28,10 @@
           </div>
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
-              {{ serviceStore.singleservice.title }}
+              {{ serviceStore.singleservice.servicetitle }}
             </h3>
             <p class="card-text">
-              {{ serviceStore.singleservice.description }}
+              {{ serviceStore.singleservice.servicedescription }}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -71,11 +71,16 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useServiceStore } from '@/stores/useService'
+
+// route & store & variables
+const serviceStore = useServiceStore()
+const currentPage = ref(1)
+const route = useRoute()
 
 const onClickHandler = (page) => {
   serviceStore.getAllServices(page)
@@ -92,10 +97,6 @@ onMounted(async () => {
     }
   }
 })
-
-const serviceStore = useServiceStore()
-const currentPage = ref(1)
-const route = useRoute()
 </script>
 
 <style>
