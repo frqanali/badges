@@ -518,7 +518,7 @@ const generatePDF = async () => {
 }
 </script>
 
-<style>
+<style scoped>
 @page {
   margin: 20px 20px 40px; /* Extra bottom margin for page number */
   size: A4;
