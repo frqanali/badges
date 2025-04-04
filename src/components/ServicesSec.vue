@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5" id="sec-4">
-    <h2 class="text-center mb-4">{{ $t('services') }}</h2>
+    <h2 class="text-center my-5 underline-text">{{ $t('services') }}</h2>
     <div class="row g-3 justify-content-center">
       <div
         class="col-md-6 me-6 ms-6"
@@ -69,5 +69,22 @@ onMounted(async () => {
   border-color: aliceblue;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
+}
+.underline-text {
+  display: inline-block;
+  position: relative;
+  width: 100%; /* Ensures it takes up the full width of the parent */
+  text-align: center; /* Centers the text itself */
+}
+
+.underline-text::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 12%; /* Same width as text */
+  height: 3px;
+  background-color: #4c7b8b;
+  transform: translateX(-50%); /* Center the underline */
 }
 </style>

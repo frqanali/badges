@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex align-items-center p-4" id="sec-5">
     <div class="container p-4">
-      <h2 class="text-center mb-4">{{ $t('instructions') }}</h2>
+      <h2 class="text-center my-5 underline-text">{{ $t('instructions') }}</h2>
 
-      <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
         <div
           class="col"
           v-for="instruction in instructionStore.instructionList.splice(0, 4)"
@@ -17,7 +17,7 @@
               {{ $t('more') }}
             </button>
             <div class="card-footer">
-              <small class="text-body-secondary">Last updated 3 mins ago</small>
+              <small class="text-body-secondary">الضوابط والتعليمات</small>
             </div>
           </div>
         </div>
@@ -67,5 +67,22 @@ onMounted(() => {
   background-color: transparent;
   border: 2px solid #3b6790;
   border-radius: 5px;
+}
+.underline-text {
+  display: inline-block;
+  position: relative;
+  width: 100%; /* Ensures it takes up the full width of the parent */
+  text-align: center; /* Centers the text itself */
+}
+
+.underline-text::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 23%; /* Same width as text */
+  height: 3px;
+  background-color: #4c7b8b;
+  transform: translateX(-50%); /* Center the underline */
 }
 </style>

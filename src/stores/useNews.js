@@ -3,6 +3,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
+const imageInput = ref(null) // Reference to the file input
 
 const apiURL = import.meta.env.VITE_API_URL
 
@@ -228,12 +229,19 @@ export const useNewsStore = defineStore('newsStore', () => {
     singlenews.value = {
       newstitle: '',
       newsdescription: '',
-      image: '',
+      image: null, // Reset the image property
       pio: '',
     }
 
     newsId.value = null
+    resetImageInput() // Call function to reset the file input
+
   }
+  const resetImageInput = () => {
+    if (singlenews.value) {
+      singlenews.value.image = "" // Reset file input
+    }
+}
 
   // set the image to the state
   const setUploadedImage = (file) => {
@@ -257,5 +265,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     threeNews,
     threeNewsList,
     getPinnedNews,
+    resetImageInput,
+    imageInput,
   }
 })

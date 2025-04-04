@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5" id="sec-3">
-    <h2 class="text-center mb-4">{{ $t('news') }}</h2>
+    <h2 class="text-center my-5 underline-text">{{ $t('news') }}</h2>
 
     <div class="col">
       <!-- News pinned item -->
@@ -160,5 +160,22 @@ onMounted(async () => {
   width: 80px;
   display: flex;
   justify-content: center;
+}
+.underline-text {
+  display: inline-block;
+  position: relative;
+  width: 100%; /* Ensures it takes up the full width of the parent */
+  text-align: center; /* Centers the text itself */
+}
+
+.underline-text::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 10%; /* Same width as text */
+  height: 3px;
+  background-color: #4c7b8b;
+  transform: translateX(-50%); /* Center the underline */
 }
 </style>

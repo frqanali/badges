@@ -1,7 +1,7 @@
 <template>
-  <div class="container d-flex justify-content-center mb-4">
+  <div class="container d-flex justify-content-center my-5">
     <div class="col-10 col-md-6">
-      <p class="text-center fs-2">{{ $t('contactUs') }}</p>
+      <p class="text-center fs-2 underline-text">{{ $t('contactUs') }}</p>
       <div class="card custom-card">
         <div class="row">
           <div class="col-md-6">
@@ -131,5 +131,22 @@ textarea.form-control {
 .bi-telephone-fill {
   font-size: 40px; /* Controls the icon size */
   color: #23486a; /* Sets the fill color */
+}
+.underline-text {
+  display: inline-block;
+  position: relative;
+  width: 100%; /* Ensures it takes up the full width of the parent */
+  text-align: center; /* Centers the text itself */
+}
+
+.underline-text::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 30%; /* Same width as text */
+  height: 3px;
+  background-color: #4c7b8b;
+  transform: translateX(-50%); /* Center the underline */
 }
 </style>

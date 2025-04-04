@@ -35,6 +35,7 @@
     <div class="input-group my-3">
       <input
         type="file"
+        ref="imageInput"
         class="form-control"
         accept="image/*"
         @change="handleImageChange"

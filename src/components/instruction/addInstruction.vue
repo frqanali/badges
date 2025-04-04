@@ -15,7 +15,7 @@
     <div class="input-group">
       <textarea
         v-model="instructionStore.singleinstruction.ruledescription"
-        class="form-control"
+        class="form-control custom-textarea"
         aria-label="With textarea"
         :placeholder="$t('content')"
       ></textarea>
@@ -58,5 +58,10 @@ const buttonLabel = computed(() => {
 .btn-color {
   color: aliceblue;
   background-color: #23486a;
+}
+.custom-textarea {
+  width: 100%; /* Ensure it takes up full width of the parent */
+  height: 200px; /* Adjust the height as needed */
+  resize: both; /* Optional: allows the user to resize it manually */
 }
 </style>
