@@ -22,7 +22,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ service.title }}</h5>
             <p class="card-text">
-              {{ service.pio }}
+              {{ truncateWords(service.pio, 10) }}
             </p>
             <router-link :to="{ name: 'singleService', query: { id: service.id } }">
               <button class="btn btn-color">{{ $t('go') }}</button>
@@ -43,6 +43,12 @@
 // imports
 import { useServiceStore } from '@/stores/useService'
 import { onMounted } from 'vue'
+
+const truncateWords = (text, wordLimit = 5) => {
+  if (!text) return ''
+  const words = text.split(' ')
+  return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : text
+}
 
 // stores
 const serviceStore = useServiceStore()

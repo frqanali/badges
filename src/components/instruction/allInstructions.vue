@@ -78,7 +78,6 @@ const truncateWords = (text, wordLimit = 5) => {
 
 onMounted(async () => {
   await instructionStore.getAllinstructions()
-  console.log(instructionStore.instructionList)
 })
 </script>
 

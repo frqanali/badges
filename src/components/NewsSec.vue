@@ -18,10 +18,9 @@
                     <h5 class="card-title fs-3">
                       {{ news.title }}
                     </h5>
-
-                    <a href="news-article1.html" class="btn btn-color btn-lg mt-3">{{
-                      $t('more')
-                    }}</a>
+                    <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
+                      <button class="btn btn-color">{{ $t('more') }}</button>
+                    </router-link>
                   </div>
                 </div>
 

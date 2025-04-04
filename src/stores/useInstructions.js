@@ -74,9 +74,10 @@ export const useInstructionStore = defineStore('instructionStore', () => {
           headers: { 'Content-Type': 'application/json' },
         },
       )
+
       if (response.status === 200) {
-        singleinstruction.value = response.data.instruction
-        console.log(singleinstruction.value)
+        singleinstruction.value.ruletitle = response.data.ruletitle
+        singleinstruction.value.ruledescription = response.data.description
       }
     } catch (error) {
       Swal.fire({

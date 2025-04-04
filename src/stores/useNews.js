@@ -219,9 +219,10 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
 
     try {
-      const response = await axios.post(apiURL + 'greenzone/get_news_by_flag', { params: payload })
+      const response = await axios.post(apiURL + 'greenzone/get_news_by_flag', payload)
+      console.log(response)
       if (response.status === 200) {
-        pinnedNewsList.value = response.data.news
+        pinnedNewsList.value = response.data
       }
     } catch (error) {
       console.log(error)

@@ -13,9 +13,12 @@
             <div class="card-body">
               <h5 class="card-title">{{ instruction.title }}</h5>
             </div>
-            <button type="button " class="btn btn-color mb-3" @click="handleSubmit(instruction.id)">
-              {{ $t('more') }}
-            </button>
+            <router-link :to="{ name: 'singleIntr', query: { id: instruction.id } }"
+              ><button type="button " class="btn btn-color mb-3">
+                {{ $t('more') }}
+              </button></router-link
+            >
+
             <div class="card-footer">
               <small class="text-body-secondary">الضوابط والتعليمات</small>
             </div>
