@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth', () => {
   // user login
   const login = async (user) => {
     try {
-      const response = await axios.post(apiURL + '/auth/login', user)
+      const response = await axios.post(apiURL + 'auth/login', user)
       if (response.status === 200) {
         // set token and user in local storage
         token.value = response.data.access_token
