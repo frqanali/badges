@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg body" dir="ltr">
+  <nav class="navbar navbar-expand-lg body sticky-top" dir="ltr">
     <div class="container-fluid background">
       <router-link to="/" class="fw-bold fontType ps-4 pt-3 mb-3 contact-info no-underline">
         {{ $t('gzoffice') }}
@@ -47,13 +47,13 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mx-auto pe-5 ps-2">
           <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
-              {{ $t('whoWeAre') }}
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
+              {{ $t('contactUs') }}
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
-              {{ $t('news') }}
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
+              {{ $t('instructions') }}
             </a>
           </li>
           <li class="nav-item">
@@ -61,9 +61,15 @@
               {{ $t('services') }}
             </a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
-              {{ $t('instructions') }}
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
+              {{ $t('news') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
+              {{ $t('whoWeAre') }}
             </a>
           </li>
         </ul>

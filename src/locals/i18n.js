@@ -6,7 +6,7 @@ const messages = {
     services: 'services',
     news: 'news',
     search: 'search',
-    whoWeAre: 'who we are',
+    whoWeAre: 'About Us',
     instructions: 'regulations and instructions ',
     info: 'This is a longer card with supporting text below as a natural introduction to adding content. This content is a little longer',
     go: 'go to service ',

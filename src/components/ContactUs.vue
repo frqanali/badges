@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-flex justify-content-center my-5">
+  <div class="container d-flex justify-content-center my-5" id="sec-6">
     <div class="col-10 col-md-6">
       <p class="text-center fs-2 underline-text">{{ $t('contactUs') }}</p>
       <div class="card custom-card">
