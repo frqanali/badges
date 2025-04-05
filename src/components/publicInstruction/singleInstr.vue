@@ -8,7 +8,7 @@
             <h3 class="card-title">
               {{ instructionStore.singleinstruction.ruletitle }}
             </h3>
-            <p class="card-text">
+            <p class="card-text" style="text-align: justify">
               {{ instructionStore.singleinstruction.ruledescription }}
             </p>
           </div>

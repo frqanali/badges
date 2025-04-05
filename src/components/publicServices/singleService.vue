@@ -14,7 +14,7 @@
             <h3 class="card-title">
               {{ serviceStore.singleservice.servicetitle }}
             </h3>
-            <p class="card-text">
+            <p class="card-text" style="text-align: justify">
               {{ serviceStore.singleservice.servicedescription }}
             </p>
           </div>

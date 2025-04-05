@@ -15,7 +15,7 @@
             <h3 class="card-title">
               {{ newsStore.singlenews.newstitle }}
             </h3>
-            <p class="card-text">
+            <p class="card-text" style="text-align: justify">
               {{ newsStore.singlenews.newsdescription }}
             </p>
           </div>
