@@ -19,7 +19,7 @@
                       {{ news.title }}
                     </h5>
                     <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
-                      <button class="btn btn-color">{{ $t('more') }}</button>
+                      <button class="btn btn-color mt-4">{{ $t('more') }}</button>
                     </router-link>
                   </div>
                 </div>

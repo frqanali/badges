@@ -38,11 +38,7 @@
                   >جميع الاخبار
                 </router-link>
               </li>
-              <li class="sidebar-item">
-                <router-link to="/staticNews" class="sidebar-link" @click="newsStore.clearItems">
-                  الاخبار المثبتة
-                </router-link>
-              </li>
+
               <!-- <li class="sidebar-item">
                 <a href="#" class="sidebar-link">تعديل خبر</a>
               </li>
