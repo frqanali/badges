@@ -5,17 +5,8 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div
+            class="w-full min-vh-100 d-flex justify-content-center align-items-center overflow-hidden border m-0"
             v-if="serviceStore.singleservice.image"
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 400px; /* Set your preferred fixed width */
-              height: 400px; /* Set your preferred fixed height */
-              overflow: hidden;
-              border: 1px solid #ddd; /* Optional: Adds a border for visualization */
-              margin: 0 auto; /* Centers the div horizontally */
-            "
           >
             <img :src="serviceStore.singleservice.image" alt="service Image" class="fixed-image" />
           </div>
@@ -84,11 +75,9 @@ onMounted(async () => {
 
   if (route.query.id) {
     serviceStore.getSingleService(route.query.id)
-    console.log(serviceStore.singleservice)
   } else {
     if (serviceStore.serviceList.length > 0) {
       serviceStore.getSingleService(serviceStore.serviceList[0].id)
-      console.log(serviceStore.singleservice.value)
     }
   }
 })

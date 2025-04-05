@@ -5,6 +5,7 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div
+            v-if="serviceStore.singleservice.image"
             style="
               display: flex;
               justify-content: center;
@@ -64,7 +65,7 @@
   </div>
 </template>
 
-<script setup >
+<script setup>
 import { ref } from 'vue'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
