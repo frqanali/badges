@@ -441,12 +441,7 @@
       <div class="br">
         <label
           class="border-text"
-          style="
-            border-bottom: #000 3px solid;
-            padding-bottom: 8px;
-            font-size: 20px;
-            margin-right: 40%;
-          "
+          style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
           >معلومات الأقارب (الأعمام و الاخوال وأبناءهم)</label
         >
         <br /><br /><br />
