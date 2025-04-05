@@ -13,7 +13,7 @@
           >
             <div class="card">
               <div class="row">
-                <div class="col my-5 me-5 order-2 order-md-1">
+                <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
                     <h5 class="card-title fs-3" style="text-align: justify">
                       {{ news.title }}
