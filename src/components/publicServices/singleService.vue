@@ -5,6 +5,7 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div
+            v-if="serviceStore.singleservice.image"
             style="
               display: flex;
               justify-content: center;
@@ -16,15 +17,7 @@
               margin: 0 auto; /* Centers the div horizontally */
             "
           >
-            <img
-              :src="
-                serviceStore.singleservice.image
-                  ? serviceStore.singleservice.image
-                  : '/src/assets/GzLogoFi.png'
-              "
-              alt="service Image"
-              class="fixed-image"
-            />
+            <img :src="serviceStore.singleservice.image" alt="service Image" class="fixed-image" />
           </div>
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title">
@@ -91,9 +84,11 @@ onMounted(async () => {
 
   if (route.query.id) {
     serviceStore.getSingleService(route.query.id)
+    console.log(serviceStore.singleservice)
   } else {
     if (serviceStore.serviceList.length > 0) {
       serviceStore.getSingleService(serviceStore.serviceList[0].id)
+      console.log(serviceStore.singleservice.value)
     }
   }
 })

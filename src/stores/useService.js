@@ -87,7 +87,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
         singleservice.value.servicetitle = response.data.title
         singleservice.value.servicedescription = response.data.description
         singleservice.value.pio = response.data.pio
-        singleservice.value.image = `data:image/png;base64,${response.data.image}`
+        singleservice.value.image = response.data.image
+          ? `data:image/png;base64,${response.data.image}`
+          : response.data.image
       }
     } catch (error) {
       Swal.fire({
