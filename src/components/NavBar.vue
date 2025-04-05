@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg body" dir="ltr">
+  <nav class="navbar navbar-expand-lg body">
     <div class="container-fluid background">
       <router-link to="/" class="fw-bold fontType ps-4 pt-3 mb-3 contact-info no-underline">
         {{ $t('gzoffice') }}
@@ -74,7 +74,7 @@
             alt="Logo"
             width="150"
             height="35"
-            class="me-3 mb-1"
+            class="mx-3 mb-1"
             loading="lazy"
           />
           <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
