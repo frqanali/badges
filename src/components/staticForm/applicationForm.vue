@@ -798,6 +798,9 @@ button:hover {
   background-color: #03181f;
 }
 @media (max-width: 768px) {
+  .main-content {
+    padding: 5px;
+  }
   .POM {
     width: 120px;
   }
