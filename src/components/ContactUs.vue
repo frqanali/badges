@@ -17,7 +17,7 @@
               <i class="bi bi-telephone-fill"></i>
               <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('phoneNumber') }}</span>
             </div>
-            <small class="text-muted"> 07765657874</small>
+            <small class="text-muted"> 12345678911</small>
           </div>
         </div>
       </div>

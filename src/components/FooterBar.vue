@@ -5,7 +5,7 @@
     </div>
     <footer class="footer">
       <div class="container mt-3">
-        <p>{{ $t('phoneNumber') }}: 07715667876</p>
+        <p>{{ $t('phoneNumber') }}: 12345678911</p>
         <p>{{ $t('email') }}: gzb@gmail.com</p>
         <p>{{ $t('address') }}</p>
 

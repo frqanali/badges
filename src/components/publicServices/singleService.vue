@@ -11,7 +11,7 @@
             <img :src="serviceStore.singleservice.image" alt="service Image" class="fixed-image" />
           </div>
           <div class="d-flex flex-column gap-2">
-            <h3 class="card-title">
+            <h3 class="card-title" style="text-align: justify">
               {{ serviceStore.singleservice.servicetitle }}
             </h3>
             <p class="card-text" style="text-align: justify">

@@ -12,7 +12,7 @@
           </div>
 
           <div class="d-flex flex-column gap-2">
-            <h3 class="card-title">
+            <h3 class="card-title" style="text-align: justify">
               {{ newsStore.singlenews.newstitle }}
             </h3>
             <p class="card-text" style="text-align: justify">
