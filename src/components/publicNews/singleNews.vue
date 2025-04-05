@@ -5,19 +5,10 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div
-            v-if="serviceStore.singleservice.image"
-            style="
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 400px; /* Set your preferred fixed width */
-              height: 400px; /* Set your preferred fixed height */
-              overflow: hidden;
-              border: 1px solid #ddd; /* Optional: Adds a border for visualization */
-              margin: 0 auto; /* Centers the div horizontally */
-            "
+            class="d-flex justify-content-center align-items-center w-full overflow-hidden my-0 rounded mh-50"
+            v-if="newsStore.singlenews.image"
           >
-            <img :src="newsStore.singlenews.image" alt="News Image" class="fixed-image" />
+            <img :src="newsStore.singlenews.image" alt="News Image" class="fixed_image" />
           </div>
 
           <div class="d-flex flex-column gap-2">
@@ -142,9 +133,9 @@ onMounted(async () => {
   color: aliceblue;
   background-color: #3b6790;
 }
-.fixed-image {
+.fixed_image {
   width: 100%;
-  height: 100%;
+  height: 50%;
   object-fit: cover; /* Ensures the image covers the div without stretching */
 }
 </style>
