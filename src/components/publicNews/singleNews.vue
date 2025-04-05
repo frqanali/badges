@@ -5,10 +5,10 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div
-            class="d-flex justify-content-center align-items-center w-full overflow-hidden my-0 rounded mh-50"
+            class="d-flex justify-content-center align-items-center overflow-hidden border m-0"
             v-if="newsStore.singlenews.image"
           >
-            <img :src="newsStore.singlenews.image" alt="News Image" class="fixed_image" />
+            <img :src="newsStore.singlenews.image" alt="service Image" class="fixed-image" />
           </div>
 
           <div class="d-flex flex-column gap-2">
@@ -133,9 +133,10 @@ onMounted(async () => {
   color: aliceblue;
   background-color: #3b6790;
 }
-.fixed_image {
-  width: 100%;
-  height: 50%;
-  object-fit: cover; /* Ensures the image covers the div without stretching */
+.fixed-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* أو الحجم اللي يناسبك */
+  object-fit: contain;
 }
 </style>

@@ -99,6 +99,9 @@ const router = createRouter({
       component: InstructionView,
     },
   ],
+  scrollBehavior() {
+    return { top: 0 }
+  },
 })
 
 router.beforeEach((to, from, next) => {
