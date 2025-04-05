@@ -5,7 +5,7 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div
-            class="w-full min-vh-100 d-flex justify-content-center align-items-center overflow-hidden border m-0"
+            class="d-flex justify-content-center align-items-center overflow-hidden border m-0"
             v-if="serviceStore.singleservice.image"
           >
             <img :src="serviceStore.singleservice.image" alt="service Image" class="fixed-image" />
@@ -127,8 +127,9 @@ onMounted(async () => {
   background-color: #23486a;
 }
 .fixed-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the div without stretching */
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* أو الحجم اللي يناسبك */
+  object-fit: contain;
 }
 </style>
