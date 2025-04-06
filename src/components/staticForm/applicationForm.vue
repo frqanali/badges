@@ -16,7 +16,7 @@
     <div class="main-content">
       <div class="br">
         <label class="label">رقم الحفظ:</label>
-        <input type="number" class="input-small" id="input1" />
+        <input type="number" class="input-small" id="input1" v-model="saveNumber" />
 
         <label class="label">لون الهوية:</label>
         <select class="input-small" id="input2">
@@ -30,7 +30,7 @@
         <br />
 
         <label class="label">الاسم:</label>
-        <input type="text" class="input-field" id="input3" />
+        <input type="text" class="input-field" id="input3" v-model="name" />
         <br /><br />
 
         <label class="label">الجهة:</label>
@@ -477,16 +477,49 @@
         <label style="margin-right: 66%">بصمة الابهام الايسر:</label>
       </div>
     </div>
+    <div id="qr-container" style="margin-top: 20px; text-align: left">
+      <label>QR Code:</label>
+      <canvas ref="qrCanvas"></canvas>
+    </div>
   </div>
   <button type="button" @click="generatePDF">طباعة</button>
 </template>
 
 <script setup>
 import html2pdf from 'html2pdf.js'
-import { ref } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
+import QRCode from 'qrcode'
+import { useRouter } from 'vue-router'
 
+// Router instance
+const router = useRouter()
+
+// Refs
 const printContent = ref(null)
+const qrCanvas = ref(null)
+const saveNumber = ref('')
+const name = ref('')
+const qrValue = ref('')
 
+// ✅ Render QR Code function
+const renderQR = () => {
+  if (!qrCanvas.value || !saveNumber.value || !name.value) return
+  qrValue.value = `https://gzo.ur.gov.iq/qr-result?saveNumber=${saveNumber.value}&name=${encodeURIComponent(name.value)}`
+
+  QRCode.toCanvas(qrCanvas.value, qrValue.value, { width: 120 }, (error) => {
+    if (error) console.error('QR render error:', error)
+  })
+}
+
+// ✅ Automatically update QR when data changes
+watchEffect(renderQR)
+
+// ✅ Initial render if needed
+onMounted(() => {
+  renderQR()
+})
+
+// ✅ PDF Generator
 const generatePDF = async () => {
   const element = printContent.value
   if (!element) return
@@ -499,13 +532,8 @@ const generatePDF = async () => {
     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
   }
 
-  // Generate the PDF and get a blob URL
   const worker = html2pdf().from(element).set(opt)
-
-  // Wait for the PDF to be built and get the Blob URL
   const pdfBlobUrl = await worker.outputPdf('bloburl')
-
-  // Open in a new tab
   window.open(pdfBlobUrl, '_blank')
 }
 </script>

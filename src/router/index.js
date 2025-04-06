@@ -41,6 +41,12 @@ const router = createRouter({
       component: singleInstr,
     },
     {
+      path: '/qr-result',
+      name: 'qrResult',
+      component: () => import('@/views/qrResult.vue'),
+    },
+
+    {
       path: '/singleService',
       name: 'singleService',
       component: singleService,
