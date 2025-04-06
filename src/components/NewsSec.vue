@@ -24,14 +24,15 @@
                   </div>
                 </div>
 
-                <div class="col-md-6 d-flex my-5 order-1 order-md-2">
+                <div class="col-md-6 d-flex order-1 order-md-2">
                   <img
                     :src="
                       news.image
                         ? `data:image/png;base64,${news.image}`
                         : '/src/assets/GzLogoFi.png'
                     "
-                    class="card-img-top img-fluid newsImg mt-2"
+                    class="newsImg1"
+                    :class="locale === 'ar' ? 'ltr-radius' : 'rtl-radius'"
                     alt="News Image 1"
                     loading="lazy"
                   />
@@ -86,7 +87,7 @@
           <div class="card">
             <img
               :src="news.image ? `data:image/png;base64,${news.image}` : '/src/assets/GzLogoFi.png'"
-              class="card-img-top img-fluid newsImg mt-2"
+              class="card-img-top img-fluid newsImg"
               alt="News Image 1"
               loading="lazy"
             />
@@ -113,10 +114,11 @@
 // imports
 import { useNewsStore } from '@/stores/useNews'
 import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
-// stores
+// stores & i18n
 const newsStore = useNewsStore()
-
+const { locale } = useI18n()
 // on mounted
 onMounted(async () => {
   await newsStore.threeNews()
@@ -147,11 +149,28 @@ const truncateWords = (text, wordLimit = 5) => {
   flex-grow: 1; /* Allows the text content to fill the available space */
 }
 
+.newsImg1 {
+  width: 100%; /* Ensures images are the same width */
+  height: 400px; /* Ensures images are the same height */
+  object-fit: cover; /* Prevents image distortion */
+}
+
+.ltr-radius {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.rtl-radius {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 .newsImg {
-  max-width: 200px;
   height: 200px; /* Ensures images are the same height */
   object-fit: cover; /* Prevents image distortion */
   margin: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .btn-color {
