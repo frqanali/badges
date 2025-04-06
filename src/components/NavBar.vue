@@ -2,6 +2,8 @@
   <nav class="navbar navbar-expand-lg body sticky-top" dir="rtl">
     <div class="container-fluid background">
       <a class="navbar-brand logo-large" href="#">
+        <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
+
         <img
           src="/src/assets/white_text_transparent.png"
           alt="Logo"
@@ -10,7 +12,6 @@
           class="mx-3 mb-1"
           loading="lazy"
         />
-        <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
       </a>
 
       <button
