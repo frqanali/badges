@@ -82,14 +82,13 @@
           <li><button class="dropdown-item" @click="switchLanguage('en')">English</button></li>
           <li><button class="dropdown-item" @click="switchLanguage('ar')">عربي</button></li>
         </ul>
-
       </div>
       <router-link
-          to="/"
-          class="ps-3 pt-3 mb-3 ms-5 fw-bold fontType  contact-info no-underline greentext"
-        >
-          {{ $t('gzoffice') }}
-        </router-link>
+        to="/"
+        class="ps-3 pt-3 mb-3 ms-5 fw-bold fontType pt-md-3 contact-info no-underline greentext"
+      >
+        {{ $t('gzoffice') }}
+      </router-link>
     </div>
   </nav>
 </template>
