@@ -3,8 +3,30 @@
     <h2 class="text-center my-5 underline-text">{{ $t('news') }}</h2>
 
     <div class="col">
+      <!--loading skeleton-->
+      <div v-if="loading">
+        <!-- Repeat skeletons to match number of expected slides -->
+        <div class="card mb-4">
+          <div class="row">
+            <div class="col my-5 mx-5 order-2 order-md-1">
+              <div class="card-body">
+                <div class="skeleton-title mb-3"></div>
+                <div class="skeleton-button"></div>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex order-1 order-md-2">
+              <div class="skeleton-img w-100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- News pinned item -->
-      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div
+        v-else
+        id="carouselExampleFade"
+        class="carousel slide carousel-fade"
+        data-bs-ride="carousel"
+      >
         <div class="carousel-inner">
           <div
             class="carousel-item active mb-4"
@@ -81,7 +103,21 @@
         </button>
       </div>
 
-      <div class="row">
+      <div class="row" v-if="loadingThree">
+        <div class="col-md-4 mb-4" v-for="n in 3" :key="n">
+          <div class="card">
+            <div class="skeleton-img-top w-100"></div>
+            <div class="card-body">
+              <div class="skeleton-title mb-2"></div>
+              <div class="skeleton-text mb-2"></div>
+
+              <div class="skeleton-button"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" v-else>
         <!-- News Item 1 -->
         <div class="col-md-4 mb-4" v-for="news in newsStore.threeNewsList" :key="news.id">
           <div class="card">
@@ -113,17 +149,24 @@
 <script setup>
 // imports
 import { useNewsStore } from '@/stores/useNews'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 // stores & i18n
 const newsStore = useNewsStore()
 const { locale } = useI18n()
+
+// reactive variables
+const loading = ref(true)
+const loadingThree = ref(true)
 // on mounted
 onMounted(async () => {
   await newsStore.threeNews()
+  loadingThree.value = false
   await newsStore.getPinnedNews()
+  loading.value = false
 })
+// methods
 const truncateWords = (text, wordLimit = 5) => {
   if (!text) return ''
   const words = text.split(' ')
@@ -204,5 +247,55 @@ const truncateWords = (text, wordLimit = 5) => {
   height: 3px;
   background-color: #4c7b8b;
   transform: translateX(-50%); /* Center the underline */
+}
+
+.skeleton-title {
+  height: 30px;
+  width: 80%;
+  background-color: #ddd;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-button {
+  height: 35px;
+  width: 100px;
+  background-color: #ccc;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-text {
+  height: 50px;
+  width: 90%;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-img-top {
+  height: 200px;
+  background-color: #ddd;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+.skeleton-img {
+  height: 400px;
+  background-color: #ddd;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
 }
 </style>
