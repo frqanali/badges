@@ -1,9 +1,18 @@
 <template>
-  <nav class="navbar navbar-expand-lg body sticky-top" dir="ltr">
+  <nav class="navbar navbar-expand-lg body sticky-top" dir="rtl">
     <div class="container-fluid background">
-      <router-link to="/" class="fw-bold fontType ps-4 pt-3 mb-3 contact-info no-underline">
-        {{ $t('gzoffice') }}
-      </router-link>
+      <a class="navbar-brand logo-large" href="#">
+        <img
+          src="/src/assets/white_text_transparent.png"
+          alt="Logo"
+          width="150"
+          height="35"
+          class="mx-3 mb-1"
+          loading="lazy"
+        />
+        <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
+      </a>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -17,6 +26,37 @@
         <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
       </button>
 
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mx-auto pe-5 ps-2">
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
+              {{ $t('whoWeAre') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
+              {{ $t('news') }}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-4')">
+              {{ $t('services') }}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
+              {{ $t('instructions') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
+              {{ $t('contactUs') }}
+            </a>
+          </li>
+        </ul>
+      </div>
       <div class="dropdown">
         <button
           class="navbar-brand btn dropdown-toggle"
@@ -42,50 +82,14 @@
           <li><button class="dropdown-item" @click="switchLanguage('en')">English</button></li>
           <li><button class="dropdown-item" @click="switchLanguage('ar')">عربي</button></li>
         </ul>
+
       </div>
-
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mx-auto pe-5 ps-2">
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
-              {{ $t('contactUs') }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
-              {{ $t('instructions') }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-4')">
-              {{ $t('services') }}
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
-              {{ $t('news') }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
-              {{ $t('whoWeAre') }}
-            </a>
-          </li>
-        </ul>
-
-        <a class="navbar-brand logo-large" href="#">
-          <img
-            src="/src/assets/white_text_transparent.png"
-            alt="Logo"
-            width="150"
-            height="35"
-            class="mx-3 mb-1"
-            loading="lazy"
-          />
-          <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
-        </a>
-      </div>
+      <router-link
+          to="/"
+          class="ps-3 pt-3 mb-3 ms-5 fw-bold fontType  contact-info no-underline greentext"
+        >
+          {{ $t('gzoffice') }}
+        </router-link>
     </div>
   </nav>
 </template>
@@ -172,6 +176,7 @@ html {
 .no-underline {
   text-decoration: none;
 }
+
 @media (max-width: 768px) {
   .dropdown {
     position: absolute;
