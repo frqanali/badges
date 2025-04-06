@@ -2,22 +2,37 @@
   <div class="container d-flex justify-content-center my-5" id="sec-6">
     <div class="col-10 col-md-6">
       <p class="text-center fs-2 underline-text">{{ $t('contactUs') }}</p>
-      <div class="card custom-card">
-        <div class="row">
-          <div class="col-md-6">
-            <div>
-              <i class="bi bi-geo-alt-fill"></i>
-              <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('location') }}</span>
+      <div class="card custom-card contact">
+        <div class="col">
+          <div class="row">
+            <div class="col-md-6">
+              <div>
+                <i class="bi bi-geo-alt-fill"></i>
+                <a
+                  href="https://maps.app.goo.gl/pt9D13DsBiDi7yJV9?g_st=com.google.maps.preview.copy"
+                  class="fw-bold fs-5 ps-4 pe-2"
+                  style="color: inherit"
+                >
+                  {{ $t('location') }}
+                </a>
+              </div>
+              <small class="text-muted"> كرادة مريم</small>
             </div>
-            <small class="text-muted"> كرادة مريم</small>
-          </div>
 
-          <div class="col-md-6">
-            <div>
-              <i class="bi bi-telephone-fill"></i>
-              <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('phoneNumber') }}</span>
+            <div class="col-md-6">
+              <div>
+                <i class="bi bi-telephone-fill"></i>
+                <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('phoneNumber') }}</span>
+              </div>
+              <small class="text-muted"> 12345678911</small>
             </div>
-            <small class="text-muted"> 12345678911</small>
+          </div>
+          <div class="mt-0 mt-md-5 col-md-15">
+            <div>
+              <i class="bi bi-envelope-fill"></i>
+              <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('email') }}</span>
+            </div>
+            <small class="text-muted">gzb@gmail.com</small>
           </div>
         </div>
       </div>
@@ -123,13 +138,21 @@ textarea.form-control {
     padding-left: 20px;
     padding-right: 20px;
   }
+  .contact {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 .bi-geo-alt-fill {
-  font-size: 40px; /* Controls the icon size */
+  font-size: 30px; /* Controls the icon size */
   color: #23486a; /* Sets the fill color */
 }
 .bi-telephone-fill {
-  font-size: 40px; /* Controls the icon size */
+  font-size: 30px; /* Controls the icon size */
+  color: #23486a; /* Sets the fill color */
+}
+.bi-envelope-fill {
+  font-size: 30px; /* Controls the icon size */
   color: #23486a; /* Sets the fill color */
 }
 .underline-text {

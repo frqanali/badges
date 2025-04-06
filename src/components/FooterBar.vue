@@ -4,19 +4,7 @@
       <!-- Your main content goes here -->
     </div>
     <footer class="footer">
-      <div class="container mt-3">
-        <p>{{ $t('phoneNumber') }}: 12345678911</p>
-        <p>{{ $t('email') }}: gzb@gmail.com</p>
-        <p>{{ $t('address') }}</p>
-
-        <p>
-          {{ $t('location') }}
-          <a href="https://maps.app.goo.gl/pt9D13DsBiDi7yJV9?g_st=com.google.maps.preview.copy">
-            {{ $t('clickhere') }}
-          </a>
-        </p>
-      </div>
-      <p class="center">{{ $t('ndc') }}</p>
+      <p class="center mt-3">{{ $t('ndc') }}</p>
     </footer>
   </div>
 </template>
@@ -26,7 +14,6 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 40vh;
 }
 
 /* Pushes the footer to the bottom */
