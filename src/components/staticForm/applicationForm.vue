@@ -39,12 +39,7 @@
 
         <label
           class="border-text"
-          style="
-            border-bottom: #000 3px solid;
-            padding-bottom: 8px;
-            font-size: 20px;
-            margin-right: 43%;
-          "
+          style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
           >الحقول تملئ من قبل اللجنة الأمنية</label
         >
         <br /><br /><br />
@@ -111,27 +106,35 @@
 
       <div class="br">
         <label>الأسم الرباعي واللقب:</label>
-        <input type="text" class="input-field2" oninput="checkInput(this)" />
+        <input type="text" class="input-field2" />
         <br /><br /><br />
 
         <div class="review-section2">
-          <label>تاريخ الولادة:</label>
-          <input type="date" class="input-small2" oninput="checkInput(this)" />
+          <div class="d-flex flex-md-row align-items-start">
+            <label>اسم الأب:</label>
+            <input type="text" class="input-small2" />
 
-          <label>محل الولادة:</label>
-          <input type="text" class="input-small2" oninput="checkInput(this)" />
+            <label>تاريخ الولادة:</label>
+            <input type="date" class="input-small2" />
+          </div>
 
-          <label>الحالة االأجتماعية:</label>
-          <input type="text" class="input-small2" oninput="checkInput(this)" />
+          <div class="d-flex flex-md-row align-items-start">
+            <label>محل الولادة:</label>
+            <input type="text" class="input-small2" />
+
+            <label>الحالة االأجتماعية:</label>
+            <input type="text" class="input-small2" />
+          </div>
         </div>
 
         <br />
+        <div class="d-flex flex-md-row align-items-start">
+          <label>القومية:</label>
+          <input type="text" class="input-medium2" oninput="checkInput(this)" />
 
-        <label>القومية:</label>
-        <input type="text" class="input-medium2" oninput="checkInput(this)" />
-
-        <label> الديانة:</label>
-        <input type="text" class="input-medium2" oninput="checkInput(this)" />
+          <label> الديانة:</label>
+          <input type="text" class="input-medium2" oninput="checkInput(this)" />
+        </div>
         <br /><br />
 
         <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
@@ -149,15 +152,16 @@
           <label>دار:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>مدة االقامة:</label>
+          <label>مدة الاقامة:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
         </div>
 
         <label>أقرب نقطة دالة:</label>
         <input type="text" class="input-medium2" oninput="checkInput(this)" />
-
-        <label> نوع الملك:</label>
-        <input type="text" class="input-medium2" oninput="checkInput(this)" />
+        <div class="d-flex flex-md-row align-items-start">
+          <label> نوع الملك:</label>
+          <input type="text" class="input-medium2" oninput="checkInput(this)" />
+        </div>
         <br /><br />
 
         <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
@@ -175,7 +179,7 @@
           <label>دار:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>مدة االقامة:</label>
+          <label>مدة الاقامة:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
           <br />
 
@@ -208,8 +212,10 @@
         <label>التحصيل الدراسي:</label>
         <input type="text" class="input-medium2" />
 
-        <label>سنة التخرج:</label>
-        <input type="text" class="input-medium2" />
+        <div class="d-flex flex-md-row align-items-start">
+          <label>سنة التخرج:</label>
+          <input type="text" class="input-medium2" />
+        </div>
       </div>
 
       <div class="page-break"></div>
@@ -435,12 +441,7 @@
       <div class="br">
         <label
           class="border-text"
-          style="
-            border-bottom: #000 3px solid;
-            padding-bottom: 8px;
-            font-size: 20px;
-            margin-right: 40%;
-          "
+          style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
           >معلومات الأقارب (الأعمام و الاخوال وأبناءهم)</label
         >
         <br /><br /><br />
@@ -544,10 +545,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
   position: relative;
   border-bottom: 3px solid black;
   padding-bottom: 43px;
+
   width: 100%;
 }
 .POM {
@@ -643,7 +645,7 @@ tr {
 }
 
 .input-small2 {
-  width: 16%;
+  width: 30%;
   margin-bottom: 10px;
   padding: 8px;
   box-sizing: border-box;
@@ -782,12 +784,6 @@ textarea {
   padding: 8px;
 }
 
-#qr-container {
-  display: none;
-  text-align: left;
-  margin-top: 5px;
-  margin-right: 66%;
-}
 button {
   display: block;
   margin: 20px auto;
@@ -801,18 +797,24 @@ button {
 button:hover {
   background-color: #03181f;
 }
-@media print {
-  .header {
-    position: fixed; /* Keep header fixed */
-    top: 10px;
-    left: 0;
-    right: 0;
-    background-color: white; /* Ensure background is white */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 5px;
+  }
+  .POM {
+    width: 120px;
+  }
+  .POMi {
+    width: 120px;
+  }
+  .text-section h2 {
+    font-size: 10px;
   }
   .background-logo {
     position: fixed; /* Keep logo fixed */
     top: 60%; /* Adjust as needed */
-    right: 0%;
+    right: -25%;
+    left: 10%;
     transform: translate(-50%, -50%);
     opacity: 0.1;
     z-index: -1; /* Ensure it stays behind content */

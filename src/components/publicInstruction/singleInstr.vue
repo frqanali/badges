@@ -5,7 +5,7 @@
       <div class="col-lg-8 col-md-7 col-12">
         <div class="border w-100 p-3 d-flex flex-column gap-3">
           <div class="d-flex flex-column gap-2">
-            <h3 class="card-title">
+            <h3 class="card-title" style="text-align: justify">
               {{ instructionStore.singleinstruction.ruletitle }}
             </h3>
             <p class="card-text" style="text-align: justify">
