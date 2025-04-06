@@ -84,12 +84,6 @@
         <div class="input-container">
           <input type="text" disabled />
         </div>
-        <div class="input-container">
-          <input type="text" disabled />
-        </div>
-
-        <br />
-        <div class="page-break"></div>
 
         <div class="committee">
           <span>عضو اللجنة الأمنية</span>
@@ -104,21 +98,19 @@
         </div>
       </div>
 
+      <div class="page-break"></div>
+      <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
+        المعلومات الشخصية :</label
+      >
       <div class="br">
         <label>الأسم الرباعي واللقب:</label>
         <input type="text" class="input-field2" />
-        <br /><br /><br />
 
         <div class="review-section2">
           <div class="d-flex flex-md-row align-items-start">
-            <label>اسم الأب:</label>
-            <input type="text" class="input-small2" />
-
             <label>تاريخ الولادة:</label>
             <input type="date" class="input-small2" />
-          </div>
 
-          <div class="d-flex flex-md-row align-items-start">
             <label>محل الولادة:</label>
             <input type="text" class="input-small2" />
 
@@ -135,7 +127,6 @@
           <label> الديانة:</label>
           <input type="text" class="input-medium2" oninput="checkInput(this)" />
         </div>
-        <br /><br />
 
         <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
           محل السكن الحالي:</label
@@ -208,14 +199,11 @@
         <label>مدة العمل:</label>
         <input type="text" class="input-medium2" />
         <br />
-
         <label>التحصيل الدراسي:</label>
         <input type="text" class="input-medium2" />
 
-        <div class="d-flex flex-md-row align-items-start">
-          <label>سنة التخرج:</label>
-          <input type="text" class="input-medium2" />
-        </div>
+        <label>سنة التخرج:</label>
+        <input type="text" class="input-medium2" />
       </div>
 
       <div class="page-break"></div>
@@ -413,6 +401,9 @@
         </table>
         <div class="page-break"></div>
         <br />
+        <h4>11 - هل يوجد لدى افراد العائلة احتجاز او توقيف لدى جهة امنية عراقية سابقة او حاليا</h4>
+        <textarea></textarea>
+        <br />
         <h4>
           12 - هل تم اتهام احد افراد العائلة سابقاً او حالياً بأي شكوى قضائيا او في طور التحقيق؟
           اذكر التفاصيل
@@ -452,7 +443,7 @@
         <br />
         <h4>17 -هل يوجد محكومية او مطلوبية بحق احد االقارب بتهمة الارهاب؟ اذكر التفاصيل</h4>
         <textarea></textarea>
-        <div class="page-break"></div>
+
         <br />
         <h4>18- هل تعرضت انت او احد افراد عائلتك او اقاربك الى عمل ارهابي؟</h4>
         <textarea></textarea>
