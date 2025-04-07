@@ -1,5 +1,5 @@
 <template>
-  <form submit.prevent="generatePDF">
+  <form @submit.prevent="generatePDF">
     <div ref="printContent">
       <div class="background-logo">
         <img src="../../assets/PMO.png" alt="PMO logo" />
@@ -40,7 +40,7 @@
           <input type="text" class="input-field" id="input3" v-model="name" required />
           <br />
           <label class="label">الجهة:</label>
-          <input type="text" class="input-medium" id="input4" />
+          <input type="text" class="input-medium" id="input4" required />
           <br />
 
           <div class="w-100 d-flex justify-content-center align-items-center">
@@ -120,28 +120,28 @@
 
         <div class="br">
           <label class="label-style">الأسم الرباعي واللقب:</label>
-          <input type="text" class="input-field2" />
+          <input type="text" class="input-field2" required />
 
           <div class="review-section2">
             <div class="d-flex flex-md-row align-items-start">
               <label class="label-style">تاريخ الولادة:</label>
-              <input type="date" class="input-small2" />
+              <input type="date" class="input-small2" required />
 
               <label class="label-style">محل الولادة:</label>
-              <input type="text" class="input-small2" />
+              <input type="text" class="input-small2" required />
 
               <label class="label-style">الحالة االأجتماعية:</label>
-              <input type="text" class="input-small2" />
+              <input type="text" class="input-small2" required />
             </div>
           </div>
 
           <br />
           <div class="d-flex flex-md-row align-items-start">
             <label class="label-style">القومية:</label>
-            <input type="text" class="input-medium2" oninput="checkInput(this)" />
+            <input type="text" class="input-medium2" required />
 
             <label class="label-style"> الديانة:</label>
-            <input type="text" class="input-medium2" oninput="checkInput(this)" />
+            <input type="text" class="input-medium2" required />
           </div>
 
           <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
@@ -151,23 +151,23 @@
 
           <div class="review-section2">
             <label class="label-style">محلة:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
 
             <label class="label-style">زقاق:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
 
             <label class="label-style">دار:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
 
             <label class="label-style">مدة الاقامة:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
           </div>
 
           <label class="label-style">أقرب نقطة دالة:</label>
-          <input type="text" class="input-medium2" oninput="checkInput(this)" />
+          <input type="text" class="input-medium2" required />
           <div class="d-flex flex-md-row align-items-start">
             <label class="label-style"> نوع الملك:</label>
-            <input type="text" class="input-medium2" oninput="checkInput(this)" />
+            <input type="text" class="input-medium2" required />
           </div>
           <br /><br />
 
@@ -178,35 +178,35 @@
 
           <div class="review-section2">
             <label class="label-style">محلة:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
 
             <label class="label-style">زقاق:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
 
             <label class="label-style">دار:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
 
             <label class="label-style">مدة الاقامة:</label>
-            <input type="text" class="input-4" oninput="checkInput(this)" />
+            <input type="text" class="input-4" required />
             <br />
 
             <label class="label-style">أقرب نقطة دالة:</label>
-            <input type="text" class="input-medium2" oninput="checkInput(this)" />
+            <input type="text" class="input-medium2" required />
           </div>
 
           <br />
           <label class="label-style">ارقام الهواتف:-1</label>
-          <input type="number" class="input-medium2" />
+          <input type="number" class="input-medium2" required />
 
           <label class="label-style"> 2-</label>
           <input type="number" class="input-medium2" />
 
           <br />
           <label class="label-style">العمل الحالي:</label>
-          <input type="text" class="input-medium2" />
+          <input type="text" class="input-medium2" required />
 
           <label class="label-style">مدة العمل:</label>
-          <input type="text" class="input-medium2" />
+          <input type="text" class="input-medium2" required />
 
           <br />
           <label class="label-style">العمل السابق:</label>
@@ -216,10 +216,10 @@
           <input type="text" class="input-medium2" />
           <br />
           <label class="label-style">التحصيل الدراسي:</label>
-          <input type="text" class="input-medium2" />
+          <input type="text" class="input-medium2" required />
 
           <label class="label-style">سنة التخرج:</label>
-          <input type="text" class="input-medium2" />
+          <input type="text" class="input-medium2" required />
         </div>
 
         <div class="page-break"></div>
