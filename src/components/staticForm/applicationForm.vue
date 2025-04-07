@@ -37,11 +37,14 @@
         <input type="text" class="input-medium" id="input4" />
         <br /><br />
 
-        <label
-          class="border-text"
-          style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
-          >الحقول تملئ من قبل اللجنة الأمنية</label
-        >
+        <div class="w-100 d-flex justify-content-center align-items-center">
+          <label
+            class="border-text"
+            style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
+            >الحقول تملئ من قبل اللجنة الأمنية</label
+          >
+        </div>
+
         <br /><br /><br />
 
         <div class="review-section">
@@ -99,32 +102,35 @@
       </div>
 
       <div class="page-break"></div>
-      <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
-        المعلومات الشخصية :</label
-      >
+      <div class="d-flex w-100 justify-content-center alighn-items-center">
+        <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px">
+          المعلومات الشخصية
+        </label>
+      </div>
+
       <div class="br">
-        <label>الأسم الرباعي واللقب:</label>
+        <label class="label-style">الأسم الرباعي واللقب:</label>
         <input type="text" class="input-field2" />
 
         <div class="review-section2">
           <div class="d-flex flex-md-row align-items-start">
-            <label>تاريخ الولادة:</label>
+            <label class="label-style">تاريخ الولادة:</label>
             <input type="date" class="input-small2" />
 
-            <label>محل الولادة:</label>
+            <label class="label-style">محل الولادة:</label>
             <input type="text" class="input-small2" />
 
-            <label>الحالة االأجتماعية:</label>
+            <label class="label-style">الحالة االأجتماعية:</label>
             <input type="text" class="input-small2" />
           </div>
         </div>
 
         <br />
         <div class="d-flex flex-md-row align-items-start">
-          <label>القومية:</label>
+          <label class="label-style">القومية:</label>
           <input type="text" class="input-medium2" oninput="checkInput(this)" />
 
-          <label> الديانة:</label>
+          <label class="label-style"> الديانة:</label>
           <input type="text" class="input-medium2" oninput="checkInput(this)" />
         </div>
 
@@ -134,23 +140,23 @@
         <br /><br />
 
         <div class="review-section2">
-          <label>محلة:</label>
+          <label class="label-style">محلة:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>زقاق:</label>
+          <label class="label-style">زقاق:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>دار:</label>
+          <label class="label-style">دار:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>مدة الاقامة:</label>
+          <label class="label-style">مدة الاقامة:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
         </div>
 
-        <label>أقرب نقطة دالة:</label>
+        <label class="label-style">أقرب نقطة دالة:</label>
         <input type="text" class="input-medium2" oninput="checkInput(this)" />
         <div class="d-flex flex-md-row align-items-start">
-          <label> نوع الملك:</label>
+          <label class="label-style"> نوع الملك:</label>
           <input type="text" class="input-medium2" oninput="checkInput(this)" />
         </div>
         <br /><br />
@@ -161,48 +167,48 @@
         <br /><br />
 
         <div class="review-section2">
-          <label>محلة:</label>
+          <label class="label-style">محلة:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>زقاق:</label>
+          <label class="label-style">زقاق:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>دار:</label>
+          <label class="label-style">دار:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
 
-          <label>مدة الاقامة:</label>
+          <label class="label-style">مدة الاقامة:</label>
           <input type="text" class="input-4" oninput="checkInput(this)" />
           <br />
 
-          <label>أقرب نقطة دالة:</label>
+          <label class="label-style">أقرب نقطة دالة:</label>
           <input type="text" class="input-medium2" oninput="checkInput(this)" />
         </div>
 
         <br />
-        <label>ارقام الهواتف:-1</label>
+        <label class="label-style">ارقام الهواتف:-1</label>
         <input type="number" class="input-medium2" />
 
-        <label> 2-</label>
+        <label class="label-style"> 2-</label>
         <input type="number" class="input-medium2" />
 
         <br />
-        <label>العمل الحالي:</label>
+        <label class="label-style">العمل الحالي:</label>
         <input type="text" class="input-medium2" />
 
-        <label>مدة العمل:</label>
+        <label class="label-style">مدة العمل:</label>
         <input type="text" class="input-medium2" />
 
         <br />
-        <label>العمل السابق:</label>
+        <label class="label-style">العمل السابق:</label>
         <input type="text" class="input-medium2" />
 
-        <label>مدة العمل:</label>
+        <label class="label-style">مدة العمل:</label>
         <input type="text" class="input-medium2" />
         <br />
-        <label>التحصيل الدراسي:</label>
+        <label class="label-style">التحصيل الدراسي:</label>
         <input type="text" class="input-medium2" />
 
-        <label>سنة التخرج:</label>
+        <label class="label-style">سنة التخرج:</label>
         <input type="text" class="input-medium2" />
       </div>
 
@@ -291,24 +297,29 @@
         </table>
 
         <br />
-        <label>العمل الحالي للأب:</label>
+        <div class="d-flex w-100 justify-content-center alighn-items-center">
+          <label style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
+            >معلومات العائلة</label
+          >
+        </div>
+        <label class="label-style">العمل الحالي للأب:</label>
         <input type="text" class="input-4" />
 
-        <label>العمل السابق للأب:</label>
-        <input type="text" class="input-4" />
-        <br />
-
-        <label>اسم الأم:</label>
-        <input type="text" class="input-4" />
-
-        <label>المهنة:</label>
+        <label class="label-style">العمل السابق للأب:</label>
         <input type="text" class="input-4" />
         <br />
 
-        <label>أسم الزوجة أو الزوج:</label>
+        <label class="label-style">اسم الأم:</label>
         <input type="text" class="input-4" />
 
-        <label>المهنة:</label>
+        <label class="label-style">المهنة:</label>
+        <input type="text" class="input-4" />
+        <br />
+
+        <label class="label-style">أسم الزوجة أو الزوج:</label>
+        <input type="text" class="input-4" />
+
+        <label class="label-style">المهنة:</label>
         <input type="text" class="input-4" />
 
         <br />
@@ -430,17 +441,20 @@
       </div>
 
       <div class="br">
-        <label
-          class="border-text"
-          style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
-          >معلومات الأقارب (الأعمام و الاخوال وأبناءهم)</label
-        >
+        <div class="d-flex w-100 justify-content-center align-items-center">
+          <label
+            class="border-text"
+            style="border-bottom: #000 3px solid; padding-bottom: 8px; font-size: 20px"
+            >معلومات الأقارب (الأعمام و الاخوال وأبناءهم)</label
+          >
+        </div>
         <br /><br /><br />
 
         <h4>16 -هل تسلم احد الاقارب مناصب حزبية او امنية مهمة قبل عام 2003؟ اذكر التفاصيل</h4>
         <textarea></textarea>
 
         <br />
+        <div class="page-break"></div>
         <h4>17 -هل يوجد محكومية او مطلوبية بحق احد االقارب بتهمة الارهاب؟ اذكر التفاصيل</h4>
         <textarea></textarea>
 
@@ -539,6 +553,8 @@ const generatePDF = async () => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200..800&display=swap');
+
 @page {
   margin: 20px 20px 40px; /* Extra bottom margin for page number */
   size: A4;
@@ -550,8 +566,18 @@ const generatePDF = async () => {
   }
 }
 
+@font-face {
+  font-family: 'Changa';
+  src: url('@/assets/fonts/Changa-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'freeserif', sans-serif;
+  font-family: 'Changa', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
   direction: rtl;
   text-align: right;
   padding: 20px;
@@ -643,6 +669,9 @@ tr {
 .signature {
   text-align: center;
   margin-top: 10px;
+}
+.label-style {
+  font-size: 20px;
 }
 .label {
   margin: 10px;
