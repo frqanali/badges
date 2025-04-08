@@ -86,9 +86,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter, useRoute } from 'vue-router'
 
 const { locale } = useI18n()
-
+const router = useRouter()
+const route = useRoute()
 const switchLanguage = (lang) => {
   locale.value = lang
   updateTextDirection(lang)
@@ -101,6 +103,20 @@ const updateTextDirection = (lang) => {
 onMounted(() => {
   document.documentElement.setAttribute('dir', 'rtl')
 })
+const navigateTo = (sectionId) => {
+  if (route.path !== '/') {
+    // Navigate to home first
+    router.push('/').then(() => {
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+      }, 500) // Adjust delay if needed
+    })
+  } else {
+    // If already on home, just scroll
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <style>
