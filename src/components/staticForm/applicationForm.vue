@@ -20,10 +20,9 @@
             <div class="w-75">
               <label class="label">رقم الحفظ:</label>
               <input type="number" class="input-small" id="input1" v-model="saveNumber" />
-              <br />
 
               <label class="label">لون الهوية:</label>
-              <select class="input-small" id="input2">
+              <select class="input-small1" id="input2">
                 <option value="" disabled>-- اختر لون الهوية --</option>
                 <option value="رصاصي">رصاصي</option>
                 <option value="بنفسجي">بنفسجي</option>
