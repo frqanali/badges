@@ -1,19 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg body sticky-top" dir="rtl">
+  <nav class="navbar navbar-expand-lg body sticky-top" dir="ltr">
     <div class="container-fluid background">
-      <a class="navbar-brand logo-large" href="#">
-        <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
-
-        <img
-          src="/src/assets/white_text_transparent.png"
-          alt="Logo"
-          width="150"
-          height="35"
-          class="mx-3 mb-1"
-          loading="lazy"
-        />
-      </a>
-
+      <router-link to="/" class="fw-bold fontType ps-4 pt-3 mb-3 contact-info no-underline">
+        {{ $t('gzoffice') }}
+      </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -27,37 +17,6 @@
         <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mx-auto pe-5 ps-2">
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
-              {{ $t('whoWeAre') }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
-              {{ $t('news') }}
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-4')">
-              {{ $t('services') }}
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
-              {{ $t('instructions') }}
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
-              {{ $t('contactUs') }}
-            </a>
-          </li>
-        </ul>
-      </div>
       <div class="dropdown">
         <button
           class="navbar-brand btn dropdown-toggle"
@@ -84,12 +43,49 @@
           <li><button class="dropdown-item" @click="switchLanguage('ar')">عربي</button></li>
         </ul>
       </div>
-      <router-link
-        to="/"
-        class="ps-3 pt-3 mb-3 ms-5 fw-bold fontType pt-md-3 contact-info no-underline greentext"
-      >
-        {{ $t('gzoffice') }}
-      </router-link>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mx-auto pe-5 ps-2">
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
+              {{ $t('contactUs') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-5')">
+              {{ $t('instructions') }}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-4')">
+              {{ $t('services') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-3')">
+              {{ $t('news') }}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-2')">
+              {{ $t('whoWeAre') }}
+            </a>
+          </li>
+        </ul>
+
+        <a class="navbar-brand logo-large" href="#">
+          <img
+            src="/src/assets/white_text_transparent.png"
+            alt="Logo"
+            width="150"
+            height="35"
+            class="me-3 mb-1"
+            loading="lazy"
+          />
+          <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
+        </a>
+      </div>
     </div>
   </nav>
 </template>
@@ -97,11 +93,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRouter, useRoute } from 'vue-router'
 
 const { locale } = useI18n()
-const router = useRouter()
-const route = useRoute()
 
 const switchLanguage = (lang) => {
   locale.value = lang
@@ -115,31 +108,12 @@ const updateTextDirection = (lang) => {
 onMounted(() => {
   document.documentElement.setAttribute('dir', 'rtl')
 })
-
-const navigateTo = (sectionId) => {
-  if (route.path !== '/') {
-    // Navigate to home first
-    router.push('/').then(() => {
-      // Wait for navigation to complete, then scroll
-      setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
-      }, 500) // Adjust delay if needed
-    })
-  } else {
-    // If already on home, just scroll
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
-  }
-}
 </script>
 
 <style>
 .navbar .container-fluid {
   margin: 0;
   padding: 0;
-}
-
-.pointer {
-  cursor: pointer;
 }
 
 .navbar-nav {
@@ -176,7 +150,6 @@ html {
 .no-underline {
   text-decoration: none;
 }
-
 @media (max-width: 768px) {
   .dropdown {
     position: absolute;
@@ -187,6 +160,9 @@ html {
   }
   .logo-large {
     display: none;
+  }
+  .navbar-collapse {
+    text-align: right; /* Ensures text alignment also follows */
   }
 }
 </style>
