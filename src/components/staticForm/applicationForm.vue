@@ -22,7 +22,7 @@
           <input type="number" class="input-small" id="input1" v-model="saveNumber" />
 
           <label class="label">رقم الاستمارة:</label>
-          <input type="number" class="input-small" id="input1" />
+          <input type="number" class="input-small1" id="input1" />
 
           <br /><br />
           <label class="label">لون الهوية:</label>
