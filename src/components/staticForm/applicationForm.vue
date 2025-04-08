@@ -22,7 +22,7 @@
           <input type="number" class="input-small" id="input1" v-model="saveNumber" />
 
           <label class="label">رقم الاستمارة:</label>
-          <input type="number" class="input-small1" id="input1" />
+          <input type="number" class="input-small" id="input1" />
 
           <br /><br />
           <label class="label">لون الهوية:</label>
@@ -512,7 +512,7 @@
         </div>
       </div>
       <div id="qr-container" style="margin-top: 20px; text-align: left">
-        <label>QR Code:</label>
+        <label style="position: relative; top: -50px">QR Code:</label>
         <canvas ref="qrCanvas"></canvas>
       </div>
     </div>
@@ -743,6 +743,7 @@ tr {
   padding-top: 1%;
   border: none;
   border-bottom: 2px solid #ccc;
+  margin-top: 25px; /* Adjust as needed */
 }
 
 .input-4 {
@@ -887,6 +888,13 @@ button:hover {
   background-color: #03181f;
 }
 @media (max-width: 768px) {
+  .image-holder {
+    position: relative;
+    top: -8px;
+    margin-bottom: 8px;
+    float: left;
+  }
+
   .main-content {
     padding: 5px;
   }
