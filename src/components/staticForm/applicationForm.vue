@@ -15,33 +15,39 @@
       </div>
 
       <div class="main-content">
-        <div class="br">
-          <div class="image-holder text-center">هنا الصورة الشخصية</div>
+        <div>
+          <div class="d-flex justify-content-between">
+            <div class="w-75">
+              <label class="label">رقم الحفظ:</label>
+              <input type="number" class="input-small" id="input1" v-model="saveNumber" />
+              <br />
 
-          <label class="label">رقم الحفظ:</label>
-          <input type="number" class="input-small" id="input1" v-model="saveNumber" />
+              <label class="label">لون الهوية:</label>
+              <select class="input-small" id="input2">
+                <option value="" disabled>-- اختر لون الهوية --</option>
+                <option value="رصاصي">رصاصي</option>
+                <option value="بنفسجي">بنفسجي</option>
+                <option value="اخضر">اخضر</option>
+                <option value="اصفر">اصفر</option>
+                <option value="ازرق">ازرق</option>
+              </select>
+              <br />
 
-          <label class="label">رقم الاستمارة:</label>
-          <input type="number" class="input-small1" id="input1" />
+              <label class="label">الاسم:</label>
+              <input type="text" class="input-field" id="input3" v-model="name" required />
+              <br />
+              <label class="label">الجهة:</label>
+              <input type="text" class="input-field" id="input4" required />
+              <br />
+            </div>
 
-          <br /><br />
-          <label class="label">لون الهوية:</label>
-          <select class="input-small" id="input2">
-            <option value="" disabled>-- اختر لون الهوية --</option>
-            <option value="رصاصي">رصاصي</option>
-            <option value="بنفسجي">بنفسجي</option>
-            <option value="اخضر">اخضر</option>
-            <option value="اصفر">اصفر</option>
-            <option value="ازرق">ازرق</option>
-          </select>
-          <br />
-
-          <label class="label">الاسم:</label>
-          <input type="text" class="input-field" id="input3" v-model="name" required />
-          <br />
-          <label class="label">الجهة:</label>
-          <input type="text" class="input-medium" id="input4" required />
-          <br />
+            <div class="flex-column">
+              <div class="image-holder text-center">هنا الصورة الشخصية</div>
+              <div id="qr-container">
+                <canvas ref="qrCanvas"></canvas>
+              </div>
+            </div>
+          </div>
 
           <div class="w-100 d-flex justify-content-center align-items-center">
             <label
@@ -511,10 +517,6 @@
           <label style="margin-right: 66%">بصمة الابهام الايسر:</label>
         </div>
       </div>
-      <div id="qr-container" style="margin-top: 20px; text-align: left">
-        <label style="position: relative; top: -50px">QR Code:</label>
-        <canvas ref="qrCanvas"></canvas>
-      </div>
     </div>
     <button type="submit">طباعة</button>
   </form>
@@ -609,11 +611,10 @@ body {
 }
 
 .image-holder {
-  width: 100px;
+  width: 110px;
   height: 100px;
   border: solid 3px #ccc;
-  position: absolute;
-  left: 3%;
+  float: left;
 }
 .header {
   display: flex;
@@ -893,6 +894,12 @@ button:hover {
     top: -8px;
     margin-bottom: 8px;
     float: left;
+    min-width: 80px;
+    min-height: 80px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 10px; /* Optional: reduce text size */
+    background-color: #f9f9f9; /* Optional: makes box visible before image loads */
   }
 
   .main-content {
@@ -918,6 +925,10 @@ button:hover {
   }
   .br {
     margin-top: 24%;
+  }
+  #qr-container {
+    display: right;
+    width: 80px !important;
   }
 }
 </style>
