@@ -26,7 +26,7 @@
           aria-expanded="false"
         >
           <!-- Conditional rendering of language text -->
-          {{ locale.value === 'ar' ? 'EN' : 'AR' }}
+          {{ locale === 'ar' ? 'EN' : 'AR' }}
         </button>
         <ul class="dropdown-menu" aria-labelledby="languageDropdown">
           <li><button class="dropdown-item" @click="switchLanguage('en')">English</button></li>
