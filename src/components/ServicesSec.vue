@@ -7,15 +7,26 @@
           <div class="card-body">
             <h5 class="card-title">الاستمارة الامنية لاصدار لهويات المنطقة الخضراء</h5>
             <p class="card-text">الاستمارة الامنية الخاصة بالتقديم على هويات المنطقة الخضراء</p>
-            <router-link to="/applicationForm"
-              ><button class="btn btn-color">{{ $t('go') }}</button>
-            </router-link>
+            <a href="https://gzamn.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
+              <button class="btn btn-color">{{ $t('go') }}</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 me-6 ms-6">
+        <div class="card backgrounds">
+          <div class="card-body">
+            <h5 class="card-title">استمارة تسجيل المنطقة الخضراء</h5>
+            <p class="card-text">استمارة هوية دخول المنطقة الخضراء</p>
+            <a href="https://gzapplication.com/" target="_blank" rel="noopener noreferrer">
+              <button class="btn btn-color">{{ $t('go') }}</button>
+            </a>
           </div>
         </div>
       </div>
       <div
         class="col-md-6 me-6 ms-6"
-        v-for="service in serviceStore.serviceList.slice(0, 5)"
+        v-for="service in serviceStore.serviceList.slice(0, 4)"
         :key="service.id"
       >
         <div class="card backgrounds">
