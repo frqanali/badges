@@ -1,13 +1,12 @@
 <template>
-    <div>
-      <slot />
+  <div>
+    <slot />
 
-      <i class="bi bi-arrow-up-circle back-to-top" @click="scrollToTop" v-show="showButton"></i>
-    </div>
+    <i class="bi bi-arrow-up-circle back-to-top" @click="scrollToTop" v-show="showButton"></i>
+  </div>
 </template>
 
 <script setup>
-
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const showButton = ref(false)
@@ -30,7 +29,6 @@ onUnmounted(() => {
 </script>
 
 <style>
-
 .back-to-top {
   position: fixed;
   bottom: 100px;
@@ -46,6 +44,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 .back-to-top:hover {
   background-color: #3b6790;

@@ -29,11 +29,12 @@
       >
         <div class="carousel-inner">
           <div
-            class="carousel-item active mb-4"
-            v-for="news in newsStore.pinnedNewsList"
+            class="carousel-item"
+            :class="{ active: index === 0 }"
+            v-for="(news, index) in newsStore.pinnedNewsList"
             :key="news.id"
           >
-            <div class="card">
+            <div class="card mb-4">
               <div class="row">
                 <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
@@ -53,9 +54,9 @@
                         ? `data:image/png;base64,${news.image}`
                         : '/src/assets/GzLogoFi.png'
                     "
-                    class="newsImg1"
+                    class="newsImg1 img-fluid"
                     :class="locale === 'ar' ? 'ltr-radius' : 'rtl-radius'"
-                    alt="News Image 1"
+                    alt="News Image"
                     loading="lazy"
                   />
                 </div>
@@ -63,6 +64,7 @@
             </div>
           </div>
         </div>
+
         <button
           class="carousel-control-prev"
           type="button"
