@@ -16,7 +16,7 @@
                   {{ $t('location') }}
                 </a>
               </div>
-              <small class="text-muted"> كرادة مريم</small>
+              <small class="text-muted"> بغداد - المنطقة الدولية - مدخل القصر الحكومي </small>
             </div>
 
             <div class="col-md-6">
@@ -24,7 +24,7 @@
                 <i class="bi bi-telephone-fill"></i>
                 <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('phoneNumber') }}</span>
               </div>
-              <small class="text-muted"> 12345678911</small>
+              <small class="text-muted"> 07901948226</small>
             </div>
           </div>
           <div class="mt-0 mt-md-5 col-md-15">
@@ -32,7 +32,7 @@
               <i class="bi bi-envelope-fill"></i>
               <span class="fw-bold fs-5 ps-4 pe-2">{{ $t('email') }}</span>
             </div>
-            <small class="text-muted">gzb@gmail.com</small>
+            <small class="text-muted">gz@pmo.gov.iq</small>
           </div>
         </div>
       </div>
