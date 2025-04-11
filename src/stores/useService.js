@@ -14,8 +14,12 @@ export const useServiceStore = defineStore('serviceStore', () => {
     pio: '',
     servicedescription: '',
     image: '',
+    servicetitle_en: '',
+    pio_en: '',
+    servicedescription_en: '',
+    links: '',
+    pdf: '',
   })
-
   const serviceList = ref([])
 
   const serviceId = ref(null)
