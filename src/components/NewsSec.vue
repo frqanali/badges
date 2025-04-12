@@ -39,7 +39,7 @@
                 <div class="col my-5 mx-5 order-2 order-md-1">
                   <div class="card-body">
                     <h5 class="card-title fs-3" style="text-align: justify">
-                      {{ news.title }}
+                      {{ locale === 'ar' ? news.title : news.title_en }}
                     </h5>
                     <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
                       <button class="btn btn-color mt-4">{{ $t('more') }}</button>
@@ -130,7 +130,9 @@
               loading="lazy"
             />
             <div class="card-body">
-              <h5 class="card-title" style="text-align: justify">{{ news.title }}</h5>
+              <h5 class="card-title" style="text-align: justify">
+                {{ locale === 'ar' ? news.title : news.title_en }}
+              </h5>
               <p class="card-text">{{ truncateWords(news.pio, 10) }}</p>
               <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
                 <button class="btn btn-color">{{ $t('more') }}</button>

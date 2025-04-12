@@ -31,7 +31,7 @@
       >
         <div class="card backgrounds">
           <div class="card-body">
-            <h5 class="card-title">{{ service.title }}</h5>
+            <h5 class="card-title">{{ local === 'ar' ? service.title : service.title_en }}</h5>
             <p class="card-text">
               {{ truncateWords(service.pio, 10) }}
             </p>
@@ -54,7 +54,9 @@
 // imports
 import { useServiceStore } from '@/stores/useService'
 import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { local } = useI18n()
 const truncateWords = (text, wordLimit = 5) => {
   if (!text) return ''
   const words = text.split(' ')

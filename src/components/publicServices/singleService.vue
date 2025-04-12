@@ -12,10 +12,18 @@
           </div>
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title" style="text-align: justify">
-              {{ serviceStore.singleservice.servicetitle }}
+              {{
+                local === 'ar'
+                  ? serviceStore.singleservice.servicetitle
+                  : serviceStore.singleservice.servicetitle_en
+              }}
             </h3>
             <p class="card-text" style="text-align: justify">
-              {{ serviceStore.singleservice.servicedescription }}
+              {{
+                local === 'ar'
+                  ? serviceStore.singleservice.servicedescription
+                  : serviceStore.singleservice.servicedescription_en
+              }}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -36,7 +44,7 @@
               class="list-group-item"
               @click="serviceStore.getSingleService(services.id)"
             >
-              {{ services.title }}
+              {{ local === 'ar' ? service.title : service.title_en }}
             </li>
           </ul>
           <div class="card-footer">
@@ -60,7 +68,9 @@ import { ref } from 'vue'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useServiceStore } from '@/stores/useService'
+import { useI18n } from 'vue-i18n'
 
+const { local } = useI18n()
 // route & store & variables
 const serviceStore = useServiceStore()
 const currentPage = ref(1)

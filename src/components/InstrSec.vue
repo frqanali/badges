@@ -11,7 +11,9 @@
         >
           <div class="card h-100 p-3">
             <div class="card-body">
-              <h5 class="card-title">{{ instruction.title }}</h5>
+              <h5 class="card-title">
+                {{ local === 'ar' ? instruction.title : instruction.title_en }}
+              </h5>
             </div>
             <router-link :to="{ name: 'singleIntr', query: { id: instruction.id } }"
               ><button type="button " class="btn btn-color mb-3">
@@ -39,7 +41,9 @@
 import { useRouter } from 'vue-router'
 import { useInstructionStore } from '../stores/useInstructions.js'
 import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { local } = useI18n()
 // router
 const router = useRouter()
 // stores

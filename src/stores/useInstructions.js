@@ -55,7 +55,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       const response = await axios.post(apiURL + 'greenzone/get_rules', payload)
 
       if (response.status === 200) {
-        instructionList.value = response.data.rules
+        instructionList.value = response.data.rules 
         totalInstructions.value = response.data.pagination.total_items
       }
     } catch (error) {

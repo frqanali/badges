@@ -13,10 +13,16 @@
 
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title" style="text-align: justify">
-              {{ newsStore.singlenews.newstitle }}
+              {{
+                local === 'ar' ? newsStore.singlenews.newstitle : newsStore.singlenews.newstitle_en
+              }}
             </h3>
             <p class="card-text" style="text-align: justify">
-              {{ newsStore.singlenews.newsdescription }}
+              {{
+                local === 'ar'
+                  ? newsStore.singlenews.newsdescription
+                  : newsStore.singlenews.newsdescription_en
+              }}
             </p>
           </div>
           <div class="d-flex justify-content-end">
@@ -37,7 +43,7 @@
               class="list-group-item"
               @click="newsStore.getSingleNews(news.id)"
             >
-              {{ news.title }}
+              {{ local === 'ar' ? news.title : news.title_en }}
             </li>
           </ul>
           <div class="card-footer">
@@ -61,6 +67,9 @@ import { ref } from 'vue'
 import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useNewsStore } from '@/stores/useNews'
+import { useI18n } from 'vue-i18n'
+
+const { local } = useI18n()
 // route
 const route = useRoute()
 // stores
