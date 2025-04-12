@@ -101,6 +101,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
         singleservice.value.servicedescription_en = response.data.description_en
         singleservice.value.links = response.data.links
         singleservice.value.pio_en = response.data.pio_en
+        singleservice.value.pdf = response.data.pdf
         singleservice.value.image = response.data.image
           ? `data:image/png;base64,${response.data.image}`
           : response.data.image

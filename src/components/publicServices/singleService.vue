@@ -26,7 +26,7 @@
               }}
             </p>
             <button class="btn btn-color" @click="goToService">الانتقال الى الخدمة</button>
-            <button class="btn btn-color">تحميل الملف</button>
+            <button class="btn btn-color" @click="downloadPdf">تحميل الملف</button>
           </div>
           <div class="d-flex justify-content-end">
             <router-link to="/">
@@ -80,6 +80,41 @@ const route = useRoute()
 
 const onClickHandler = (page) => {
   serviceStore.getAllServices(page)
+}
+
+const downloadPdf = () => {
+  const base64Data = serviceStore.singleservice.pdf
+
+  if (base64Data) {
+    const blob = base64ToBlob(base64Data, 'application/pdf')
+    const blobUrl = URL.createObjectURL(blob)
+
+    const link = document.createElement('a')
+    link.href = blobUrl
+    link.download = 'file.pdf' // Optional: set a filename
+    link.click()
+
+    URL.revokeObjectURL(blobUrl) // Cleanup
+  } else {
+    console.warn('PDF data is not available')
+  }
+}
+
+const base64ToBlob = (base64, mime = '') => {
+  const byteCharacters = atob(base64)
+  const byteArrays = []
+
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512)
+    const byteNumbers = new Array(slice.length)
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i)
+    }
+    const byteArray = new Uint8Array(byteNumbers)
+    byteArrays.push(byteArray)
+  }
+
+  return new Blob(byteArrays, { type: mime })
 }
 
 onMounted(async () => {
