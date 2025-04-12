@@ -1,24 +1,54 @@
 <template>
   <h1>{{ Title }}</h1>
-  <div class="col-5">
-    <div class="input-group mb-3">
-      <input
-        v-model="instructionStore.singleinstruction.ruletitle"
-        type="text"
-        class="form-control"
-        placeholder="العنوان"
-        aria-label="Recipient's username"
-        aria-describedby="basic-addon2"
-      />
-    </div>
+  <div class="col-10">
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input
+            v-model="instructionStore.singleinstruction.ruletitle"
+            type="text"
+            class="form-control"
+            placeholder="العنوان"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </div>
+      </div>
 
-    <div class="input-group">
-      <textarea
-        v-model="instructionStore.singleinstruction.ruledescription"
-        class="form-control custom-textarea"
-        aria-label="With textarea"
-        :placeholder="$t('content')"
-      ></textarea>
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input
+            v-model="instructionStore.singleinstruction.ruletitle_en"
+            type="text"
+            class="form-control"
+            placeholder="Title"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group">
+          <textarea
+            v-model="instructionStore.singleinstruction.ruledescription"
+            class="form-control custom-textarea"
+            aria-label="With textarea"
+            :placeholder="$t('content')"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="input-group">
+          <textarea
+            v-model="instructionStore.singleinstruction.ruledescription_en"
+            class="form-control custom-textarea"
+            aria-label="With textarea"
+            placeholder="content"
+          ></textarea>
+        </div>
+      </div>
     </div>
 
     <div class="container d-flex my-5">

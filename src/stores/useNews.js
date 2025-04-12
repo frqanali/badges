@@ -15,6 +15,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsdescription: '',
     image: '',
     pio: '',
+    newstitle_en: '',
+    newsdescription_en: '',
+    pio_en: '',
   })
 
   const threeNewsList = ref([])

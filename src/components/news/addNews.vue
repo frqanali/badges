@@ -1,28 +1,57 @@
 <template>
   <h1>{{ headingLabel }}</h1>
-  <div class="col-5">
-    <div class="input-group mb-3">
-      <input
-        v-model="newsStore.singlenews.newstitle"
-        type="text"
-        class="form-control"
-        :placeholder="$t('newsTitle')"
-        aria-label="Recipient's username"
-        aria-describedby="basic-addon2"
-      />
+  <div class="col-10">
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input
+            v-model="newsStore.singlenews.newstitle"
+            type="text"
+            class="form-control"
+            :placeholder="$t('newsTitle')"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input
+            v-model="newsStore.singlenews.newstitle_en"
+            type="text"
+            class="form-control"
+            placeholder="News Title"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </div>
+      </div>
     </div>
-
-    <div class="input-group mb-3">
-      <input
-        v-model="newsStore.singlenews.pio"
-        type="text"
-        class="form-control"
-        :placeholder="$t('about')"
-        aria-label="Username"
-      />
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input
+            v-model="newsStore.singlenews.pio"
+            type="text"
+            class="form-control"
+            :placeholder="$t('about')"
+            aria-label="Username"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <input
+            v-model="newsStore.singlenews.pio_en"
+            type="text"
+            class="form-control"
+            placeholder="about"
+            aria-label="Username"
+          />
+        </div>
+      </div>
     </div>
-
-    <div class="input-group">
+    <div class="input-group mb-3">
       <textarea
         v-model="newsStore.singlenews.newsdescription"
         class="form-control"
@@ -30,7 +59,14 @@
         :placeholder="$t('content')"
       ></textarea>
     </div>
-
+    <div class="input-group">
+      <textarea
+        v-model="newsStore.singlenews.newsdescription_en"
+        class="form-control"
+        aria-label="With textarea"
+        placeholder="content"
+      ></textarea>
+    </div>
     <!-- Image Upload Input -->
     <div class="input-group my-3">
       <input

@@ -13,6 +13,8 @@ export const useInstructionStore = defineStore('instructionStore', () => {
   const singleinstruction = ref({
     ruletitle: '',
     ruledescription: '',
+    ruletitle_en: '',
+    ruledescription_en: '',
   })
 
   const instructionList = ref([])
