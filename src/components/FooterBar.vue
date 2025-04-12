@@ -10,24 +10,23 @@
 </template>
 
 <style scoped>
-/* Ensures the page takes the full height */
 .page-container {
+  min-height: 1vh; /* Full height of viewport */
   display: flex;
   flex-direction: column;
 }
 
-/* Pushes the footer to the bottom */
 .content-wrap {
   flex: 1;
 }
 
-/* Styles the footer */
 .footer {
   background-color: #23486a;
   color: white;
-  padding: 10px 0; /* Make footer smaller by reducing padding */
-  font-size: 13px; /* Adjust font size to make it smaller */
-  margin-bottom: 0; /* Remove any space below the footer */
+  padding: 10px 0;
+  font-size: 13px;
+  margin-top: auto; /* Push footer down */
+  width: 100%;
 }
 
 /* Center the text */
