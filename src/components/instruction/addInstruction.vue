@@ -62,6 +62,7 @@
 <script setup>
 import { useInstructionStore } from '@/stores/useInstructions'
 import { computed } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
 // stores
 const instructionStore = useInstructionStore()
 
@@ -81,6 +82,13 @@ const Title = computed(() => {
 
 const buttonLabel = computed(() => {
   return instructionStore.instructionId ? 'تعديل ' : 'اضافة'
+})
+
+onBeforeRouteLeave(() => {
+  if (instructionStore.instructionId) {
+    instructionStore.instructionId = null
+  }
+  instructionStore.resetForm()
 })
 </script>
 

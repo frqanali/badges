@@ -184,6 +184,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
       servicetitle: '',
       pio: '',
       servicedescription: '',
+      servicetitle_en: '',
+      pio_en: '',
+      servicedescription_en: '',
       image: '',
     }
 

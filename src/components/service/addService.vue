@@ -137,8 +137,8 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-
 import { useServiceStore } from '@/stores/useService'
+import { onBeforeRouteLeave } from 'vue-router'
 
 const serviceStore = useServiceStore()
 // Holds the image preview URL
@@ -181,6 +181,13 @@ const headingLabel = computed(() => {
 
 const buttonLabel = computed(() => {
   return serviceStore.serviceId ? 'تعديل' : 'اضافة'
+})
+
+onBeforeRouteLeave(() => {
+  if (serviceStore.serviceId) {
+    serviceStore.serviceId = null
+  }
+  serviceStore.clearItems()
 })
 </script>
 

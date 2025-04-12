@@ -250,6 +250,9 @@ export const useNewsStore = defineStore('newsStore', () => {
       newsdescription: '',
       image: '', // Reset the image property
       pio: '',
+      newstitle_en: '',
+      newsdescription_en: '',
+      pio_en: '',
     }
 
     newsId.value = null

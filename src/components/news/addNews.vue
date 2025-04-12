@@ -109,6 +109,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
+import { onBeforeRouteLeave } from 'vue-router'
 
 // Importing the useNewsStore from Pinia
 const newsStore = useNewsStore()
@@ -139,6 +140,13 @@ const headingLabel = computed(() => {
 
 const buttonLabel = computed(() => {
   return newsStore.newsId ? 'تعديل' : 'اضافة'
+})
+
+onBeforeRouteLeave(() => {
+  if (newsStore.newsId) {
+    newsStore.newsId = null
+  }
+  newsStore.clearItems()
 })
 </script>
 

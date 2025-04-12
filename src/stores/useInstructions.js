@@ -161,6 +161,8 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     singleinstruction.value = {
       ruletitle: '',
       ruledescription: '',
+      ruletitle_en: '',
+      ruledescription_en: '',
     }
 
     instructionId.value = null
