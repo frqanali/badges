@@ -5,8 +5,8 @@
       <div class="col-md-6 me-6 ms-6">
         <div class="card backgrounds">
           <div class="card-body">
-            <h5 class="card-title">الاستمارة الامنية لاصدار لهويات المنطقة الخضراء</h5>
-            <p class="card-text">الاستمارة الامنية الخاصة بالتقديم على هويات المنطقة الخضراء</p>
+            <h5 class="card-title">{{ $t('gzapp2') }}</h5>
+            <p class="card-text">{{ $t('gzapp2') }}</p>
             <a href="https://gz-amn.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
               <button class="btn btn-color">{{ $t('go') }}</button>
             </a>
@@ -16,8 +16,8 @@
       <div class="col-md-6 me-6 ms-6">
         <div class="card backgrounds">
           <div class="card-body">
-            <h5 class="card-title">استمارة تسجيل المنطقة الخضراء</h5>
-            <p class="card-text">استمارة هوية دخول المنطقة الخضراء</p>
+            <h5 class="card-title">{{ $t('gzapp') }}</h5>
+            <p class="card-text">{{ $t('gzapp') }}</p>
             <a href="https://gzoffice.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
               <button class="btn btn-color">{{ $t('go') }}</button>
             </a>
