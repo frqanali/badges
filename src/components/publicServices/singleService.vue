@@ -25,6 +25,8 @@
                   : serviceStore.singleservice.servicedescription_en
               }}
             </p>
+            <button class="btn btn-color" @click="goToService">الانتقال الى الخدمة</button>
+            <button class="btn btn-color">تحميل الملف</button>
           </div>
           <div class="d-flex justify-content-end">
             <router-link to="/">
@@ -91,6 +93,10 @@ onMounted(async () => {
     }
   }
 })
+
+const goToService = () => {
+  window.open(serviceStore.singleservice.links, '_blank')
+}
 </script>
 
 <style>
