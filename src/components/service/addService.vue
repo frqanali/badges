@@ -149,7 +149,7 @@ const handlePdfUpload2 = (event) => {
   const file = event.target.files[0]
   if (file && file.type === 'application/pdf') {
     pdfName2.value = file.name
-    serviceStore.service2.pdf = file // store the file if needed
+    serviceStore.setUploadedPdf(file) // ✅ Use the new store function
   } else {
     pdfName2.value = null
     alert('Please select a valid PDF file.')

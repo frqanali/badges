@@ -95,6 +95,10 @@ export const useServiceStore = defineStore('serviceStore', () => {
         singleservice.value.servicetitle = response.data.title
         singleservice.value.servicedescription = response.data.description
         singleservice.value.pio = response.data.pio
+        singleservice.value.servicetitle_en = response.data.title_en
+        singleservice.value.servicedescription_en = response.data.description_en
+        singleservice.value.links = response.data.links
+        singleservice.value.pio_en = response.data.pio_en
         singleservice.value.image = response.data.image
           ? `data:image/png;base64,${response.data.image}`
           : response.data.image
@@ -190,8 +194,13 @@ export const useServiceStore = defineStore('serviceStore', () => {
     singleservice.value.image = file
   }
 
+  const setUploadedPdf = (file) => {
+    singleservice.value.pdf = file
+  }
+
   return {
     createService,
+    setUploadedPdf,
     singleservice,
     getAllServices,
     serviceList,

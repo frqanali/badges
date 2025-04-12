@@ -130,6 +130,9 @@ export const useNewsStore = defineStore('newsStore', () => {
         singlenews.value.newsdescription = response.data.description
         singlenews.value.pio = response.data.pio
         singlenews.value.image = response.data.image
+        singlenews.value.newstitle_en = response.data.title_en
+        singlenews.value.newsdescription_en = response.data.description_en
+        singlenews.value.pio_en = response.data.pio_en
           ? `data:image/png;base64,${response.data.image}`
           : response.data.image
       }
