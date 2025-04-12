@@ -3,11 +3,15 @@ import axios from 'axios'
 import { ref } from 'vue'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from './useAuth'
+
 const imageInput = ref(null) // Reference to the file input
 
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useNewsStore = defineStore('newsStore', () => {
+  // stores @ route
+  const useAuth = useAuthStore()
   const router = useRouter()
   // Reactive variables
   const singlenews = ref({
@@ -60,9 +64,7 @@ export const useNewsStore = defineStore('newsStore', () => {
         apiURL + 'greenzone/delete_news/' + id,
 
         {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { Authorization: `Bearer ${useAuth.token}` },
         },
       )
       if (response.status === 200) {
@@ -98,7 +100,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     })
 
     try {
-      const response = await axios.post(apiURL + 'greenzone/create_news', payload)
+      const response = await axios.post(apiURL + 'greenzone/create_news', payload, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
 
       if (response.status === 201) {
         Swal.fire({
@@ -151,7 +155,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     })
 
     try {
-      const response = await axios.put(apiURL + 'greenzone/news_update/' + newsId.value, payload)
+      const response = await axios.put(apiURL + 'greenzone/news_update/' + newsId.value, payload, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
       if (response.status == 200) {
         Swal.fire({
           title: 'تم تعديل الخبر بنجاح',

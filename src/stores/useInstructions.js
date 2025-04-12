@@ -3,12 +3,14 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
+import { useAuthStore } from './useAuth'
 
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useInstructionStore = defineStore('instructionStore', () => {
   // Reactive variables
   const router = useRouter()
+  const useAuth = useAuthStore()
 
   const singleinstruction = ref({
     ruletitle: '',
@@ -27,7 +29,9 @@ export const useInstructionStore = defineStore('instructionStore', () => {
 
   const createinstruction = async () => {
     try {
-      const response = await axios.post(apiURL + 'greenzone/create_rule', singleinstruction.value)
+      const response = await axios.post(apiURL + 'greenzone/create_rule', singleinstruction.value, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
 
       if (response.status === 201) {
         Swal.fire({
@@ -55,7 +59,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       const response = await axios.post(apiURL + 'greenzone/get_rules', payload)
 
       if (response.status === 200) {
-        instructionList.value = response.data.rules 
+        instructionList.value = response.data.rules
         totalInstructions.value = response.data.pagination.total_items
       }
     } catch (error) {
@@ -101,6 +105,9 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       const response = await axios.put(
         apiURL + 'greenzone/update_rule/' + instructionId.value,
         singleinstruction.value,
+        {
+          headers: { Authorization: `Bearer ${useAuth.token}` },
+        },
       )
       if (response.status === 200) {
         Swal.fire({
@@ -126,9 +133,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
         apiURL + 'greenzone/delete_rule/' + id,
 
         {
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { Authorization: `Bearer ${useAuth.token}` },
         },
       )
       if (response.status === 200) {

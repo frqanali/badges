@@ -3,11 +3,13 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
+import { useAuthStore } from './useAuth'
 
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useServiceStore = defineStore('serviceStore', () => {
   const router = useRouter()
+  const useAuth = useAuthStore()
   //reactive variables
   const singleservice = ref({
     servicetitle: '',
@@ -40,7 +42,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
     })
 
     try {
-      const response = await axios.post(apiURL + 'greenzone/create_service', payload)
+      const response = await axios.post(apiURL + 'greenzone/create_service', payload, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
       if (response.status === 201) {
         Swal.fire({
           title: 'تم اضافة خدمة جديدة بنجاح',
@@ -125,6 +129,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
       const response = await axios.put(
         apiURL + 'greenzone/service_update/' + serviceId.value,
         payload,
+        {
+          headers: { Authorization: `Bearer ${useAuth.token}` },
+        },
       )
       if (response.status === 200) {
         Swal.fire({
@@ -146,9 +153,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
   const deleteService = async (id) => {
     try {
       const response = await axios.delete(apiURL + 'greenzone/delete_service/' + id, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { Authorization: `Bearer ${useAuth.token}` },
       })
       if (response.status === 200) {
         Swal.fire({
