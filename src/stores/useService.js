@@ -70,7 +70,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
       const response = await axios.post(apiURL + 'greenzone/get_all_service', payload)
 
       if (response.status === 200) {
+        console.log(response.data)
         serviceList.value = response.data.services
+
         totalServices.value = response.data.pagination.total_items
       }
     } catch (error) {

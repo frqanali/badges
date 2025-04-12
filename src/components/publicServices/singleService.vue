@@ -44,7 +44,7 @@
               class="list-group-item"
               @click="serviceStore.getSingleService(services.id)"
             >
-              {{ locale === 'ar' ? service.title : service.title_en }}
+              {{ locale === 'ar' ? services.title : services.title_en }}
             </li>
           </ul>
           <div class="card-footer">
