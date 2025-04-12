@@ -179,5 +179,6 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     editInstruction,
     instructionId,
     getSingleinstruction,
+    resetForm,
   }
 })
