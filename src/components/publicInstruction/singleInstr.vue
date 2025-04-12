@@ -7,14 +7,14 @@
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title" style="text-align: justify">
               {{
-                local === 'ar'
+                locale === 'ar'
                   ? instructionStore.singleinstruction.ruletitle
                   : instructionStore.singleinstruction.ruletitle_en
               }}
             </h3>
             <p class="card-text" style="text-align: justify">
               {{
-                local === 'ar'
+                locale === 'ar'
                   ? instructionStore.singleinstruction.ruledescription
                   : instructionStore.singleinstruction.ruledescription_en
               }}
@@ -38,7 +38,7 @@
               class="list-group-item"
               @click="instructionStore.getSingleinstruction(instructions.id)"
             >
-              {{ local === 'ar' ? instructions.title : instructions.title_en }}
+              {{ locale === 'ar' ? instructions.title : instructions.title_en }}
             </li>
           </ul>
           <div class="card-footer">
@@ -64,7 +64,7 @@ import { useRoute } from 'vue-router'
 import { useInstructionStore } from '@/stores/useInstructions'
 import { useI18n } from 'vue-i18n'
 
-const { local } = useI18n()
+const { locale } = useI18n()
 
 // route
 const route = useRoute()

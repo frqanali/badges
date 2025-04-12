@@ -12,7 +12,7 @@
           <div class="card h-100 p-3">
             <div class="card-body">
               <h5 class="card-title">
-                {{ local === 'ar' ? instruction.title : instruction.title_en }}
+                {{ locale === 'ar' ? instruction.title : instruction.title_en }}
               </h5>
             </div>
             <router-link :to="{ name: 'singleIntr', query: { id: instruction.id } }"
@@ -43,7 +43,7 @@ import { useInstructionStore } from '../stores/useInstructions.js'
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { local } = useI18n()
+const { locale } = useI18n()
 // router
 const router = useRouter()
 // stores

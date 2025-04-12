@@ -17,7 +17,7 @@
             :key="instruction.id"
           >
             <td>{{ index + 1 + (currentPage - 1) * 5 }}</td>
-            <td>{{ instruction.title }}</td>
+            <td>{{ locale === 'ar' ? instruction.title : instruction.title_en }}</td>
             <td>{{ truncateWords(instruction.description, 5) }}</td>
 
             <td>
@@ -55,7 +55,9 @@
 import { onMounted } from 'vue'
 import { useInstructionStore } from '@/stores/useInstructions'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { locale } = useI18n()
 // stores
 const instructionStore = useInstructionStore()
 

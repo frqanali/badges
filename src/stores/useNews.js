@@ -183,7 +183,9 @@ export const useNewsStore = defineStore('newsStore', () => {
       flag: flag,
     }
     try {
-      const response = await axios.put(apiURL + 'greenzone/flag_update', payload)
+      const response = await axios.put(apiURL + 'greenzone/flag_update', payload, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
       if (flag) {
         if (response.status === 200) {
           Swal.fire({

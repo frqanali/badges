@@ -13,14 +13,14 @@
           <div class="d-flex flex-column gap-2">
             <h3 class="card-title" style="text-align: justify">
               {{
-                local === 'ar'
+                locale === 'ar'
                   ? serviceStore.singleservice.servicetitle
                   : serviceStore.singleservice.servicetitle_en
               }}
             </h3>
             <p class="card-text" style="text-align: justify">
               {{
-                local === 'ar'
+                locale === 'ar'
                   ? serviceStore.singleservice.servicedescription
                   : serviceStore.singleservice.servicedescription_en
               }}
@@ -44,7 +44,7 @@
               class="list-group-item"
               @click="serviceStore.getSingleService(services.id)"
             >
-              {{ local === 'ar' ? service.title : service.title_en }}
+              {{ locale === 'ar' ? service.title : service.title_en }}
             </li>
           </ul>
           <div class="card-footer">
@@ -70,7 +70,7 @@ import { useRoute } from 'vue-router'
 import { useServiceStore } from '@/stores/useService'
 import { useI18n } from 'vue-i18n'
 
-const { local } = useI18n()
+const { locale } = useI18n()
 // route & store & variables
 const serviceStore = useServiceStore()
 const currentPage = ref(1)
