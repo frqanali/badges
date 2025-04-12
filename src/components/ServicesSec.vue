@@ -7,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title">الاستمارة الامنية لاصدار لهويات المنطقة الخضراء</h5>
             <p class="card-text">الاستمارة الامنية الخاصة بالتقديم على هويات المنطقة الخضراء</p>
-            <a href="https://gz-amn.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
+            <a href="https://gzoffice.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
               <button class="btn btn-color">{{ $t('go') }}</button>
             </a>
           </div>
