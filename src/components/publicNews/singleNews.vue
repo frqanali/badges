@@ -8,7 +8,11 @@
             class="d-flex justify-content-center align-items-center overflow-hidden border m-0"
             v-if="newsStore.singlenews.image"
           >
-            <img :src="newsStore.singlenews.image" alt="service Image" class="fixed-image" />
+            <img
+              :src="`data:image/png;base64,${newsStore.singlenews.image}`"
+              alt="service Image"
+              class="fixed-image"
+            />
           </div>
 
           <div class="d-flex flex-column gap-2">

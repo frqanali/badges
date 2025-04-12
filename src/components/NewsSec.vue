@@ -133,7 +133,9 @@
               <h5 class="card-title" style="text-align: justify">
                 {{ locale === 'ar' ? news.title : news.title_en }}
               </h5>
-              <p class="card-text">{{ truncateWords(news.pio, 10) }}</p>
+              <p class="card-text">
+                {{ locale === 'ar' ? truncateWords(news.pio, 10) : truncateWords(news.pio_en, 10) }}
+              </p>
               <router-link :to="{ name: 'singleNews', query: { id: news.id } }">
                 <button class="btn btn-color">{{ $t('more') }}</button>
               </router-link>
