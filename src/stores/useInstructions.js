@@ -84,6 +84,8 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       if (response.status === 200) {
         singleinstruction.value.ruletitle = response.data.ruletitle
         singleinstruction.value.ruledescription = response.data.description
+        singleinstruction.value.ruletitle_en = response.data.ruletitle_en
+        singleinstruction.value.ruledescription_en = response.data.description_en
       }
     } catch (error) {
       Swal.fire({
