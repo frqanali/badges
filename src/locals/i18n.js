@@ -22,7 +22,7 @@ const messages = {
     par1: 'The Green Zone Identity Office is an entity affiliated to the Prime Ministers Office which is responsible for issuing and renewing IDs for entering the Green Zone in accordance with the approved controls and instructions.',
     par2: 'The office is responsible for organizing the granting of identities to employees and workers, as well as to residents residing within the region, as well as companies operating within it. The office adopts a precise system that includes five categories of identities, each of which defines specific powers, in order to ensure that the process of entering the Green Zone is organized according to the highest standards of security and discipline.',
 
-    ndc: 'General Secretariat of the Council of Ministers / National Data Center ©2025',
+    ndc: 'General Secretariat of the Council of Ministers / National Data Center 2025',
     phoneNumber: 'Phone Number',
     email: 'E-mail',
     address: 'Address: karrada inside',
@@ -45,7 +45,6 @@ const messages = {
     latestservices: ' Latest Services',
     gzapp: ' Green Zone Registration Form',
     gzapp2: ' Security form for issuing Green Zone IDs',
-
   },
   ar: {
     services: 'الخدمات',
@@ -64,7 +63,7 @@ const messages = {
     gzoffice: 'مكتب هويات المنطقة الخضراء ',
     par1: 'مكتب هويات المنطقة الخضراء هو جهة تابعة لمكتب رئيس مجلس الوزراء، يتولى مسؤولية إصدار وتجديد الهويات الخاصة بالدخول إلى المنطقة الخضراء وفقًا للضوابط والتعليمات المعتمدة.',
     par2: 'يختص المكتب بتنظيم منح الهويات للموظفين والعاملين، وكذلك للسكان المقيمين داخل المنطقة، بالإضافة إلى الشركات العاملة ضمنها. ويعتمد المكتب نظامًا دقيقًا يشمل خمس فئات من الهويات، تحدد كل منها صلاحيات محددة، بهدف ضمان تنظيم عملية الدخول إلى المنطقة الخضراء وفق أعلى معايير الأمن والانضباط.',
-    ndc: 'الأمانة العامة لمجلس الوزراء / مركز البيانات الوطني  2025 @ ',
+    ndc: 'الأمانة العامة لمجلس الوزراء / مركز البيانات الوطني  2025  ',
     phoneNumber: 'رقم الهاتف ',
     email: 'البريد الالكتروني',
     address: ' العنوان: الكرادة داخل',
@@ -87,8 +86,6 @@ const messages = {
     latestservices: ' اخر الخدمات',
     gzapp: ' استمارة تسجيل المنطقة الخضراء',
     gzapp2: ' الاستمارة الامنية لاصدار لهويات المنطقة الخضراء',
-
-
   },
 }
 

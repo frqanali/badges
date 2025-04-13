@@ -6,7 +6,7 @@
       <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
         <div
           class="col"
-          v-for="instruction in instructionStore.instructionList.splice(0, 4)"
+          v-for="instruction in instructionStore.fourinstructionList"
           :key="instruction.id"
         >
           <div class="card h-100 p-3">
@@ -55,8 +55,8 @@ const handleSubmit = (id) => {
 }
 
 // onmounted
-onMounted(() => {
-  instructionStore.getAllinstructions()
+onMounted(async () => {
+  await instructionStore.getAllinstructions()
 })
 </script>
 

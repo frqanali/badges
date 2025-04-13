@@ -20,6 +20,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
   })
 
   const instructionList = ref([])
+  const fourinstructionList = ref([])
 
   const instructionId = ref(null)
 
@@ -60,6 +61,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
 
       if (response.status === 200) {
         instructionList.value = response.data.rules
+        fourinstructionList.value = response.data.rules.slice(0, 4)
         totalInstructions.value = response.data.pagination.total_items
       }
     } catch (error) {
@@ -182,5 +184,6 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     instructionId,
     getSingleinstruction,
     resetForm,
+    fourinstructionList,
   }
 })
