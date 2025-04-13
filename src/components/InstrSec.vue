@@ -22,7 +22,7 @@
             >
 
             <div class="card-footer">
-              <small class="text-body-secondary">الضوابط والتعليمات</small>
+              <small class="text-body-secondary"> {{ $t('instructions') }}</small>
             </div>
           </div>
         </div>

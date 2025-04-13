@@ -16,7 +16,7 @@
                   {{ $t('location') }}
                 </a>
               </div>
-              <small class="text-muted"> بغداد - المنطقة الدولية - مدخل القصر الحكومي </small>
+              <small class="text-muted"> {{ $t('address') }} </small>
             </div>
 
             <div class="col-md-6">
