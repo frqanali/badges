@@ -4,6 +4,8 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import { useAuthStore } from './useAuth'
+import { useVuelidate } from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 
 const apiURL = import.meta.env.VITE_API_URL
 
@@ -11,6 +13,10 @@ export const useInstructionStore = defineStore('instructionStore', () => {
   // Reactive variables
   const router = useRouter()
   const useAuth = useAuthStore()
+  const instructionList = ref([])
+  const fourinstructionList = ref([])
+  const instructionId = ref(null)
+  const totalInstructions = ref(0)
 
   const singleinstruction = ref({
     ruletitle: '',
@@ -19,12 +25,17 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     ruledescription_en: '',
   })
 
-  const instructionList = ref([])
-  const fourinstructionList = ref([])
+  // validation
+  const rules = computed(() => {
+    return {
+      ruletitle: { required },
+      ruledescription: { required },
+      ruletitle_en: { required },
+      ruledescription_en: { required },
+    }
+  })
 
-  const instructionId = ref(null)
-
-  const totalInstructions = ref(0)
+  const v$ = useVuelidate(rules, singleinstruction)
 
   // functions
 
@@ -185,5 +196,6 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     getSingleinstruction,
     resetForm,
     fourinstructionList,
+    v$,
   }
 })

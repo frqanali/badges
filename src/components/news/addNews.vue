@@ -1,82 +1,100 @@
 <template>
-  <h1 class="text-center my-4">{{ headingLabel }}</h1>
-  <div class="container">
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">{{ headingLabel }}</h1>
+
+    <!-- Titles -->
     <div class="row mb-3">
-      <div class="col-md-6">
+      <!-- Arabic News Title -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">{{ $t('newsTitle') }}</label>
-        <div class="input-group">
-          <input
-            v-model="newsStore.singlenews.newstitle"
-            type="text"
-            class="form-control"
-            :placeholder="$t('newsTitle')"
-            aria-label="Arabic News Title"
-          />
+        <input
+          v-model="newsStore.singlenews.newstitle"
+          type="text"
+          class="form-control"
+          :placeholder="$t('newsTitle')"
+          aria-label="Arabic News Title"
+        />
+        <div class="text-danger small mt-1" v-if="newsStore.v$.newstitle.$error">
+          هذا الحقل مطلوب
         </div>
       </div>
-      <div class="col-md-6">
+
+      <!-- English News Title -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">News Title (English)</label>
-        <div class="input-group">
-          <input
-            v-model="newsStore.singlenews.newstitle_en"
-            type="text"
-            class="form-control"
-            placeholder="News Title"
-            aria-label="English News Title"
-          />
+        <input
+          v-model="newsStore.singlenews.newstitle_en"
+          type="text"
+          class="form-control"
+          placeholder="News Title"
+          aria-label="English News Title"
+        />
+        <div class="text-danger small mt-1" v-if="newsStore.v$.newstitle_en.$error">
+          هذا الحقل مطلوب
         </div>
       </div>
     </div>
 
+    <!-- About -->
     <div class="row mb-3">
-      <div class="col-md-6">
+      <!-- Arabic About -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">{{ $t('about') }}</label>
-        <div class="input-group">
-          <input
-            v-model="newsStore.singlenews.pio"
-            type="text"
-            class="form-control"
-            :placeholder="$t('about')"
-            aria-label="About Arabic"
-          />
-        </div>
+        <input
+          v-model="newsStore.singlenews.pio"
+          type="text"
+          class="form-control"
+          :placeholder="$t('about')"
+          aria-label="About Arabic"
+        />
+        <div class="text-danger small mt-1" v-if="newsStore.v$.pio.$error">هذا الحقل مطلوب</div>
       </div>
-      <div class="col-md-6">
+
+      <!-- English About -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">About (English)</label>
-        <div class="input-group">
-          <input
-            v-model="newsStore.singlenews.pio_en"
-            type="text"
-            class="form-control"
-            placeholder="about"
-            aria-label="About English"
-          />
-        </div>
+        <input
+          v-model="newsStore.singlenews.pio_en"
+          type="text"
+          class="form-control"
+          placeholder="About"
+          aria-label="About English"
+        />
+        <div class="text-danger small mt-1" v-if="newsStore.v$.pio_en.$error">هذا الحقل مطلوب</div>
       </div>
     </div>
 
+    <!-- Content (Arabic) -->
     <div class="mb-3">
       <label class="form-label">{{ $t('content') }}</label>
       <textarea
         v-model="newsStore.singlenews.newsdescription"
         class="form-control"
         rows="4"
-        aria-label="Arabic Content"
         :placeholder="$t('content')"
+        aria-label="Arabic Content"
       ></textarea>
+      <div class="text-danger small mt-1" v-if="newsStore.v$.newsdescription.$error">
+        هذا الحقل مطلوب
+      </div>
     </div>
 
+    <!-- Content (English) -->
     <div class="mb-3">
       <label class="form-label">Content (English)</label>
       <textarea
         v-model="newsStore.singlenews.newsdescription_en"
         class="form-control"
         rows="4"
+        placeholder="Content"
         aria-label="English Content"
-        placeholder="content"
       ></textarea>
+      <div class="text-danger small mt-1" v-if="newsStore.v$.newsdescription_en.$error">
+        هذا الحقل مطلوب
+      </div>
     </div>
 
+    <!-- Image Upload -->
     <div class="mb-3">
       <label class="form-label">Upload Image</label>
       <input
@@ -85,11 +103,12 @@
         class="form-control"
         accept="image/*"
         @change="handleImageChange"
-        aria-label="Upload image"
+        aria-label="Upload Image"
       />
     </div>
 
-    <div v-if="newsStore.imagePreview" class="my-3 text-center">
+    <!-- Image Preview -->
+    <div v-if="newsStore.imagePreview" class="text-center mb-4">
       <img
         :src="newsStore.imagePreview"
         alt="Image Preview"
@@ -98,7 +117,8 @@
       />
     </div>
 
-    <div class="d-flex justify-content-center my-4">
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-center mb-5">
       <button type="button" class="btn btn-color btn-lg px-5" @click="handleSubmit">
         <i class="bi bi-save me-2"></i> {{ buttonLabel }}
       </button>
@@ -110,6 +130,7 @@
 import { computed } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
 import { onBeforeRouteLeave } from 'vue-router'
+import Swal from 'sweetalert2'
 
 // Importing the useNewsStore from Pinia
 const newsStore = useNewsStore()
@@ -126,7 +147,15 @@ const handleImageChange = (event) => {
   }
 }
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
+  const validation = newsStore.v$
+  const isValid = await validation.$validate()
+  console.log('validation error:', newsStore.v$.$error)
+
+  if (!isValid) {
+    Swal.fire({ icon: 'error', Title: 'error', text: 'validation error' })
+    return
+  }
   if (newsStore.newsId) {
     newsStore.editNews()
   } else {

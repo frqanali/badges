@@ -1,15 +1,18 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2'
 import { useAuthStore } from './useAuth'
+import { useVuelidate } from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 
 const apiURL = import.meta.env.VITE_API_URL
 
 export const useServiceStore = defineStore('serviceStore', () => {
   const router = useRouter()
   const useAuth = useAuthStore()
+
   //reactive variables
   const singleservice = ref({
     servicetitle: '',
@@ -22,6 +25,20 @@ export const useServiceStore = defineStore('serviceStore', () => {
     links: '',
     pdf: '',
   })
+
+  const rules = computed(() => {
+    return {
+      servicetitle: { required },
+      servicedescription: { required },
+      servicetitle_en: { required },
+      servicedescription_en: { required },
+      pio: { required },
+      pio_en: { required },
+    }
+  })
+
+  const v$ = useVuelidate(rules, singleservice)
+
   const serviceList = ref([])
 
   const serviceId = ref(null)
@@ -218,5 +235,6 @@ export const useServiceStore = defineStore('serviceStore', () => {
     clearItems,
     routerEditService,
     serviceId,
+    v$,
   }
 })

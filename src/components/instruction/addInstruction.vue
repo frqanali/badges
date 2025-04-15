@@ -1,58 +1,76 @@
 <template>
-  <h1>{{ Title }}</h1>
-  <div class="col-10">
+  <div class="container mt-4">
+    <h1 class="mb-4">{{ Title }}</h1>
+
     <div class="row">
-      <div class="col-6">
-        <div class="input-group mb-3">
+      <!-- Arabic Title -->
+      <div class="col-md-6 mb-3">
+        <div class="input-group">
           <input
             v-model="instructionStore.singleinstruction.ruletitle"
             type="text"
             class="form-control"
             placeholder="العنوان"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
+            aria-label="Arabic Title"
           />
+        </div>
+        <div class="text-danger small mt-1" v-if="instructionStore.v$.ruletitle.$error">
+          هذا الحقل مطلوب
         </div>
       </div>
 
-      <div class="col-6">
-        <div class="input-group mb-3">
+      <!-- English Title -->
+      <div class="col-md-6 mb-3">
+        <div class="input-group">
           <input
             v-model="instructionStore.singleinstruction.ruletitle_en"
             type="text"
             class="form-control"
             placeholder="Title"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
+            aria-label="English Title"
           />
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <div class="input-group">
-          <textarea
-            v-model="instructionStore.singleinstruction.ruledescription"
-            class="form-control custom-textarea"
-            aria-label="With textarea"
-            :placeholder="$t('content')"
-          ></textarea>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="input-group">
-          <textarea
-            v-model="instructionStore.singleinstruction.ruledescription_en"
-            class="form-control custom-textarea"
-            aria-label="With textarea"
-            placeholder="content"
-          ></textarea>
+        <div class="text-danger small mt-1" v-if="instructionStore.v$.ruletitle_en.$error">
+          هذا الحقل مطلوب
         </div>
       </div>
     </div>
 
-    <div class="container d-flex my-5">
-      <button type="button" class="btn btn-color btn-lg" @click="handleSubmit">
+    <div class="row">
+      <!-- Arabic Description -->
+      <div class="col-md-6 mb-3">
+        <div class="input-group">
+          <textarea
+            v-model="instructionStore.singleinstruction.ruledescription"
+            class="form-control custom-textarea"
+            :placeholder="$t('content')"
+            aria-label="Arabic Description"
+          ></textarea>
+        </div>
+        <div class="text-danger small mt-1" v-if="instructionStore.v$.ruledescription.$error">
+          هذا الحقل مطلوب
+        </div>
+      </div>
+
+      <!-- English Description -->
+      <div class="col-md-6 mb-3">
+        <div class="input-group">
+          <textarea
+            v-model="instructionStore.singleinstruction.ruledescription_en"
+            class="form-control custom-textarea"
+            placeholder="content"
+            aria-label="English Description"
+          ></textarea>
+        </div>
+        <div class="text-danger small mt-1" v-if="instructionStore.v$.ruledescription_en.$error">
+          هذا الحقل مطلوب
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-flex justify-content-center mt-4">
+      <button type="button" class="btn btn-color btn-lg px-5" @click="handleSubmit">
         {{ buttonLabel }}
       </button>
     </div>
@@ -63,11 +81,20 @@
 import { useInstructionStore } from '@/stores/useInstructions'
 import { computed } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
+import Swal from 'sweetalert2'
 // stores
 const instructionStore = useInstructionStore()
 
 // functions
-const handleSubmit = () => {
+const handleSubmit = async () => {
+  const validation = instructionStore.v$
+  const isValid = await validation.$validate()
+  console.log('validation error:', instructionStore.v$.$error)
+
+  if (!isValid) {
+    Swal.fire({ icon: 'error', Title: 'error', text: 'validation error' })
+    return
+  }
   if (instructionStore.instructionId) {
     instructionStore.editInstruction()
   } else {

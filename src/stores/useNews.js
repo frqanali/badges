@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import Swal from 'sweetalert2'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from './useAuth'
+import { useVuelidate } from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
 
 const imageInput = ref(null) // Reference to the file input
 
@@ -23,6 +25,20 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsdescription_en: '',
     pio_en: '',
   })
+
+  const rules = computed(() => {
+    return {
+      newstitle: { required },
+      newsdescription: { required },
+      newstitle_en: { required },
+      newsdescription_en: { required },
+      pio: { required },
+      pio_en: { required },
+      image: { required },
+    }
+  })
+
+  const v$ = useVuelidate(rules, singlenews)
 
   const threeNewsList = ref([])
 
@@ -288,5 +304,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     reader,
     pinnedNewsList,
     imageInput,
+    v$,
   }
 })

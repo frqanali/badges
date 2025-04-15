@@ -1,35 +1,44 @@
 <template>
-  <h1 class="text-center my-4">{{ headingLabel }}</h1>
-  <div class="container">
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">{{ headingLabel }}</h1>
+
+    <!-- Service Titles -->
     <div class="row mb-3">
-      <div class="col-md-6">
+      <!-- Arabic -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">{{ $t('servicename') }}</label>
-        <div class="input-group">
-          <input
-            v-model="serviceStore.singleservice.servicetitle"
-            type="text"
-            class="form-control"
-            :placeholder="$t('servicename')"
-            aria-label="Arabic Service Title"
-          />
+        <input
+          v-model="serviceStore.singleservice.servicetitle"
+          type="text"
+          class="form-control"
+          :placeholder="$t('servicename')"
+          aria-label="Arabic Service Title"
+        />
+        <div class="text-danger small mt-1" v-if="serviceStore.v$.servicetitle.$error">
+          هذا الحقل مطلوب
         </div>
       </div>
-      <div class="col-md-6">
+
+      <!-- English -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">Service Title (English)</label>
-        <div class="input-group">
-          <input
-            v-model="serviceStore.singleservice.servicetitle_en"
-            type="text"
-            class="form-control"
-            placeholder="service title"
-            aria-label="English Service Title"
-          />
+        <input
+          v-model="serviceStore.singleservice.servicetitle_en"
+          type="text"
+          class="form-control"
+          placeholder="Service title"
+          aria-label="English Service Title"
+        />
+        <div class="text-danger small mt-1" v-if="serviceStore.v$.servicetitle_en.$error">
+          هذا الحقل مطلوب
         </div>
       </div>
     </div>
 
+    <!-- About -->
     <div class="row mb-3">
-      <div class="col-md-6">
+      <!-- Arabic -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">{{ $t('about') }}</label>
         <input
           v-model="serviceStore.singleservice.pio"
@@ -38,28 +47,38 @@
           :placeholder="$t('about')"
           aria-label="About Arabic"
         />
+        <div class="text-danger small mt-1" v-if="serviceStore.v$.pio.$error">هذا الحقل مطلوب</div>
       </div>
-      <div class="col-md-6">
+
+      <!-- English -->
+      <div class="col-md-6 mb-3">
         <label class="form-label">About (English)</label>
         <input
           v-model="serviceStore.singleservice.pio_en"
           type="text"
           class="form-control"
-          placeholder="about"
+          placeholder="About"
           aria-label="About English"
         />
+        <div class="text-danger small mt-1" v-if="serviceStore.v$.pio_en.$error">
+          هذا الحقل مطلوب
+        </div>
       </div>
     </div>
 
+    <!-- Content -->
     <div class="mb-3">
       <label class="form-label">{{ $t('content') }}</label>
       <textarea
         v-model="serviceStore.singleservice.servicedescription"
         class="form-control"
         rows="4"
-        aria-label="Arabic Content"
         :placeholder="$t('content')"
+        aria-label="Arabic Content"
       ></textarea>
+      <div class="text-danger small mt-1" v-if="serviceStore.v$.servicedescription.$error">
+        هذا الحقل مطلوب
+      </div>
     </div>
 
     <div class="mb-3">
@@ -68,30 +87,30 @@
         v-model="serviceStore.singleservice.servicedescription_en"
         class="form-control"
         rows="4"
+        placeholder="Content"
         aria-label="English Content"
-        placeholder="content"
       ></textarea>
+      <div class="text-danger small mt-1" v-if="serviceStore.v$.servicedescription_en.$error">
+        هذا الحقل مطلوب
+      </div>
     </div>
 
+    <!-- Link Input -->
     <div class="mb-3">
       <label class="form-label">Service Link</label>
       <div class="input-group">
-        <span
-          class="input-group-text rounded-end rounded-start-0 border-start-0 border-end"
-          id="basic-addon-link"
-          >🔗</span
-        >
+        <span class="input-group-text">🔗</span>
         <input
           v-model="serviceStore.singleservice.links"
           type="url"
           class="form-control"
           placeholder="https://example.com"
           aria-label="Hyperlink"
-          aria-describedby="basic-addon-link"
         />
       </div>
     </div>
 
+    <!-- Image Upload -->
     <div class="mb-3">
       <label class="form-label">Upload Image</label>
       <input
@@ -99,11 +118,12 @@
         class="form-control"
         accept="image/*"
         @change="handleImageChange"
-        aria-label="Upload image"
+        aria-label="Upload Image"
       />
     </div>
 
-    <div v-if="imagePreview" class="my-3 text-center">
+    <!-- Image Preview -->
+    <div v-if="imagePreview" class="text-center mb-4">
       <img
         :src="imagePreview"
         alt="Image Preview"
@@ -112,6 +132,7 @@
       />
     </div>
 
+    <!-- PDF Upload -->
     <div class="mb-3">
       <label class="form-label">Upload PDF File</label>
       <input
@@ -127,6 +148,7 @@
       <p><strong>Selected PDF:</strong> {{ pdfName2 }}</p>
     </div>
 
+    <!-- Submit Button -->
     <div class="d-flex justify-content-center my-4">
       <button type="button" class="btn btn-color btn-lg px-5" @click="handleSubmit">
         <i class="bi bi-save me-2"></i> {{ buttonLabel }}
@@ -139,6 +161,7 @@
 import { ref, computed } from 'vue'
 import { useServiceStore } from '@/stores/useService'
 import { onBeforeRouteLeave } from 'vue-router'
+import Swal from 'sweetalert2'
 
 const serviceStore = useServiceStore()
 // Holds the image preview URL
@@ -167,7 +190,15 @@ const handleImageChange = (event) => {
     serviceStore.setUploadedImage(file) // Set the uploaded file in the store
   }
 }
-const handleSubmit = () => {
+const handleSubmit = async () => {
+  const validation = serviceStore.v$
+  const isValid = await validation.$validate()
+  console.log('validation error:', serviceStore.v$.$error)
+
+  if (!isValid) {
+    Swal.fire({ icon: 'error', Title: 'error', text: 'validation error' })
+    return
+  }
   if (serviceStore.serviceId) {
     serviceStore.editService()
   } else {
