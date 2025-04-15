@@ -1,5 +1,6 @@
 <template>
-  <div class="container mt-4">
+  <loader v-if="instructionStore.loader" />
+  <div v-else class="container mt-4">
     <h1 class="mb-4">{{ Title }}</h1>
 
     <div class="row">
@@ -82,6 +83,8 @@ import { useInstructionStore } from '@/stores/useInstructions'
 import { computed } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
 import Swal from 'sweetalert2'
+import loader from '@/components/loader.vue'
+
 // stores
 const instructionStore = useInstructionStore()
 

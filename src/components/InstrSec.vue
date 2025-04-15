@@ -1,4 +1,5 @@
 <template>
+  
   <div class="d-flex align-items-center p-4" id="sec-5">
     <div class="container p-4">
       <h2 class="text-center my-5 underline-text">{{ $t('instructions') }}</h2>

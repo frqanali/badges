@@ -1,5 +1,7 @@
 <template>
-  <div class="container mt-4">
+  <loader v-if="serviceStore.loader" />
+
+  <div v-else class="container mt-4">
     <h1 class="text-center mb-4">{{ headingLabel }}</h1>
 
     <!-- Service Titles -->
@@ -162,6 +164,8 @@ import { ref, computed } from 'vue'
 import { useServiceStore } from '@/stores/useService'
 import { onBeforeRouteLeave } from 'vue-router'
 import Swal from 'sweetalert2'
+import loader from '@/components/loader.vue'
+
 
 const serviceStore = useServiceStore()
 // Holds the image preview URL

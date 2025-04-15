@@ -10,6 +10,8 @@ import addService from '@/components/service/addService.vue'
 import allInstructions from '@/components/instruction/allInstructions.vue'
 import addInstruction from '@/components/instruction/addInstruction.vue'
 import Login from '../views/Login.vue'
+import loader from '@/components/loader.vue'
+
 import InstructionView from '../views/InstructionView.vue'
 import singleNews from '@/components/publicNews/singleNews.vue'
 import singleService from '@/components/publicServices/singleService.vue'
@@ -55,6 +57,11 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/loader',
+      name: 'loader',
+      component: loader,
     },
     {
       path: '/dashboard',

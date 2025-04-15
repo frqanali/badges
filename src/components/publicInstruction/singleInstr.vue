@@ -1,5 +1,7 @@
 <template>
-  <div class="container mt-5">
+  <loader v-if="serviceStore.loader" />
+
+  <div v-else class="container mt-5">
     <div class="row g-4">
       <!-- single instruction section -->
       <div class="col-lg-8 col-md-7 col-12">
@@ -63,6 +65,7 @@ import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useInstructionStore } from '@/stores/useInstructions'
 import { useI18n } from 'vue-i18n'
+import loader from '@/components/loader.vue'
 
 const { locale } = useI18n()
 

@@ -26,6 +26,8 @@ export const useNewsStore = defineStore('newsStore', () => {
     pio_en: '',
   })
 
+  const loader = ref(false)
+
   const rules = computed(() => {
     return {
       newstitle: { required },
@@ -34,7 +36,6 @@ export const useNewsStore = defineStore('newsStore', () => {
       newsdescription_en: { required },
       pio: { required },
       pio_en: { required },
-      image: { required },
     }
   })
 
@@ -59,13 +60,18 @@ export const useNewsStore = defineStore('newsStore', () => {
       page: page,
     }
     try {
+      loader.value = true
       const response = await axios.post(apiURL + 'greenzone/get_all_news', payload)
 
       if (response.status === 200) {
+        loader.value = false
+
         newsList.value = response.data.news
         totalNews.value = response.data.pagination.total_items
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في جلب الأخبار',
@@ -76,6 +82,8 @@ export const useNewsStore = defineStore('newsStore', () => {
 
   const deleteNews = async (id) => {
     try {
+      loader.value = true
+
       const response = await axios.delete(
         apiURL + 'greenzone/delete_news/' + id,
 
@@ -84,6 +92,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         },
       )
       if (response.status === 200) {
+        loader.value = false
+
         Swal.fire({
           title: 'تم حذف الخبر بنجاح',
           icon: 'success',
@@ -96,6 +106,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         }
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في حذف الخبر',
@@ -116,11 +128,15 @@ export const useNewsStore = defineStore('newsStore', () => {
     })
 
     try {
+      loader.value = true
+
       const response = await axios.post(apiURL + 'greenzone/create_news', payload, {
         headers: { Authorization: `Bearer ${useAuth.token}` },
       })
 
       if (response.status === 201) {
+        loader.value = false
+
         Swal.fire({
           title: 'تم اضافة خبر جديد بنجاح',
           icon: 'success',
@@ -128,6 +144,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         clearItems()
       }
     } catch (error) {
+      loader.value = false
+
       console.log(error)
       // Optionally show an error alert if the request fails
       Swal.fire({
@@ -140,8 +158,12 @@ export const useNewsStore = defineStore('newsStore', () => {
 
   const getSingleNews = async (id) => {
     try {
+      loader.value = true
+
       const response = await axios.get(apiURL + 'greenzone/getnews_by_id/' + id)
       if (response.status == 200) {
+        loader.value = false
+
         singlenews.value.newstitle = response.data.title
         singlenews.value.newsdescription = response.data.description
         singlenews.value.pio = response.data.pio
@@ -153,6 +175,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         singlenews.value.pio_en = response.data.pio_en
       }
     } catch (error) {
+      loader.value = false
+
       console.log(error)
     }
   }
@@ -174,10 +198,14 @@ export const useNewsStore = defineStore('newsStore', () => {
     })
 
     try {
+      loader.value = true
+
       const response = await axios.put(apiURL + 'greenzone/news_update/' + newsId.value, payload, {
         headers: { Authorization: `Bearer ${useAuth.token}` },
       })
       if (response.status == 200) {
+        loader.value = false
+
         Swal.fire({
           title: 'تم تعديل الخبر بنجاح',
           icon: 'success',
@@ -186,6 +214,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         router.push('/allNews')
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'لم يتم تعديل الخبر ',
         icon: 'error',
@@ -199,11 +229,15 @@ export const useNewsStore = defineStore('newsStore', () => {
       flag: flag,
     }
     try {
+      loader.value = true
+
       const response = await axios.put(apiURL + 'greenzone/flag_update', payload, {
         headers: { Authorization: `Bearer ${useAuth.token}` },
       })
       if (flag) {
         if (response.status === 200) {
+          loader.value = false
+
           Swal.fire({
             title: 'تم تثبيت الخبر بنجاح',
             icon: 'success',
@@ -215,6 +249,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         }
       } else {
         if (response.status === 200) {
+          loader.value = false
+
           Swal.fire({
             title: 'تم  الغاء تثبيت الخبر بنجاح',
             icon: 'success',
@@ -226,6 +262,8 @@ export const useNewsStore = defineStore('newsStore', () => {
         }
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'لم يتم تثبيت الخبر ',
         icon: 'error',
@@ -235,12 +273,18 @@ export const useNewsStore = defineStore('newsStore', () => {
 
   const threeNews = async () => {
     try {
+      loader.value = true
+
       const response = await axios.get(apiURL + 'greenzone/get_latest_4_news')
 
       if (response.status === 200) {
+        loader.value = false
+
         threeNewsList.value = response.data.news.slice(0, 3)
       }
     } catch (error) {
+      loader.value = false
+
       console.log(error)
     }
   }
@@ -251,12 +295,18 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
 
     try {
+      loader.value = true
+
       const response = await axios.post(apiURL + 'greenzone/get_news_by_flag', payload)
       console.log(response)
       if (response.status === 200) {
+        loader.value = false
+
         pinnedNewsList.value = response.data
       }
     } catch (error) {
+      loader.value = false
+
       console.log(error)
     }
   }
@@ -305,5 +355,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     pinnedNewsList,
     imageInput,
     v$,
+    loader,
   }
 })

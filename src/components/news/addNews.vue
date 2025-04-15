@@ -1,5 +1,6 @@
 <template>
-  <div class="container mt-4">
+  <loader v-if="newsStore.loader" />
+  <div v-else class="container mt-4">
     <h1 class="text-center mb-4">{{ headingLabel }}</h1>
 
     <!-- Titles -->
@@ -131,6 +132,7 @@ import { computed } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
 import { onBeforeRouteLeave } from 'vue-router'
 import Swal from 'sweetalert2'
+import loader from '@/components/loader.vue'
 
 // Importing the useNewsStore from Pinia
 const newsStore = useNewsStore()
@@ -153,7 +155,7 @@ const handleSubmit = async () => {
   console.log('validation error:', newsStore.v$.$error)
 
   if (!isValid) {
-    Swal.fire({ icon: 'error', Title: 'error', text: 'validation error' })
+    Swal.fire({ icon: 'error', title: 'error', text: 'validation error' })
     return
   }
   if (newsStore.newsId) {

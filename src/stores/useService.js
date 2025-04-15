@@ -25,6 +25,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
     links: '',
     pdf: '',
   })
+  const loader = ref(false)
 
   const rules = computed(() => {
     return {
@@ -59,10 +60,14 @@ export const useServiceStore = defineStore('serviceStore', () => {
     })
 
     try {
+      loader.value = true
+
       const response = await axios.post(apiURL + 'greenzone/create_service', payload, {
         headers: { Authorization: `Bearer ${useAuth.token}` },
       })
       if (response.status === 201) {
+        loader.value = false
+
         Swal.fire({
           title: 'تم اضافة خدمة جديدة بنجاح',
           icon: 'success',
@@ -70,6 +75,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
         clearItems()
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في إضافة الخدمة',
@@ -84,15 +91,21 @@ export const useServiceStore = defineStore('serviceStore', () => {
       page: page,
     }
     try {
+      loader.value = true
+
       const response = await axios.post(apiURL + 'greenzone/get_all_service', payload)
 
       if (response.status === 200) {
+        loader.value = false
+
         console.log(response.data)
         serviceList.value = response.data.services
 
         totalServices.value = response.data.pagination.total_items
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في جلب الخدمات',
@@ -103,6 +116,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
 
   const getSingleService = async (id) => {
     try {
+      loader.value = true
+
       const response = await axios.get(
         apiURL + 'greenzone/get_service_by_id/' + id,
 
@@ -111,6 +126,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
         },
       )
       if (response.status === 200) {
+        loader.value = false
+
         singleservice.value.servicetitle = response.data.title
         singleservice.value.servicedescription = response.data.description
         singleservice.value.pio = response.data.pio
@@ -124,6 +141,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
           : response.data.image
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في جلب الخدمة',
@@ -150,6 +169,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
     })
 
     try {
+      loader.value = true
+
       const response = await axios.put(
         apiURL + 'greenzone/service_update/' + serviceId.value,
         payload,
@@ -158,6 +179,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
         },
       )
       if (response.status === 200) {
+        loader.value = false
+
         Swal.fire({
           title: 'تم تعديل الخدمة  بنجاح',
           icon: 'success',
@@ -166,6 +189,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
         router.push('/allServices')
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في تعديل الخدمة',
@@ -176,10 +201,14 @@ export const useServiceStore = defineStore('serviceStore', () => {
 
   const deleteService = async (id) => {
     try {
+      loader.value = true
+
       const response = await axios.delete(apiURL + 'greenzone/delete_service/' + id, {
         headers: { Authorization: `Bearer ${useAuth.token}` },
       })
       if (response.status === 200) {
+        loader.value = false
+
         Swal.fire({
           title: 'تم حذف الخدمة بنجاح',
           icon: 'success',
@@ -192,6 +221,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
         }
       }
     } catch (error) {
+      loader.value = false
+
       Swal.fire({
         title: 'حدث خطأ',
         text: 'فشل في حذف الخدمة',
@@ -236,5 +267,6 @@ export const useServiceStore = defineStore('serviceStore', () => {
     routerEditService,
     serviceId,
     v$,
+    loader,
   }
 })
