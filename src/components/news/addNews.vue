@@ -14,6 +14,7 @@
           class="form-control"
           :placeholder="$t('newsTitle')"
           aria-label="Arabic News Title"
+          @blur="newsStore.v$.newstitle.$touch"
         />
         <div class="text-danger small mt-1" v-if="newsStore.v$.newstitle.$error">
           هذا الحقل مطلوب
@@ -29,6 +30,7 @@
           class="form-control"
           placeholder="News Title"
           aria-label="English News Title"
+          @blur="newsStore.v$.newstitle_en.$touch"
         />
         <div class="text-danger small mt-1" v-if="newsStore.v$.newstitle_en.$error">
           هذا الحقل مطلوب
@@ -47,6 +49,7 @@
           class="form-control"
           :placeholder="$t('about')"
           aria-label="About Arabic"
+          @blur="newsStore.v$.pio.$touch"
         />
         <div class="text-danger small mt-1" v-if="newsStore.v$.pio.$error">هذا الحقل مطلوب</div>
       </div>
@@ -60,6 +63,7 @@
           class="form-control"
           placeholder="About"
           aria-label="About English"
+          @blur="newsStore.v$.pio_en.$touch"
         />
         <div class="text-danger small mt-1" v-if="newsStore.v$.pio_en.$error">هذا الحقل مطلوب</div>
       </div>
@@ -74,6 +78,7 @@
         rows="4"
         :placeholder="$t('content')"
         aria-label="Arabic Content"
+        @blur="newsStore.v$.newsdescription.$touch"
       ></textarea>
       <div class="text-danger small mt-1" v-if="newsStore.v$.newsdescription.$error">
         هذا الحقل مطلوب
@@ -89,6 +94,7 @@
         rows="4"
         placeholder="Content"
         aria-label="English Content"
+        @blur="newsStore.v$.newsdescription_en.$touch"
       ></textarea>
       <div class="text-danger small mt-1" v-if="newsStore.v$.newsdescription_en.$error">
         هذا الحقل مطلوب

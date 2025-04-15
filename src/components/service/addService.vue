@@ -15,6 +15,7 @@
           class="form-control"
           :placeholder="$t('servicename')"
           aria-label="Arabic Service Title"
+          @blur="serviceStore.v$.servicetitle.$touch"
         />
         <div class="text-danger small mt-1" v-if="serviceStore.v$.servicetitle.$error">
           هذا الحقل مطلوب
@@ -30,6 +31,7 @@
           class="form-control"
           placeholder="Service title"
           aria-label="English Service Title"
+          @blur="serviceStore.v$.servicetitle_en.$touch"
         />
         <div class="text-danger small mt-1" v-if="serviceStore.v$.servicetitle_en.$error">
           هذا الحقل مطلوب
@@ -48,6 +50,7 @@
           class="form-control"
           :placeholder="$t('about')"
           aria-label="About Arabic"
+          @blur="serviceStore.v$.pio.$touch"
         />
         <div class="text-danger small mt-1" v-if="serviceStore.v$.pio.$error">هذا الحقل مطلوب</div>
       </div>
@@ -61,6 +64,7 @@
           class="form-control"
           placeholder="About"
           aria-label="About English"
+          @blur="serviceStore.v$.pio_en.$touch"
         />
         <div class="text-danger small mt-1" v-if="serviceStore.v$.pio_en.$error">
           هذا الحقل مطلوب
@@ -77,6 +81,7 @@
         rows="4"
         :placeholder="$t('content')"
         aria-label="Arabic Content"
+        @blur="serviceStore.v$.servicedescription.$touch"
       ></textarea>
       <div class="text-danger small mt-1" v-if="serviceStore.v$.servicedescription.$error">
         هذا الحقل مطلوب
@@ -91,6 +96,7 @@
         rows="4"
         placeholder="Content"
         aria-label="English Content"
+        @blur="serviceStore.v$.servicedescription_en.$touch"
       ></textarea>
       <div class="text-danger small mt-1" v-if="serviceStore.v$.servicedescription_en.$error">
         هذا الحقل مطلوب
@@ -165,7 +171,6 @@ import { useServiceStore } from '@/stores/useService'
 import { onBeforeRouteLeave } from 'vue-router'
 import Swal from 'sweetalert2'
 import loader from '@/components/loader.vue'
-
 
 const serviceStore = useServiceStore()
 // Holds the image preview URL

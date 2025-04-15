@@ -13,6 +13,7 @@
             class="form-control"
             placeholder="العنوان"
             aria-label="Arabic Title"
+            @blur="instructionStore.v$.ruletitle.$touch"
           />
         </div>
         <div class="text-danger small mt-1" v-if="instructionStore.v$.ruletitle.$error">
@@ -29,6 +30,7 @@
             class="form-control"
             placeholder="Title"
             aria-label="English Title"
+            @blur="instructionStore.v$.ruletitle_en.$touch"
           />
         </div>
         <div class="text-danger small mt-1" v-if="instructionStore.v$.ruletitle_en.$error">
@@ -46,6 +48,7 @@
             class="form-control custom-textarea"
             :placeholder="$t('content')"
             aria-label="Arabic Description"
+            @blur="instructionStore.v$.ruledescription.$touch"
           ></textarea>
         </div>
         <div class="text-danger small mt-1" v-if="instructionStore.v$.ruledescription.$error">
@@ -61,6 +64,7 @@
             class="form-control custom-textarea"
             placeholder="content"
             aria-label="English Description"
+            @blur="instructionStore.v$.ruledescription_en.$touch"
           ></textarea>
         </div>
         <div class="text-danger small mt-1" v-if="instructionStore.v$.ruledescription_en.$error">
