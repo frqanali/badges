@@ -161,7 +161,7 @@ const handleSubmit = async () => {
   console.log('validation error:', newsStore.v$.$error)
 
   if (!isValid) {
-    Swal.fire({ icon: 'error', title: 'error', text: 'validation error' })
+    Swal.fire({ icon: 'error', title: 'يرجى ملئ الحقول المطلوبة' })
     return
   }
   if (newsStore.newsId) {

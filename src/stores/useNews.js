@@ -326,6 +326,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsId.value = null
     imagePreview.value = null
     reader = null
+    v$.value.$reset()
   }
 
   // set the image to the state

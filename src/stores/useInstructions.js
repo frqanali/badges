@@ -212,6 +212,8 @@ export const useInstructionStore = defineStore('instructionStore', () => {
     }
 
     instructionId.value = null
+    v$.value.$reset()
+
   }
 
   return {

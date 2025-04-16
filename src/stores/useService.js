@@ -242,6 +242,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
     }
 
     serviceId.value = null
+    v$.value.$reset()
   }
 
   const setUploadedImage = (file) => {

@@ -99,7 +99,7 @@ const handleSubmit = async () => {
   console.log('validation error:', instructionStore.v$.$error)
 
   if (!isValid) {
-    Swal.fire({ icon: 'error', Title: 'error', text: 'validation error' })
+    Swal.fire({ icon: 'error', title: 'يرجى ملئ الحقول المطلوبة' })
     return
   }
   if (instructionStore.instructionId) {
