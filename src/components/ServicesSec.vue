@@ -2,7 +2,7 @@
   <div class="container mt-5" id="sec-4">
     <h2 class="text-center my-5 underline-text">{{ $t('services') }}</h2>
     <div class="row g-3 justify-content-center">
-      <div class="col-md-6 me-6 ms-6">
+      <!-- <div class="col-md-6 me-6 ms-6">
         <div class="card backgrounds">
           <div class="card-body">
             <h5 class="card-title">{{ $t('gzapp2') }}</h5>
@@ -23,10 +23,10 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
       <div
         class="col-md-6 me-6 ms-6"
-        v-for="service in serviceStore.serviceList.slice(0, 4)"
+        v-for="service in serviceStore.pinnedServicesList"
         :key="service.id"
       >
         <div class="card backgrounds">
@@ -68,7 +68,7 @@ const serviceStore = useServiceStore()
 
 // on mounted
 onMounted(async () => {
-  await serviceStore.getAllServices()
+  await serviceStore.getPinnedService()
 })
 </script>
 <style scoped>

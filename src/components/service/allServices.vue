@@ -25,6 +25,20 @@
               >
                 <i class="bi bi-pencil-square"></i>
               </button>
+              <button
+                v-if="service.flag"
+                class="btn btn-sm btn-warning ms-2"
+                @click="serviceStore.pinServices(service.id, false)"
+              >
+                <i class="bi bi-pin-angle"></i>
+              </button>
+              <button
+                v-if="!service.flag"
+                class="btn btn-sm btn-warning ms-2"
+                @click="serviceStore.pinServices(service.id, true)"
+              >
+                <i class="bi bi-pin-fill"></i>
+              </button>
               <button class="btn btn-sm btn-danger" @click="serviceStore.deleteService(service.id)">
                 <i class="bi bi-trash3-fill"></i>
               </button>

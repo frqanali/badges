@@ -24,6 +24,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
     servicedescription_en: '',
     links: '',
     pdf: '',
+    serviceflag: false,
   })
   const loader = ref(false)
 
@@ -45,6 +46,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
   const serviceId = ref(null)
 
   const totalServices = ref(0)
+  const pinnedSixServicesList = ref([])
+  const pinnedServicesList = ref([])
 
   // functions
 
@@ -230,6 +233,76 @@ export const useServiceStore = defineStore('serviceStore', () => {
       })
     }
   }
+  const pinServices = async (id, flag) => {
+    const payload = {
+      serviceid: id,
+      serviceflag: flag,
+    }
+    try {
+      loader.value = true
+
+      const response = await axios.put(apiURL + 'greenzone/serviceflag_update', payload, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
+      if (flag) {
+        if (response.status === 200) {
+          loader.value = false
+
+          Swal.fire({
+            title: 'تم تثبيت الخدمة بنجاح',
+            icon: 'success',
+          })
+          const index = serviceList.value.findIndex((service) => service.id === id)
+          if (index != -1) {
+            serviceList.value[index].serviceflag = true
+          }
+        }
+      } else {
+        if (response.status === 200) {
+          loader.value = false
+
+          Swal.fire({
+            title: 'تم  الغاء تثبيت الخدمة بنجاح',
+            icon: 'success',
+          })
+          const index = serviceList.value.findIndex((service) => service.id === id)
+          if (index != -1) {
+            serviceList.value[index].serviceflag = false
+          }
+        }
+      }
+    } catch {
+      loader.value = false
+
+      Swal.fire({
+        title: 'لم يتم تثبيت الخدمة ',
+        icon: 'error',
+      })
+    }
+  }
+
+  const getPinnedService = async () => {
+    const payload = {
+      serviceflag: true,
+    }
+
+    try {
+      loader.value = true
+
+      const response = await axios.post(apiURL + 'greenzone/get_service_by_flag', payload)
+      console.log(response)
+      if (response.status === 200) {
+        loader.value = false
+        console.log(response.data)
+
+        pinnedServicesList.value = response.data
+      }
+    } catch (error) {
+      loader.value = false
+
+      console.log(error)
+    }
+  }
   const clearItems = () => {
     singleservice.value = {
       servicetitle: '',
@@ -269,5 +342,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
     serviceId,
     v$,
     loader,
+    pinnedSixServicesList,
+    pinnedServicesList,
+    pinServices,
+    getPinnedService,
   }
 })

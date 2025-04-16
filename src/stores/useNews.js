@@ -261,7 +261,8 @@ export const useNewsStore = defineStore('newsStore', () => {
           }
         }
       }
-    } catch (error) {
+    }
+     catch (error) {
       loader.value = false
 
       Swal.fire({
@@ -282,7 +283,8 @@ export const useNewsStore = defineStore('newsStore', () => {
 
         threeNewsList.value = response.data.news.slice(0, 3)
       }
-    } catch (error) {
+    }
+    catch (error) {
       loader.value = false
 
       console.log(error)
