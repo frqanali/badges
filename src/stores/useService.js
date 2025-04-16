@@ -101,9 +101,7 @@ export const useServiceStore = defineStore('serviceStore', () => {
       if (response.status === 200) {
         loader.value = false
 
-        console.log(response.data)
         serviceList.value = response.data.services
-
         totalServices.value = response.data.pagination.total_items
       }
     } catch (error) {
@@ -130,8 +128,8 @@ export const useServiceStore = defineStore('serviceStore', () => {
       )
       if (response.status === 200) {
         loader.value = false
-
         singleservice.value.servicetitle = response.data.title
+        singleservice.value.serviceflag = response.data.serviceflag
         singleservice.value.servicedescription = response.data.description
         singleservice.value.pio = response.data.pio
         singleservice.value.servicetitle_en = response.data.title_en

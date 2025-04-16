@@ -26,14 +26,14 @@
                 <i class="bi bi-pencil-square"></i>
               </button>
               <button
-                v-if="service.flag"
+                v-if="service.serviceflag"
                 class="btn btn-sm btn-warning ms-2"
                 @click="serviceStore.pinServices(service.id, false)"
               >
                 <i class="bi bi-pin-angle"></i>
               </button>
               <button
-                v-if="!service.flag"
+                v-if="!service.serviceflag"
                 class="btn btn-sm btn-warning ms-2"
                 @click="serviceStore.pinServices(service.id, true)"
               >
