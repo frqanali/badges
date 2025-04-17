@@ -99,7 +99,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
 
   const getSingleinstruction = async (id) => {
     try {
-      loader.value = true
+      loader.value = true 
 
       const response = await axios.get(
         apiURL + 'greenzone/get_rule_by_id/' + id,

@@ -24,20 +24,41 @@
           </div>
         </div>
       </div> -->
-      <div
-        class="col-md-6 me-6 ms-6"
-        v-for="service in serviceStore.pinnedServicesList"
-        :key="service.id"
-      >
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ locale === 'ar' ? service.title : service.title_en }}</h5>
-            <p class="card-text">
-              {{ truncateWords(service.pio, 10) }}
-            </p>
-            <router-link :to="{ name: 'singleService', query: { id: service.id } }">
-              <button class="btn btn-color">{{ $t('go') }}</button>
-            </router-link>
+      <div v-if="serviceStore.pinnedServicesList.length > 0" class="container">
+        <div class="row">
+          <div
+            class="col-md-6 mb-4"
+            v-for="service in serviceStore.pinnedServicesList"
+            :key="service.id"
+          >
+            <div class="card backgrounds h-100">
+              <div class="card-body">
+                <h5 class="card-title">{{ locale === 'ar' ? service.title : service.title_en }}</h5>
+                <p class="card-text">
+                  {{ truncateWords(service.pio, 10) }}
+                </p>
+                <router-link :to="{ name: 'singleService', query: { id: service.id } }">
+                  <button class="btn btn-color">{{ $t('go') }}</button>
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4" v-for="service in serviceStore.serviceList" :key="service.id">
+            <div class="card backgrounds h-100">
+              <div class="card-body">
+                <h5 class="card-title">{{ locale === 'ar' ? service.title : service.title_en }}</h5>
+                <p class="card-text">
+                  {{ truncateWords(service.pio, 10) }}
+                </p>
+                <router-link :to="{ name: 'singleService', query: { id: service.id } }">
+                  <button class="btn btn-color">{{ $t('go') }}</button>
+                </router-link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -69,6 +90,9 @@ const serviceStore = useServiceStore()
 // on mounted
 onMounted(async () => {
   await serviceStore.getPinnedService()
+  if (serviceStore.pinnedServicesList.length == 0) {
+    await serviceStore.getAllServices()
+  }
 })
 </script>
 <style scoped>

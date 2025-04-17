@@ -288,11 +288,9 @@ export const useServiceStore = defineStore('serviceStore', () => {
       loader.value = true
 
       const response = await axios.post(apiURL + 'greenzone/get_service_by_flag', payload)
-      console.log(response)
+
       if (response.status === 200) {
         loader.value = false
-        console.log(response.data)
-
         pinnedServicesList.value = response.data
       }
     } catch (error) {
