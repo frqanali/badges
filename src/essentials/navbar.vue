@@ -14,11 +14,9 @@
           </a>
           <div class="dropdown-menu" v-if="isDropdownOpen">
             <!-- Logout link when token is present -->
-            <a href="#" class="dropdown-item" @click="authStore.logout"> تسجيل خروج </a>
             <router-link to="/" class="dropdown-item">رجوع الى الموقع</router-link>
-
+            <a href="#" class="dropdown-item" @click="authStore.logout"> تسجيل خروج </a>
           </div>
-    
         </div>
       </div>
 

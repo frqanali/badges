@@ -33,8 +33,15 @@
           <li><button class="dropdown-item" @click="switchLanguage('ar')">عربي</button></li>
         </ul>
       </div>
+      <div
+        v-if="authStore.token"
+        @click="router.push('/dashboard')"
+        style="color: white; cursor: pointer"
+      >
+        <i class="bi bi-house-door-fill"></i>
+      </div>
 
-      <div class="collapse pointer navbar-collapse" id="navbarText">
+      <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mx-auto pe-5 ps-2">
           <li class="nav-item">
             <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
@@ -66,14 +73,17 @@
         </ul>
 
         <a class="navbar-brand logo-large" href="#">
-          <img
-            src="/src/assets/white_text_transparent.png"
-            alt="Logo"
-            width="150"
-            height="35"
-            class="me-3 mb-1"
-            loading="lazy"
-          />
+          <router-link to="/">
+            <img
+              src="/src/assets/white_text_transparent.png"
+              alt="Logo"
+              width="150"
+              height="35"
+              class="me-3 mb-1"
+              loading="lazy"
+            />
+          </router-link>
+
           <router-link to="/">
             <img src="/src/assets/GzLogoFi.png" alt="Logo" width="70" height="70" loading="lazy" />
           </router-link>
@@ -87,7 +97,11 @@
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores/useAuth'
 
+// stores
+
+const authStore = useAuthStore()
 const { locale } = useI18n()
 const router = useRouter()
 const route = useRoute()
