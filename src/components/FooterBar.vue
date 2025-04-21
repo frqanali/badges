@@ -4,7 +4,10 @@
       <!-- Your main content goes here -->
     </div>
     <footer class="footer">
-      <p class="center">{{ $t('ndc') }}</p>
+      <p class="center">
+        {{ $t('ndc') }}
+        <i class="bi bi-c-circle"></i>
+      </p>
     </footer>
   </div>
 </template>

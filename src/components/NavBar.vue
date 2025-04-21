@@ -34,7 +34,7 @@
         </ul>
       </div>
 
-      <div class="collapse navbar-collapse" id="navbarText">
+      <div class="collapse pointer navbar-collapse" id="navbarText">
         <ul class="navbar-nav mx-auto pe-5 ps-2">
           <li class="nav-item">
             <a class="nav-link active fs-5 pointer" @click.prevent="navigateTo('sec-6')">
@@ -158,6 +158,10 @@ html {
 }
 .no-underline {
   text-decoration: none;
+}
+
+.pointer {
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   .dropdown {
