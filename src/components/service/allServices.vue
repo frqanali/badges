@@ -18,7 +18,7 @@
             <td>
               {{ service.pio }}
             </td>
-            <td style="max-width: 100px" class="text-truncate">
+            <td style="max-width: 200px" class="text-truncate">
               <button
                 class="btn btn-sm btn-success ms-2"
                 @click="serviceStore.routerEditService(service.id)"

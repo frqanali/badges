@@ -33,11 +33,7 @@
           <li><button class="dropdown-item" @click="switchLanguage('ar')">عربي</button></li>
         </ul>
       </div>
-      <div
-        v-if="authStore.token"
-        @click="router.push('/dashboard')"
-        style="color: white; cursor: pointer"
-      >
+      <div v-if="authStore.token" @click="router.push('/dashboard')" class="homeButton">
         <i class="bi bi-house-door-fill"></i>
       </div>
 
@@ -137,6 +133,10 @@ const navigateTo = (sectionId) => {
 .navbar .container-fluid {
   margin: 0;
   padding: 0;
+}
+.homeButton {
+  color: white;
+  cursor: pointer;
 }
 
 .navbar-nav {
