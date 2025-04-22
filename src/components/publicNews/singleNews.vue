@@ -1,5 +1,5 @@
 <template>
-  <loader v-if="serviceStore.loader" />
+  <loader v-if="newsStore.loader" />
 
   <div v-else class="container mt-5">
     <div class="row g-4">
@@ -10,11 +10,7 @@
             class="d-flex justify-content-center align-items-center overflow-hidden border m-0"
             v-if="newsStore.singlenews.image"
           >
-            <img
-              :src="`data:image/png;base64,${newsStore.singlenews.image}`"
-              alt="service Image"
-              class="fixed-image"
-            />
+            <img :src="newsStore.singlenews.image" alt="news Image" class="fixed-image" />
           </div>
 
           <div class="d-flex flex-column gap-2">

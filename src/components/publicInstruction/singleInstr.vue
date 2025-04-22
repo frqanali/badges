@@ -1,5 +1,5 @@
 <template>
-  <loader v-if="serviceStore.loader" />
+  <loader v-if="instructionStore.loader" />
 
   <div v-else class="container mt-5">
     <div class="row g-4">
