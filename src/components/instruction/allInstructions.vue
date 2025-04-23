@@ -1,4 +1,6 @@
 <template>
+  <loader v-if="instructionStore.loader" />
+
   <div class="container mt-4">
     <h3 class="mb-4">ادارة الضوابط والتعليمات</h3>
     <div class="table-responsive">
@@ -56,6 +58,7 @@ import { onMounted } from 'vue'
 import { useInstructionStore } from '@/stores/useInstructions'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import loader from '@/components/loader.vue'
 
 const { locale } = useI18n()
 // stores

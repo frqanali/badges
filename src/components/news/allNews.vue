@@ -1,4 +1,6 @@
 <template>
+    <loader v-if="newsStore.loader" />
+
   <div class="container mt-4">
     <h3 class="mb-4">ادارة الاخبار</h3>
     <div class="table-responsive">
@@ -62,6 +64,8 @@
 import { onMounted } from 'vue'
 import { useNewsStore } from '@/stores/useNews'
 import { ref } from 'vue'
+import loader from '@/components/loader.vue'
+
 // stores
 const newsStore = useNewsStore()
 

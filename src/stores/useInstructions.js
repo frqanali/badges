@@ -99,7 +99,7 @@ export const useInstructionStore = defineStore('instructionStore', () => {
 
   const getSingleinstruction = async (id) => {
     try {
-      loader.value = true 
+      loader.value = true
 
       const response = await axios.get(
         apiURL + 'greenzone/get_rule_by_id/' + id,
@@ -112,9 +112,9 @@ export const useInstructionStore = defineStore('instructionStore', () => {
       if (response.status === 200) {
         loader.value = false
 
-        singleinstruction.value.ruletitle = response.data.ruletitle
+        singleinstruction.value.ruletitle = response.data.title
         singleinstruction.value.ruledescription = response.data.description
-        singleinstruction.value.ruletitle_en = response.data.ruletitle_en
+        singleinstruction.value.ruletitle_en = response.data.title_en
         singleinstruction.value.ruledescription_en = response.data.description_en
       }
     } catch (error) {
@@ -213,7 +213,6 @@ export const useInstructionStore = defineStore('instructionStore', () => {
 
     instructionId.value = null
     v$.value.$reset()
-
   }
 
   return {

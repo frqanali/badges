@@ -1,4 +1,6 @@
 <template>
+  <loader v-if="serviceStore.loader" />
+
   <div class="container mt-4">
     <h3 class="mb-4">ادارة الخدمات</h3>
     <div class="table-responsive">
@@ -64,6 +66,7 @@
 import { onMounted } from 'vue'
 import { useServiceStore } from '@/stores/useService'
 import { ref } from 'vue'
+import loader from '@/components/loader.vue'
 
 // stores
 const serviceStore = useServiceStore()

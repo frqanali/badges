@@ -32,7 +32,7 @@
       <!-- pagination section -->
       <div class="col-lg-4 col-md-5 col-12">
         <div class="card">
-          <div class="card-header">اخر الضوابط والتعليمات</div>
+          <div class="card-header">{{ $t('latestrules') }}</div>
           <ul class="list-group list-group-flush p-0">
             <li
               v-for="instructions in instructionStore.instructionList"
