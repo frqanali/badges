@@ -261,8 +261,7 @@ export const useNewsStore = defineStore('newsStore', () => {
           }
         }
       }
-    }
-     catch (error) {
+    } catch (error) {
       loader.value = false
 
       Swal.fire({
@@ -283,8 +282,7 @@ export const useNewsStore = defineStore('newsStore', () => {
 
         threeNewsList.value = response.data.news.slice(0, 3)
       }
-    }
-    catch (error) {
+    } catch (error) {
       loader.value = false
 
       console.log(error)
@@ -335,6 +333,33 @@ export const useNewsStore = defineStore('newsStore', () => {
   const setUploadedImage = (file) => {
     singlenews.value.image = file
   }
+  const getUserIp = async () => {
+    try {
+      const response = await axios.get('https://ipapi.co/json/') // Get IP from external service
+      return response.data.ip
+    } catch (error) {
+      console.error('Error getting IP:', error)
+      return null
+    }
+  }
+
+  const sendIpToApi = async () => {
+    const ip = await getUserIp()
+    console.log(ip)
+
+    if (!ip) {
+      console.warn('No IP available, skipping send.')
+      return
+    }
+
+    // try {
+    //   const response = await axios.post(apiURL + 'greenzone/visit', { ip }) // Send IP to your API
+    //   console.log('Visitor Count:', response.data)
+    //   return response.data
+    // } catch (error) {
+    //   console.error('Error sending IP:', error)
+    // }
+  }
 
   return {
     getAllNews,
@@ -359,5 +384,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     imageInput,
     v$,
     loader,
+    getUserIp,
+    sendIpToApi,
   }
 })

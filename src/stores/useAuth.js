@@ -64,10 +64,12 @@ export const useAuthStore = defineStore('auth', () => {
     })
   }
 
+
   return {
     login,
     logout,
     token,
     userInfo,
+ 
   }
 })
