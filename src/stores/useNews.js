@@ -352,13 +352,13 @@ export const useNewsStore = defineStore('newsStore', () => {
       return
     }
 
-    // try {
-    //   const response = await axios.post(apiURL + 'greenzone/visit', { ip }) // Send IP to your API
-    //   console.log('Visitor Count:', response.data)
-    //   return response.data
-    // } catch (error) {
-    //   console.error('Error sending IP:', error)
-    // }
+    try {
+      const response = await axios.post(apiURL + 'greenzone/visit', { ip }) // Send IP to your API
+      console.log('Visitor Count:', response.data)
+      return response.data
+    } catch (error) {
+      console.error('Error sending IP:', error)
+    }
   }
 
   return {
