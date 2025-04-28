@@ -10,6 +10,8 @@ import { required } from '@vuelidate/validators'
 const imageInput = ref(null) // Reference to the file input
 
 const apiURL = import.meta.env.VITE_API_URL
+const visitorCount = ref('') // 👈 ADD this
+const todayVisitorCount = ref('') // 👈 ADD this
 
 export const useNewsStore = defineStore('newsStore', () => {
   // stores @ route
@@ -344,18 +346,23 @@ export const useNewsStore = defineStore('newsStore', () => {
   }
 
   const sendIpToApi = async () => {
-    const ip = await getUserIp()
-    console.log(ip)
+    const ip_address = await getUserIp()
+    console.log(ip_address)
 
-    if (!ip) {
+    if (!ip_address) {
       console.warn('No IP available, skipping send.')
       return
     }
 
     try {
-      const response = await axios.post(apiURL + 'greenzone/visit', { ip }) // Send IP to your API
+      const response = await axios.post(apiURL + 'greenzone/visit', { ip_address }) // Send IP to your API
       console.log('Visitor Count:', response.data)
-      return response.data
+
+      visitorCount.value = response.data.total_visits
+      todayVisitorCount.value = response.data.today_visits
+
+      console.log(visitorCount.value, 'jjjjj')
+      // visitorCount.value = response.data.today_visits
     } catch (error) {
       console.error('Error sending IP:', error)
     }
@@ -386,5 +393,7 @@ export const useNewsStore = defineStore('newsStore', () => {
     loader,
     getUserIp,
     sendIpToApi,
+    visitorCount, // 👈 Add this
+    todayVisitorCount,
   }
 })
