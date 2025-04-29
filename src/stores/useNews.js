@@ -10,8 +10,9 @@ import { required } from '@vuelidate/validators'
 const imageInput = ref(null) // Reference to the file input
 
 const apiURL = import.meta.env.VITE_API_URL
-const visitorCount = ref('') // 👈 ADD this
-const todayVisitorCount = ref('') // 👈 ADD this
+const visitorCount = ref('')
+const dailyCountList = ref([])
+const todayVisitorCount = ref('')
 
 export const useNewsStore = defineStore('newsStore', () => {
   // stores @ route
@@ -355,16 +356,31 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
 
     try {
-      const response = await axios.post(apiURL + 'greenzone/visit', { ip_address }) // Send IP to your API
+      loader.value = true
+
+      const response = await axios.post(apiURL + 'greenzone/visit', { ip_address })
+      loader.value = false
+
       console.log('Visitor Count:', response.data)
 
       visitorCount.value = response.data.total_visits
       todayVisitorCount.value = response.data.today_visits
-
-      console.log(visitorCount.value, 'jjjjj')
-      // visitorCount.value = response.data.today_visits
     } catch (error) {
       console.error('Error sending IP:', error)
+    }
+  }
+  const getDailyVisit = async () => {
+    try {
+      loader.value = true
+
+      const response = await axios.get(apiURL + 'greenzone/visitdaily')
+      loader.value = false
+
+      console.log('daily visits', response.data)
+      dailyCountList.value = response.data.daily_visits
+    } catch (error) {
+      console.error(error)
+      return null
     }
   }
 
@@ -393,7 +409,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     loader,
     getUserIp,
     sendIpToApi,
-    visitorCount, // 👈 Add this
+    visitorCount,
     todayVisitorCount,
+    getDailyVisit,
+    dailyCountList,
   }
 })
