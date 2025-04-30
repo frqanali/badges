@@ -8,8 +8,8 @@
     </h2>
 
     <!-- Chart Canvas -->
-    <canvas ref="visitorChart" width="300" height="100" class="mt-5"></canvas>
-    <canvas ref="dailyChart" width="300" height="100" class="mt-5"></canvas>
+    <canvas ref="visitorChart" width="200" height="50" class="mt-5"></canvas>
+    <canvas ref="dailyChart" width="200" height="50" class="mt-5"></canvas>
   </div>
 </template>
 
@@ -28,7 +28,12 @@ const dailyChart = ref(null)
 
 onMounted(async () => {
   await newsStore.getDailyVisit()
-  if (visitorChart.value) {
+  await newsStore.sendIpToApi()
+  if (
+    visitorChart.value &&
+    newsStore.visitorCount !== null &&
+    newsStore.todayVisitorCount !== null
+  ) {
     new Chart(visitorChart.value, {
       type: 'bar',
       data: {
@@ -54,14 +59,16 @@ onMounted(async () => {
     })
   }
   if (dailyChart.value && newsStore.dailyCountList.length > 0) {
+    const recentSeven = newsStore.dailyCountList.slice(-7)
+
     new Chart(dailyChart.value, {
       type: 'bar',
       data: {
-        labels: newsStore.dailyCountList.map((item) => item.date), // Dates for X-axis
+        labels: recentSeven.map((item) => item.date), // Dates for X-axis
         datasets: [
           {
             label: 'عدد الزيارات اليومية',
-            data: newsStore.dailyCountList.map((item) => item.visits), // Visits for Y-axis
+            data: recentSeven.map((item) => item.visits), // Visits for Y-axis
             backgroundColor: 'rgba(153, 102, 255, 0.5)',
             borderColor: 'rgba(153, 102, 255, 1)',
             borderWidth: 1,
