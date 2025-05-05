@@ -3,6 +3,7 @@ import { createI18n } from 'vue-i18n'
 // ✅ Define translations
 const messages = {
   en: {
+    phonenumber: 'Phone Number',
     services: 'services',
     news: 'news',
     search: 'search',
@@ -48,6 +49,7 @@ const messages = {
     latestrules: ' Latest regulations and instructions',
   },
   ar: {
+    phonenumber: 'رقم الهاتف',
     services: 'الخدمات',
     news: 'الاخبار',
     search: 'بحث',

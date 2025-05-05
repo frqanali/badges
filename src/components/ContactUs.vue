@@ -62,7 +62,14 @@
             </div>
           </div>
         </div>
-
+        <div class="input-group mb-4">
+          <input
+            type="email"
+            class="form-control"
+            :placeholder="$t('phonenumber')"
+            aria-label="Username"
+          />
+        </div>
         <div class="input-group mb-4">
           <input
             type="email"
