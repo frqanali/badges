@@ -28,7 +28,7 @@ const dailyChart = ref(null)
 
 onMounted(async () => {
   await newsStore.getDailyVisit()
-  await newsStore.sendIpToApi()
+
   // if (
   //   visitorChart.value &&
   //   newsStore.visitorCount !== null &&
@@ -68,7 +68,7 @@ onMounted(async () => {
         datasets: [
           {
             label: 'عدد الزيارات اليومية',
-            data: recentSeven.map((item) => item.visits), // Visits for Y-axis
+            data: recentSeven.map((item) => item.daily_visits), // Visits for Y-axis
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)', // Red
               'rgba(54, 162, 235, 0.5)', // Blue

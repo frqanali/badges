@@ -11,11 +11,5 @@
 <script setup>
 import NavBar from '@/components/NavBar.vue'
 import FooterBar from '@/components/FooterBar.vue'
-import { onMounted } from 'vue'
-import { useNewsStore } from '@/stores/useNews'
-const newsStore = useNewsStore()
 
-onMounted(() => {
-  newsStore.sendIpToApi()
-})
 </script>

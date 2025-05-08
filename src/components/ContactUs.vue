@@ -97,6 +97,13 @@
   </div>
 </template>
 
+<script lang="js" setup>
+import { useNewsStore } from '@/stores/useNews'
+const newsStore = useNewsStore()
+
+newsStore.sendIpToApi()
+</script>
+
 <style scoped>
 .custom-card {
   width: 100%; /* Set a reasonable width */

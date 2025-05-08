@@ -10,9 +10,14 @@ import { required } from '@vuelidate/validators'
 const imageInput = ref(null) // Reference to the file input
 
 const apiURL = import.meta.env.VITE_API_URL
-const visitorCount = ref('')
+const visitorCount = ref()
 const dailyCountList = ref([])
-const todayVisitorCount = ref('')
+const todayVisitorCount = ref()
+
+const storedCount = localStorage.getItem('todayVisitorCount')
+todayVisitorCount.value = storedCount !== null ? parseInt(storedCount) : 0
+const storedTotalCount = localStorage.getItem('visitorCount')
+visitorCount.value = storedCount !== null ? parseInt(storedTotalCount) : 0
 
 export const useNewsStore = defineStore('newsStore', () => {
   // stores @ route
@@ -365,6 +370,9 @@ export const useNewsStore = defineStore('newsStore', () => {
 
       visitorCount.value = response.data.total_visits
       todayVisitorCount.value = response.data.today_visits
+
+      localStorage.setItem('visitorCount', visitorCount.value)
+      localStorage.setItem('todayVisitorCount', todayVisitorCount.value)
     } catch (error) {
       console.error('Error sending IP:', error)
     }
@@ -377,7 +385,8 @@ export const useNewsStore = defineStore('newsStore', () => {
       loader.value = false
 
       console.log('daily visits', response.data)
-      dailyCountList.value = response.data.daily_visits
+      dailyCountList.value = response.data.daily_summary
+      console.log(dailyCountList, 'hhhhhhhhhhh')
     } catch (error) {
       console.error(error)
       return null

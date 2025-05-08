@@ -94,9 +94,10 @@ import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter, useRoute } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuth'
+import { useNewsStore } from '@/stores/useNews'
 
 // stores
-
+const newsStore = useNewsStore()
 const authStore = useAuthStore()
 const { locale } = useI18n()
 const router = useRouter()
