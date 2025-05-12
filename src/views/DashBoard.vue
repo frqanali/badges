@@ -1,15 +1,23 @@
 <template>
-  <div class="d-flex flex-column align-items-center text-center">
-    <h1>اهلا بعودتك {{ authStore.userInfo }}</h1>
+  <div class="row">
+    <div class="container mt-5">
+      <div class="col-4 col-sm-6 col-md-12">
+        <div class="d-flex flex-column align-items-center justify-content-center">
+          <h1>اهلا بعودتك {{ authStore.userInfo }}</h1>
 
-    <h2 v-if="newsStore.visitorCount !== null" class="mt-3">
-      عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
-      عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
-    </h2>
+          <h2 v-if="newsStore.visitorCount !== null" class="mt-3">
+            عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
+            عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
+          </h2>
+        </div>
+        <!-- Chart Canvas -->
+        <canvas ref="visitorChart" width="200" height="50" class="mt-5"></canvas>
 
-    <!-- Chart Canvas -->
-    <canvas ref="visitorChart" width="200" height="50" class="mt-5"></canvas>
-    <canvas ref="dailyChart" width="200" height="50" class="mt-5"></canvas>
+        <div class="card mt-5 shadow-lg">
+          <canvas ref="dailyChart" width="200" height="50" class="mt-5"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
