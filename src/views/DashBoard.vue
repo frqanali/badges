@@ -29,6 +29,10 @@ const dailyChart = ref(null)
 onMounted(async () => {
   await newsStore.getDailyVisit()
 
+  if (newsStore.zeroCount) {
+    await newsStore.sendIpToApi()
+  }
+
   // if (
   //   visitorChart.value &&
   //   newsStore.visitorCount !== null &&

@@ -10,14 +10,6 @@ import { required } from '@vuelidate/validators'
 const imageInput = ref(null) // Reference to the file input
 
 const apiURL = import.meta.env.VITE_API_URL
-const visitorCount = ref()
-const dailyCountList = ref([])
-const todayVisitorCount = ref()
-
-const storedCount = localStorage.getItem('todayVisitorCount')
-todayVisitorCount.value = storedCount !== null ? parseInt(storedCount) : 0
-const storedTotalCount = localStorage.getItem('visitorCount')
-visitorCount.value = storedCount !== null ? parseInt(storedTotalCount) : 0
 
 export const useNewsStore = defineStore('newsStore', () => {
   // stores @ route
@@ -33,8 +25,23 @@ export const useNewsStore = defineStore('newsStore', () => {
     newsdescription_en: '',
     pio_en: '',
   })
+  const visitorCount = ref()
+  const dailyCountList = ref([])
+  const todayVisitorCount = ref()
+  const zeroCount = ref(false)
 
   const loader = ref(false)
+
+  const storedCount = localStorage.getItem('todayVisitorCount')
+
+  const storedTotalCount = localStorage.getItem('visitorCount')
+
+  if (storedCount !== null && storedTotalCount !== null) {
+    visitorCount.value = parseInt(storedTotalCount)
+    todayVisitorCount.value = parseInt(storedCount)
+  } else {
+    zeroCount.value = true
+  }
 
   const rules = computed(() => {
     return {
@@ -373,6 +380,8 @@ export const useNewsStore = defineStore('newsStore', () => {
 
       localStorage.setItem('visitorCount', visitorCount.value)
       localStorage.setItem('todayVisitorCount', todayVisitorCount.value)
+
+      zeroCount.value = false
     } catch (error) {
       console.error('Error sending IP:', error)
     }
@@ -385,7 +394,7 @@ export const useNewsStore = defineStore('newsStore', () => {
       loader.value = false
 
       console.log('daily visits', response.data)
-      dailyCountList.value = response.data.daily_summary
+      dailyCountList.value = response.data
       console.log(dailyCountList, 'hhhhhhhhhhh')
     } catch (error) {
       console.error(error)
@@ -422,5 +431,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     todayVisitorCount,
     getDailyVisit,
     dailyCountList,
+    zeroCount,
   }
 })
