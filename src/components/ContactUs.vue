@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="input-group mb-4">
+            <div class="input-group">
               <input
                 v-model="emailStore.mailData.template"
                 type="text"
@@ -64,6 +64,9 @@
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
               />
+            </div>
+            <div class="text-danger">
+              {{ v$.mailData.template.$errors[0]?.$message }}
             </div>
           </div>
         </div>
@@ -76,27 +79,37 @@
             v-model="emailStore.mailData.phoneNumber"
           />
         </div>
-        <div class="input-group mb-4">
-          <input
-            type="text"
-            class="form-control"
-            :placeholder="$t('subject')"
-            aria-label="Username"
-            v-model="emailStore.mailData.subject"
-          />
+        <div class="col-md-12 mb-4">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              :placeholder="$t('subject')"
+              aria-label="Username"
+              v-model="emailStore.mailData.subject"
+            />
+          </div>
+          <div class="text-danger">
+            {{ v$.mailData.subject.$errors[0]?.$message }}
+          </div>
         </div>
 
-        <div class="input-group mb-4">
-          <textarea
-            class="form-control"
-            aria-label="With textarea"
-            :placeholder="$t('msg')"
-            v-model="emailStore.mailData.body"
-          ></textarea>
+        <div class="col-md-12 mb-4">
+          <div class="input-group">
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              :placeholder="$t('msg')"
+              v-model="emailStore.mailData.body"
+            ></textarea>
+          </div>
+          <div class="text-danger">
+            {{ v$.mailData.body.$errors[0]?.$message }}
+          </div>
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-color btn-lg" @click="emailStore.sendMail">
+          <button type="button" class="btn btn-color btn-lg" @click="handleSubmit">
             {{ $t('send') }} <i class="bi bi-send-fill"></i>
           </button>
         </div>
@@ -109,9 +122,21 @@
 import { useNewsStore } from '@/stores/useNews'
 import { useEmailStore } from '@/stores/useEmail'
 import Loader from './loader.vue'
+import { storeToRefs } from 'pinia'
 // stores
 const newsStore = useNewsStore()
 const emailStore = useEmailStore()
+const { v$ } = storeToRefs(emailStore)
+
+const handleSubmit = async () => {
+  await v$.value.$validate()
+
+  if (!v$.value.$invalid) {
+    await emailStore.sendMail()
+  } else {
+    console.log('Validation failed', v$.value.$errors)
+  }
+}
 
 newsStore.sendIpToApi()
 </script>

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { required, helpers } from '@vuelidate/validators'
+import { useVuelidate } from '@vuelidate/core'
 
 const apiURL = import.meta.env.VITE_API_URL
 
@@ -15,6 +17,36 @@ export const useEmailStore = defineStore('email', () => {
 
   const loader = ref(false)
 
+  // validation
+  const rules = computed(() => ({
+    mailData: {
+      subject: {
+        required: helpers.withMessage('يحب كتابة موضوع الرسالة', required),
+      },
+      body: {
+        required: helpers.withMessage('يجب كتابة نص الرسالة', required),
+      },
+      template: {
+        required: helpers.withMessage('ايميل المرسل مطلوب', required),
+      },
+    },
+  }))
+
+  const v$ = useVuelidate(rules, { mailData })
+
+  // reset form function
+  const resetForm = () => {
+    mailData.value = {
+      subject: '',
+      body: '',
+      template: '',
+      name: '',
+      phoneNumber: '',
+    }
+  }
+
+  // send mail function
+
   const sendMail = async () => {
     const payload = {
       subject: mailData.value.subject,
@@ -26,6 +58,7 @@ export const useEmailStore = defineStore('email', () => {
       loader.value = true
       const response = await axios.post(apiURL + 'greenzone/send-email', payload)
       console.log(response)
+      resetForm()
     } catch (error) {
       console.log(error)
     } finally {
@@ -33,5 +66,5 @@ export const useEmailStore = defineStore('email', () => {
     }
   }
 
-  return { sendMail, mailData, loader }
+  return { sendMail, mailData, loader, v$ }
 })
