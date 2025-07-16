@@ -1,6 +1,6 @@
 <template>
   <div class="container d-flex justify-content-center my-5" id="sec-6">
-    <!-- <div class="col-10 col-md-6">
+    <div class="col-10 col-md-6">
       <p class="text-center fs-2 underline-text">{{ $t('contactUs') }}</p>
       <div class="card custom-card contact">
         <div class="col">
@@ -42,6 +42,7 @@
           <div class="col-md-6">
             <div class="input-group mb-4">
               <input
+                v-model="emailStore.mailData.name"
                 type="text"
                 class="form-control"
                 :placeholder="$t('name')"
@@ -53,6 +54,7 @@
           <div class="col-md-6">
             <div class="input-group mb-4">
               <input
+                v-model="emailStore.mailData.template"
                 type="text"
                 class="form-control"
                 :placeholder="$t('email')"
@@ -64,18 +66,20 @@
         </div>
         <div class="input-group mb-4">
           <input
-            type="email"
+            type="number"
             class="form-control"
             :placeholder="$t('phonenumber')"
             aria-label="Username"
+            v-model="emailStore.mailData.phoneNumber"
           />
         </div>
         <div class="input-group mb-4">
           <input
-            type="email"
+            type="text"
             class="form-control"
             :placeholder="$t('subject')"
             aria-label="Username"
+            v-model="emailStore.mailData.subject"
           />
         </div>
 
@@ -84,22 +88,26 @@
             class="form-control"
             aria-label="With textarea"
             :placeholder="$t('msg')"
+            v-model="emailStore.mailData.body"
           ></textarea>
         </div>
 
         <div class="text-center">
-          <button type="button" class="btn btn-color btn-lg">
+          <button type="button" class="btn btn-color btn-lg" @click="emailStore.sendMail">
             {{ $t('send') }} <i class="bi bi-send-fill"></i>
           </button>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script lang="js" setup>
 import { useNewsStore } from '@/stores/useNews'
+import { useEmailStore } from '@/stores/useEmail'
+// stores
 const newsStore = useNewsStore()
+const emailStore = useEmailStore()
 
 newsStore.sendIpToApi()
 </script>
