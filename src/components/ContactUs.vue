@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <loader v-if="emailStore.loader" />
+  </div>
   <div class="container d-flex justify-content-center my-5" id="sec-6">
     <div class="col-10 col-md-6">
       <p class="text-center fs-2 underline-text">{{ $t('contactUs') }}</p>
@@ -105,6 +108,7 @@
 <script lang="js" setup>
 import { useNewsStore } from '@/stores/useNews'
 import { useEmailStore } from '@/stores/useEmail'
+import Loader from './loader.vue'
 // stores
 const newsStore = useNewsStore()
 const emailStore = useEmailStore()

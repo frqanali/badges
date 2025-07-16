@@ -33,5 +33,5 @@ export const useEmailStore = defineStore('email', () => {
     }
   }
 
-  return { sendMail, mailData }
+  return { sendMail, mailData, loader }
 })
