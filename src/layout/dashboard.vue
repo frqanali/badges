@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <!-- side bar -->
     <aside id="sidebar" :class="[{ collapsed: isExpanded }]">
       <div class="h-100">
         <div class="sidebar-logo">

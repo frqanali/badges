@@ -401,6 +401,35 @@ export const useNewsStore = defineStore('newsStore', () => {
       return null
     }
   }
+  const viewPdf = async () => {
+    try {
+      loader.value = true
+
+      const response = await axios.get(apiURL + 'greenzone/visitdaily/pdf')
+
+      if (response.status === 200) {
+        loader.value = false
+
+        Swal.fire({
+          title: 'تم تحميل ملف الاحصائيات بنجاح',
+          icon: 'success',
+        })
+
+        const pdfWindow = window.open('', '_blank')
+        pdfWindow?.document.write(
+          `<iframe width="100%" height="100%" style="border:none;" src="data:application/pdf;base64,${response.data.pdf_base64}"></iframe>`,
+        )
+      }
+    } catch (error) {
+      loader.value = false
+
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في تحميل ملف الاحصائيات',
+        icon: 'error',
+      })
+    }
+  }
 
   return {
     getAllNews,
@@ -432,5 +461,6 @@ export const useNewsStore = defineStore('newsStore', () => {
     getDailyVisit,
     dailyCountList,
     zeroCount,
+    viewPdf,
   }
 })

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { required, helpers } from '@vuelidate/validators'
@@ -36,6 +37,7 @@ export const useEmailStore = defineStore('email', () => {
 
   // reset form function
   const resetForm = () => {
+    v$.value.$reset()
     mailData.value = {
       subject: '',
       body: '',
@@ -57,10 +59,24 @@ export const useEmailStore = defineStore('email', () => {
     try {
       loader.value = true
       const response = await axios.post(apiURL + 'greenzone/send-email', payload)
-      console.log(response)
-      resetForm()
+      if (response.status === 200) {
+        loader.value = false
+
+        Swal.fire({
+          title: 'تم الارسال بنجاح',
+          icon: 'success',
+        })
+
+        resetForm()
+      }
     } catch (error) {
-      console.log(error)
+      loader.value = false
+
+      Swal.fire({
+        title: 'حدث خطأ',
+        text: 'فشل في الارسال  ',
+        icon: 'error',
+      })
     } finally {
       loader.value = false
     }

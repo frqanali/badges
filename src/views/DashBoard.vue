@@ -1,4 +1,7 @@
 <template>
+    <div>
+    <loader v-if="newsStore.loader" />
+  </div>
   <div class="row">
     <div class="container mt-5">
       <div class="col-4 col-sm-6 col-md-12">
@@ -9,6 +12,9 @@
             عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
             عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
           </h2>
+          <button type="button" class="btn btn-color btn-lg mt-3" @click="newsStore.viewPdf">
+            تحميل الملف
+          </button>
         </div>
         <!-- Chart Canvas -->
         <canvas ref="visitorChart" width="200" height="50" class="mt-5"></canvas>
@@ -26,6 +32,9 @@ import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/useAuth'
 import { useNewsStore } from '@/stores/useNews'
 import { Chart } from 'chart.js/auto'
+import Loader from '../components/loader.vue'
+
+
 
 // stores
 const authStore = useAuthStore()
