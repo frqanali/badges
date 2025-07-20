@@ -53,7 +53,9 @@ export const useEmailStore = defineStore('email', () => {
     const payload = {
       subject: mailData.value.subject,
       body: mailData.value.body,
-      template: mailData.value.template,
+      email_1: mailData.value.template,
+      name: mailData.value.name,
+      phone: mailData.value.phoneNumber,
     }
 
     try {
