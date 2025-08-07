@@ -390,7 +390,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     try {
       loader.value = true
 
-      const response = await axios.get(apiURL + 'greenzone/visitdaily')
+      const response = await axios.get(apiURL + 'greenzone/visitdaily', {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
       loader.value = false
 
       console.log('daily visits', response.data)
@@ -405,7 +407,9 @@ export const useNewsStore = defineStore('newsStore', () => {
     try {
       loader.value = true
 
-      const response = await axios.get(apiURL + 'greenzone/visitdaily/pdf')
+      const response = await axios.get(apiURL + 'greenzone/visitdaily/pdf', {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
 
       if (response.status === 200) {
         loader.value = false
