@@ -3,6 +3,7 @@ import { createI18n } from 'vue-i18n'
 // ✅ Define translations
 const messages = {
   en: {
+    gzapp1: 'Special Approvals Form',
     phonenumber: 'Phone Number',
     services: 'services',
     news: 'news',
@@ -49,6 +50,7 @@ const messages = {
     latestrules: ' Latest regulations and instructions',
   },
   ar: {
+    gzapp1: 'استمارة الموافقات الخاصة',
     phonenumber: 'رقم الهاتف',
     services: 'الخدمات',
     news: 'الاخبار',

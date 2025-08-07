@@ -2,28 +2,43 @@
   <div class="container mt-5" id="sec-4">
     <h2 class="text-center my-5 underline-text">{{ $t('services') }}</h2>
     <div class="row g-3 justify-content-center">
-      <div class="col-md-6 me-6 ms-6 mb-4">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('gzapp2') }}</h5>
-            <p class="card-text">{{ $t('gzapp2') }}</p>
-            <a href="https://gz-amn.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
-              <button class="btn btn-color">{{ $t('go') }}</button>
-            </a>
+      <div class="row">
+        <div class="col-md-6 me-6 ms-6 mb-4">
+          <div class="card backgrounds">
+            <div class="card-body">
+              <h5 class="card-title">{{ $t('gzapp2') }}</h5>
+              <p class="card-text">{{ $t('gzapp2') }}</p>
+              <a href="https://gz-amn.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
+                <button class="btn btn-color">{{ $t('go') }}</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 me-6 ms-6">
+          <div class="card backgrounds">
+            <div class="card-body">
+              <h5 class="card-title">{{ $t('gzapp') }}</h5>
+              <p class="card-text">{{ $t('gzapp') }}</p>
+              <a href="https://gzoffice.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
+                <button class="btn btn-color">{{ $t('go') }}</button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-5">
+          <div class="card backgrounds">
+            <div class="card-body">
+              <h5 class="card-title">{{ $t('gzapp1') }}</h5>
+              <p class="card-text">{{ $t('gzapp1') }}</p>
+              <a href="https://gzspecial.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
+                <button class="btn btn-danger">{{ $t('go') }}</button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6 me-6 ms-6">
-        <div class="card backgrounds">
-          <div class="card-body">
-            <h5 class="card-title">{{ $t('gzapp') }}</h5>
-            <p class="card-text">{{ $t('gzapp') }}</p>
-            <a href="https://gzoffice.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
-              <button class="btn btn-color">{{ $t('go') }}</button>
-            </a>
-          </div>
-        </div>
-      </div>
+
       <div v-if="serviceStore.pinnedServicesList.length > 0" class="container">
         <div class="row">
           <div
