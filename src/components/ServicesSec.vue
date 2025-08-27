@@ -9,7 +9,7 @@
               <h5 class="card-title text-danger">{{ $t('gzapp1') }}</h5>
               <p class="card-text">{{ $t('gzapp1') }}</p>
               <a href="https://gzspecial.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
-                <button class="btn btn-danger">{{ $t('go') }}</button>
+                <button class="btn btn-danger" @click="countService(3)">{{ $t('go') }}</button>
               </a>
             </div>
           </div>
@@ -21,7 +21,7 @@
               <h5 class="card-title">{{ $t('gzapp2') }}</h5>
               <p class="card-text">{{ $t('gzapp2') }}</p>
               <a href="https://gz-amn.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
-                <button class="btn btn-color">{{ $t('go') }}</button>
+                <button class="btn btn-color" @click="countService(2)">{{ $t('go') }}</button>
               </a>
             </div>
           </div>
@@ -33,7 +33,7 @@
               <h5 class="card-title">{{ $t('gzapp') }}</h5>
               <p class="card-text">{{ $t('gzapp') }}</p>
               <a href="https://gzoffice.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
-                <button class="btn btn-color">{{ $t('go') }}</button>
+                <button class="btn btn-color" @click="countService(1)">{{ $t('go') }}</button>
               </a>
             </div>
           </div>
