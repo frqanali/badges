@@ -359,18 +359,22 @@ export const useNewsStore = defineStore('newsStore', () => {
   }
 
   const sendIpToApi = async () => {
-    const ip_address = await getUserIp()
-    console.log(ip_address)
+    const payload = {}
 
-    if (!ip_address) {
-      console.warn('No IP available, skipping send.')
-      return
-    }
+    // const ip_address = await getUserIp()
+    // console.log(ip_address)
+
+    // if (!ip_address) {
+    //   console.warn('No IP available, skipping send.')
+    //   return
+    // }
 
     try {
       loader.value = true
 
-      const response = await axios.post(apiURL + 'greenzone/visit', { ip_address })
+      const response = await axios.post(apiURL + 'greenzone/visit', payload, {
+        headers: { Authorization: `Bearer ${useAuth.token}` },
+      })
       loader.value = false
 
       console.log('Visitor Count:', response.data)
@@ -395,9 +399,7 @@ export const useNewsStore = defineStore('newsStore', () => {
       })
       loader.value = false
 
-      console.log('daily visits', response.data)
       dailyCountList.value = response.data
-      console.log(dailyCountList, 'hhhhhhhhhhh')
     } catch (error) {
       console.error(error)
       return null

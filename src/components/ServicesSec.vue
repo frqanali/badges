@@ -38,7 +38,9 @@
                   {{ truncateWords(service.pio, 10) }}
                 </p>
                 <router-link :to="{ name: 'singleService', query: { id: service.id } }">
-                  <button class="btn btn-color">{{ $t('go') }}</button>
+                  <button class="btn btn-color" @click="countService(service.id)">
+                    {{ $t('go') }}
+                  </button>
                 </router-link>
               </div>
             </div>
@@ -54,8 +56,13 @@
                 <p class="card-text">
                   {{ truncateWords(service.pio, 10) }}
                 </p>
-                <router-link :to="{ name: 'singleService', query: { id: service.id } }">
-                  <button class="btn btn-color">{{ $t('go') }}</button>
+                <router-link
+                  @click="countService(service.id)"
+                  :to="{ name: 'singleService', query: { id: service.id } }"
+                >
+                  <button class="btn btn-color">
+                    {{ $t('go') }}
+                  </button>
                 </router-link>
               </div>
             </div>
@@ -76,6 +83,11 @@
 import { useServiceStore } from '@/stores/useService'
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import axios from 'axios'
+import { useAuthStore } from '../stores/useAuth'
+
+const apiURL = import.meta.env.VITE_API_URL
+const useAuth = useAuthStore()
 
 const { locale } = useI18n()
 const truncateWords = (text, wordLimit = 5) => {
@@ -86,6 +98,19 @@ const truncateWords = (text, wordLimit = 5) => {
 
 // stores
 const serviceStore = useServiceStore()
+
+const countService = async (id) => {
+  const payload = { service_id: id }
+  try {
+    const response = await axios.post(apiURL + 'greenzone/service', payload, {
+      headers: { Authorization: `Bearer ${useAuth.token}` },
+    })
+    console.log(response, 'here')
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
 
 // on mounted
 onMounted(async () => {

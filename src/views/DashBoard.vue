@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <loader v-if="newsStore.loader" />
   </div>
   <div class="row">
@@ -34,8 +34,6 @@ import { useNewsStore } from '@/stores/useNews'
 import { Chart } from 'chart.js/auto'
 import Loader from '../components/loader.vue'
 
-
-
 // stores
 const authStore = useAuthStore()
 const newsStore = useNewsStore()
@@ -45,6 +43,7 @@ const dailyChart = ref(null)
 
 onMounted(async () => {
   await newsStore.getDailyVisit()
+  newsStore.sendIpToApi()
 
   if (newsStore.zeroCount) {
     await newsStore.sendIpToApi()
