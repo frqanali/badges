@@ -18,6 +18,7 @@ import singleService from '@/components/publicServices/singleService.vue'
 import singleInstr from '@/components/publicInstruction/singleInstr.vue'
 import { useAuthStore } from '@/stores/useAuth.js'
 import applicationForm from '@/components/staticForm/applicationForm.vue'
+import statisticsPage from '@/components/statistics/statisticsPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,12 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/statistics',
+      name: 'statistics',
+      component: statisticsPage,
+      meta: { requireAuth: true, layout: dashboard },
     },
     {
       path: '/loader',

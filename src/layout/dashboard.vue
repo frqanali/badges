@@ -19,7 +19,7 @@
               data-bs-target="#pages"
               data-bs-toggle="collapse"
               aria-expanded="false"
-              ><i class="bi bi-file-earmark pe-2"></i> الاخبار
+              ><i class="bi bi-newspaper pe-2 ps-2"></i>الاخبار
             </a>
             <ul
               id="pages"
@@ -53,7 +53,7 @@
               data-bs-target="#services"
               data-bs-toggle="collapse"
               aria-expanded="false"
-              ><i class="bi bi-file-earmark pe-2"></i> الخدمات
+              ><i class="bi bi-gear pe-2 ps-2"></i> الخدمات
             </a>
             <ul
               id="services"
@@ -85,7 +85,7 @@
               data-bs-target="#instructions"
               data-bs-toggle="collapse"
               aria-expanded="false"
-              ><i class="bi bi-file-earmark pe-2"></i> الضوابط والتعليمات
+              ><i class="bi bi-file-text pe-2 ps-2"></i> الضوابط والتعليمات
             </a>
             <ul
               id="instructions"
@@ -111,6 +111,11 @@
                 >
               </li>
             </ul>
+          </li>
+          <li class="sidebar-item">
+            <router-link to="/statistics" class="sidebar-link" @click="newsStore.clearItems"
+              ><i class="bi bi-bar-chart pe-2 ps-2"></i> الاحصائيات
+            </router-link>
           </li>
         </ul>
       </div>
