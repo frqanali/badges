@@ -22,17 +22,39 @@
         <div class="card mt-5 shadow-lg">
           <canvas ref="dailyChart" width="200" height="50" class="mt-5"></canvas>
         </div>
+
+        <hr />
+        <div class="d-flex flex-column align-items-center justify-content-center">
+          <h1>احصائيات الخدمات</h1>
+          <h2>تحميل ملف عدد زيارات الخدمات</h2>
+        </div>
+        <ul class="">
+          <li>
+            1-استمارة تسجيل المنطقة الخضراء
+            <button class="btn btn-color btn-sm" @click="downloadPdf(1)">تحميل الملف</button>
+          </li>
+          <li>
+            2- الاستمارة الامنية لاصدار هويات المنطقة الخضراء
+            <button class="btn btn-color btn-sm">تحميل الملف</button>
+          </li>
+          <li>
+            3- استمارة الموافقات الخاصة <button class="btn btn-color btn-sm">تحميل الملف</button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+const apiURL = import.meta.env.VITE_API_URL
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/useAuth'
 import { useNewsStore } from '@/stores/useNews'
 import { Chart } from 'chart.js/auto'
+
 import Loader from '../components/loader.vue'
+import axios from 'axios'
 
 // stores
 const authStore = useAuthStore()
@@ -40,6 +62,24 @@ const newsStore = useNewsStore()
 
 //const visitorChart = ref(null)
 const dailyChart = ref(null)
+
+// download services pdf (remember we need to move this to the statistics page later)
+const downloadPdf = async (id) => {
+  const payload = {
+    service_id: id,
+  }
+  try {
+    const response = await axios.post(apiURL + 'service-stats/autopdf', payload, {
+      headers: {
+        headers: { Authorization: `Bearer ${authStore.token}` },
+      },
+    })
+
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 onMounted(async () => {
   await newsStore.getDailyVisit()
