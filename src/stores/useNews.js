@@ -406,10 +406,11 @@ export const useNewsStore = defineStore('newsStore', () => {
     }
   }
   const viewPdf = async () => {
+    const payload = { from_date: '2025-07-24', to_date: '2025-08-30' }
     try {
       loader.value = true
 
-      const response = await axios.get(apiURL + 'greenzone/visitdaily/pdf', {
+      const response = await axios.post(apiURL + 'greenzone/visitdaily/pdfm', payload, {
         headers: { Authorization: `Bearer ${useAuth.token}` },
       })
 

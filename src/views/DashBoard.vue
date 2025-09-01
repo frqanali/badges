@@ -12,7 +12,7 @@
             عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
             عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
           </h2>
-          <button type="button" class="btn btn-color btn-lg mt-3" @click="newsStore.viewPdf">
+          <button type="button" class="btn btn-color btn-lg mt-3" @click="newsStore.viewPdf()">
             تحميل الملف
           </button>
         </div>
@@ -35,10 +35,11 @@
           </li>
           <li>
             2- الاستمارة الامنية لاصدار هويات المنطقة الخضراء
-            <button class="btn btn-color btn-sm">تحميل الملف</button>
+            <button class="btn btn-color btn-sm" @click="downloadPdf(2)">تحميل الملف</button>
           </li>
           <li>
-            3- استمارة الموافقات الخاصة <button class="btn btn-color btn-sm">تحميل الملف</button>
+            3- استمارة الموافقات الخاصة
+            <button class="btn btn-color btn-sm" @click="downloadPdf(3)">تحميل الملف</button>
           </li>
         </ul>
       </div>
@@ -69,7 +70,7 @@ const downloadPdf = async (id) => {
     service_id: id,
   }
   try {
-    const response = await axios.post(apiURL + 'service-stats/autopdf', payload, {
+    const response = await axios.post(apiURL + 'greenzone/service-stats/autopdf', payload, {
       headers: {
         headers: { Authorization: `Bearer ${authStore.token}` },
       },
