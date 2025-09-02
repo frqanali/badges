@@ -14,7 +14,11 @@
           </h2>
           <div class="d-flex flex-column gap-2 mt-3" dir="rtl">
             <div class="d-flex gap-2">
+              <label class="fw-bold" style="width: 200px">من تاريخ:</label>
+
               <input v-model="fromDate" type="date" class="form-control" placeholder="من تاريخ" />
+              <label class="fw-bold" style="width: 200px">إلى تاريخ:</label>
+
               <input v-model="toDate" type="date" class="form-control" placeholder="إلى تاريخ" />
             </div>
 
