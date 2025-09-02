@@ -12,9 +12,16 @@
             عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
             عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
           </h2>
-          <button type="button" class="btn btn-color btn-lg mt-3" @click="newsStore.viewPdf()">
-            تحميل الملف
-          </button>
+          <div class="d-flex flex-column gap-2 mt-3" dir="rtl">
+            <div class="d-flex gap-2">
+              <input v-model="fromDate" type="date" class="form-control" placeholder="من تاريخ" />
+              <input v-model="toDate" type="date" class="form-control" placeholder="إلى تاريخ" />
+            </div>
+
+            <button type="button" class="btn btn-color btn-lg mt-2" @click="handleDownload">
+              تحميل ملف الاحصائيات
+            </button>
+          </div>
         </div>
         <!-- Chart Canvas -->
         <canvas ref="visitorChart" width="200" height="50" class="mt-5"></canvas>
@@ -53,6 +60,7 @@ import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/useAuth'
 import { useNewsStore } from '@/stores/useNews'
 import { Chart } from 'chart.js/auto'
+import Swal from 'sweetalert2'
 
 import Loader from '../components/loader.vue'
 import axios from 'axios'
@@ -63,6 +71,8 @@ const newsStore = useNewsStore()
 
 //const visitorChart = ref(null)
 const dailyChart = ref(null)
+const fromDate = ref('')
+const toDate = ref('')
 
 // download services pdf (remember we need to move this to the statistics page later)
 const downloadPdf = async (id) => {
@@ -80,6 +90,24 @@ const downloadPdf = async (id) => {
   } catch (error) {
     console.log(error)
   }
+}
+
+const handleDownload = () => {
+  if (!fromDate.value || !toDate.value) {
+    return Swal.fire({
+      title: 'تنبيه',
+      text: 'الرجاء اختيار التاريخ من وإلى أولاً',
+      icon: 'warning',
+    })
+  }
+  if (fromDate.value > toDate.value) {
+    return Swal.fire({
+      title: 'تنبيه',
+      text: 'تاريخ البداية أكبر من تاريخ النهاية',
+      icon: 'warning',
+    })
+  }
+  newsStore.viewPdf(fromDate.value, toDate.value)
 }
 
 onMounted(async () => {

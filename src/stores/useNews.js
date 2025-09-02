@@ -405,8 +405,8 @@ export const useNewsStore = defineStore('newsStore', () => {
       return null
     }
   }
-  const viewPdf = async () => {
-    const payload = { from_date: '2025-07-24', to_date: '2025-08-30' }
+  const viewPdf = async (fromDate, toDate) => {
+    const payload = { from_date: fromDate, to_date: toDate }
     try {
       loader.value = true
 
