@@ -2,55 +2,94 @@
   <div>
     <loader v-if="newsStore.loader" />
   </div>
-  <div class="row">
-    <div class="container mt-5">
-      <div class="col-4 col-sm-6 col-md-12">
-        <div class="d-flex flex-column align-items-center justify-content-center">
-          <h1>اهلا بعودتك {{ authStore.userInfo }}</h1>
 
-          <h2 v-if="newsStore.visitorCount !== null" class="mt-3">
-            عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
-            عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
-          </h2>
-          <div class="d-flex flex-column gap-2 mt-3" dir="rtl">
-            <div class="d-flex gap-2">
-              <label class="fw-bold" style="width: 200px">من تاريخ:</label>
+  <div class="container py-4" dir="rtl">
+    <div class="row justify-content-center text-center">
+      <div class="col-12 col-lg-10">
+        <h1 class="h3 h2-md">اهلا بعودتك {{ authStore.userInfo }}</h1>
 
-              <input v-model="fromDate" type="date" class="form-control" placeholder="من تاريخ" />
-              <label class="fw-bold" style="width: 200px">إلى تاريخ:</label>
+        <h2 v-if="newsStore.visitorCount !== null" class="h5 h4-md mt-3">
+          عدد الزوار الكلي: {{ newsStore.visitorCount }} <br />
+          عدد الزوار اليوم: {{ newsStore.todayVisitorCount }}
+        </h2>
+      </div>
+    </div>
 
-              <input v-model="toDate" type="date" class="form-control" placeholder="إلى تاريخ" />
-            </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="row g-3 align-items-center">
+          <div class="col-12 col-md-6 d-flex align-items-center">
+            <label for="fromDate" class="fw-bold me-2 label-md-w text-md-end mb-1 mb-md-0">
+              من تاريخ:
+            </label>
+            <input
+              id="fromDate"
+              v-model="fromDate"
+              type="date"
+              class="form-control flex-grow-1"
+              placeholder="من تاريخ"
+            />
+          </div>
 
-            <button type="button" class="btn btn-color btn-lg mt-2" @click="handleDownload">
+          <div class="col-12 col-md-6 d-flex align-items-center">
+            <label for="toDate" class="fw-bold me-2 label-md-w text-md-end mb-1 mb-md-0">
+              إلى تاريخ:
+            </label>
+            <input
+              id="toDate"
+              v-model="toDate"
+              type="date"
+              class="form-control flex-grow-1"
+              placeholder="إلى تاريخ"
+            />
+          </div>
+
+          <div class="col-12 d-grid d-md-flex justify-content-md-center">
+            <button
+              type="button"
+              class="btn btn-color btn-lg mt-2 mt-md-3 w-100 w-md-auto"
+              @click="handleDownload"
+            >
               تحميل ملف الاحصائيات
             </button>
           </div>
         </div>
-        <!-- Chart Canvas -->
-        <canvas ref="visitorChart" width="200" height="50" class="mt-5"></canvas>
+      </div>
+    </div>
 
-        <div class="card mt-5 shadow-lg">
-          <canvas ref="dailyChart" width="200" height="50" class="mt-5"></canvas>
-        </div>
+    <!-- Charts -->
+    <div class="row justify-content-center mt-4 col-12 col-lg-12">
+      <!-- <div class="card shadow-sm p-3 mb-4 chart-container"><canvas ref="visitorChart"></canvas></div> -->
+      <div class="card shadow-sm p-3 justify-content-center chart-container">
+        <canvas ref="dailyChart"></canvas>
+      </div>
+    </div>
 
-        <hr />
-        <div class="d-flex flex-column align-items-center justify-content-center">
-          <h1>احصائيات الخدمات</h1>
-          <h2>تحميل ملف عدد زيارات الخدمات</h2>
-        </div>
-        <ul class="">
-          <li>
-            1-استمارة تسجيل المنطقة الخضراء
-            <button class="btn btn-color btn-sm" @click="downloadPdf(1)">تحميل الملف</button>
+    <hr class="my-4" />
+
+    <div class="row justify-content-center text-center">
+      <div class="col-12 col-lg-8">
+        <h1 class="h4">احصائيات الخدمات</h1>
+        <h2 class="h6 text-muted mb-3">تحميل ملف عدد زيارات الخدمات</h2>
+
+        <ul class="list-group text-start">
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <span>1- استمارة تسجيل المنطقة الخضراء</span>
+            <button class="btn btn-color btn-sm mt-2 mt-sm-0" @click="downloadPdf(1)">
+              تحميل الملف
+            </button>
           </li>
-          <li>
-            2- الاستمارة الامنية لاصدار هويات المنطقة الخضراء
-            <button class="btn btn-color btn-sm" @click="downloadPdf(2)">تحميل الملف</button>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <span>2- الاستمارة الامنية لاصدار هويات المنطقة الخضراء</span>
+            <button class="btn btn-color btn-sm mt-2 mt-sm-0" @click="downloadPdf(2)">
+              تحميل الملف
+            </button>
           </li>
-          <li>
-            3- استمارة الموافقات الخاصة
-            <button class="btn btn-color btn-sm" @click="downloadPdf(3)">تحميل الملف</button>
+          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+            <span>3- استمارة الموافقات الخاصة</span>
+            <button class="btn btn-color btn-sm mt-2 mt-sm-0" @click="downloadPdf(3)">
+              تحميل الملف
+            </button>
           </li>
         </ul>
       </div>
@@ -85,9 +124,7 @@ const downloadPdf = async (id) => {
   }
   try {
     const response = await axios.post(apiURL + 'greenzone/service-stats/autopdf', payload, {
-      headers: {
-        headers: { Authorization: `Bearer ${authStore.token}` },
-      },
+      headers: { Authorization: `Bearer ${authStore.token}` },
     })
 
     console.log(response)
@@ -197,3 +234,28 @@ onMounted(async () => {
   }
 })
 </script>
+<style>
+@media (min-width: 768px) {
+  .label-md-w {
+    width: 120px;
+  }
+}
+.chart-container {
+  position: relative;
+  height: 280px; /* mobile height */
+}
+@media (min-width: 768px) {
+  .chart-container {
+    height: 380px;
+    width: 700px;
+  } /* bigger on md+ */
+}
+@media (min-width: 768px) {
+  .h2-md {
+    font-size: 2rem;
+  }
+  .h4-md {
+    font-size: 1.5rem;
+  }
+}
+</style>
