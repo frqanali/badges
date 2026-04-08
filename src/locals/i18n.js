@@ -47,6 +47,8 @@ const messages = {
     latestservices: ' Latest Services',
     gzapp: ' Green Zone Registration Form',
     gzapp2: ' Security form for issuing Green Zone IDs',
+    gzapp4: ' Residents Registration form for issuing Green Zone IDs',
+
     latestrules: ' Latest regulations and instructions',
   },
   ar: {
@@ -93,6 +95,8 @@ const messages = {
     latestservices: ' اخر الخدمات',
     gzapp: ' استمارة تسجيل المنطقة الخضراء',
     gzapp2: ' الاستمارة الامنية لاصدار لهويات المنطقة الخضراء',
+        gzapp4: 'للساكنين استمارة تسجيل المنطقة الخضراء',
+
   },
 }
 

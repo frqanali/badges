@@ -42,6 +42,17 @@
             </div>
           </div>
         </div>
+           <div class="col-md-6 me-6 ms-6 mb-4">
+          <div class="card backgrounds">
+            <div class="card-body">
+              <h5 class="card-title">{{ $t('gzapp4') }}</h5>
+              <p class="card-text">{{ $t('gzapp4') }}</p>
+              <a href="https://gzoffice.ur.gov.iq/gspmo" target="_blank" rel="noopener noreferrer">
+                <button class="btn btn-color" @click="countService(4)">{{ $t('go') }}</button>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div v-if="serviceStore.pinnedServicesList.length > 0" class="container">
