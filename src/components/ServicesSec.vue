@@ -8,7 +8,11 @@
             <div class="card-body">
               <h5 class="card-title text-danger">{{ $t('gzapp1') }}</h5>
               <p class="card-text">{{ $t('gzapp1') }}</p>
-              <a href="https://gzspecial.ur.gov.iq/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://gzoffice.ur.gov.iq/special"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <button class="btn btn-danger" @click="countService(3)">{{ $t('go') }}</button>
               </a>
             </div>
